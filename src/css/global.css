@@ -1,0 +1,68 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    min-width: 100vw;
+    min-height: 100vh;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+
+    color: var(--white);
+    background-color: var(--background-color);
+
+    overflow: hidden;
+    background-image: url('/images/gradient-desktop.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-bcg);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: var(--dashboard-text);
+    }
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-color) transparent;
+    }
+}
+
+@media only screen and (max-width: 767.98px) {
+    body {
+        background-image: url('/images/gradient-mobile.webp');
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        background-image: url('/images/gradient-tablet.webp');
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    body {
+        background-image: url('/images/gradient-desktop.webp');
+    }
+}
+
+main {
+    flex-grow: 1;
+}

@@ -4,8 +4,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import useMedia from '../hooks/useMedia';
 import Loader from './Loader/Loader';
-import PrivateRoute from './routes/PrivateRoute';
-import RestrictedRoute from './routes/RestrictedRoute';
+import PrivateRoute from '../routes/PrivateRoute';
+import RestrictedRoute from '../routes/RestrictedRoute';
 
 import { selectIsRefreshing } from '../redux/auth/selectors';
 import { refreshThunk } from '../redux/auth/operations.js';

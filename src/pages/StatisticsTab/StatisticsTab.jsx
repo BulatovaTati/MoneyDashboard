@@ -3,3 +3,8 @@ const StatisticsTab = () => {
 };
 
 export default StatisticsTab;
+
+// "Компонент містить:
+//   - Chart
+//   - StatisticsDashboard
+//   - StatisticsTable

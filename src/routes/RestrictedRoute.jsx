@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { selectIsLoggedIn } from '../redux/auth/selectors';
 
 const RestrictedRoute = ({ component: Component }) => {
     const location = useLocation();

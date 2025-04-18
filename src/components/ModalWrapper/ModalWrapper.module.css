@@ -1,0 +1,76 @@
+.btnCloseModal {
+    background-color: transparent;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: 0;
+    display: flex;
+    justify-content: flex-end;
+    transition: transform 0.3s ease, fill 0.3s ease;
+    &:hover,
+    &:focus {
+        transform: scale(1.1);
+    }
+}
+
+.modalEllipse {
+    position: absolute;
+    z-index: -1;
+    border-radius: 454px;
+    background-color: rgba(47, 21, 176, 0.7);
+    filter: blur(100px);
+    width: 454px;
+    height: 454px;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 700;
+    backdrop-filter: blur(100px);
+}
+
+.overlay {
+    backdrop-filter: blur(7px);
+    background: rgba(34, 13, 91, 0.23);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        width: 540px;
+        height: 589px;
+        padding: 40px 73px;
+        background-color: rgba(255, 255, 255, 0.196);
+    }
+    .overlay {
+        background-color: rgba(34, 13, 91, 0.396);
+    }
+}

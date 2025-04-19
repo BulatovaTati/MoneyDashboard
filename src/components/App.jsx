@@ -8,7 +8,7 @@ import PrivateRoute from '../routes/PrivateRoute';
 import RestrictedRoute from '../routes/RestrictedRoute';
 
 import { selectIsRefreshing } from '../redux/auth/selectors';
-import { refreshThunk } from '../redux/auth/operations.js';
+import { refreshThunk } from '../redux/auth/operations';
 
 const HomeTab = lazy(() => import('../pages/HomeTab/HomeTab'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));

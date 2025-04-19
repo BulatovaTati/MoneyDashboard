@@ -1,13 +1,13 @@
-import EditTransactionForm from '../EditTransactionForm/EditTransactionForm.jsx';
-import ModalWrapper from '../ModalWrapper/ModalWrapper.jsx';
+import { useSelector } from 'react-redux';
+import EditTransactionForm from '../EditTransactionForm/EditTransactionForm';
+import { selectIsEditModalOpen } from '../../redux/modals/selectors';
+import ModalWrapper from '../ModalWrapper/ModalWrapper';
 
 const ModalEditTransaction = () => {
     return (
-        <ModalWrapper isOpenModal={isOpenModal}>
-            {/* /children */}
+        <ModalWrapper>
             <EditTransactionForm />
         </ModalWrapper>
     );
 };
-
 export default ModalEditTransaction;

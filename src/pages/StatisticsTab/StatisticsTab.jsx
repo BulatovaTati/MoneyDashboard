@@ -39,45 +39,22 @@ const StatisticsTab = () => {
     const balance = income - expenses;
 
     return (
-        <section className={css.statisticsTab}>
-            <div className={css.header}>
-                <Header />
-            </div>
-
-            <div className={css.dashboard}>
-                <div className={css.dashboardData}>
-                    <div className={css.dashboardNavBal}>
-                        <div className={css.navigation}>
-                            <Navigation />
-                        </div>
-                        <div className={css.balance}>
-                            <Balance />
-                        </div>
-                    </div>
-                    <div className={css.currency}>
-                        <Currency />
-                    </div>
-                </div>
-                <div className={css.divider}></div>
-
-                <div className={css.statistics}>
-                    <div>
-                        <h2 className={css.statisticsTitle}>Statistics</h2>
-                        <div className={css.chart}>
-                            <Chart summary={summary} categories={categories} balance={balance} />
-                        </div>
-                    </div>
-                    <div className={css.statisticsData}>
-                        <div className={css.statisticsDashboard}>
-                            <StatisticsDashboard />
-                        </div>
-                        <div className={css.statisticsTable}>
-                            <StatisticsTable summary={summary} categories={categories} income={income} expenses={expenses} />
-                        </div>
-                    </div>
+        <div className={css.statistics}>
+            <div>
+                <h2 className={css.statisticsTitle}>Statistics</h2>
+                <div className={css.chart}>
+                    <Chart summary={summary} categories={categories} balance={balance} />
                 </div>
             </div>
-        </section>
+            <div className={css.statisticsData}>
+                <div className={css.statisticsDashboard}>
+                    <StatisticsDashboard />
+                </div>
+                <div className={css.statisticsTable}>
+                    <StatisticsTable summary={summary} categories={categories} income={income} expenses={expenses} />
+                </div>
+            </div>
+        </div>
     );
 };
 

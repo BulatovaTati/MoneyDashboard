@@ -1,0 +1,108 @@
+.dashboardPage {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.header {
+    width: 320px;
+    height: 60px;
+}
+
+.navigation {
+    width: 320px;
+    height: 96px;
+}
+
+.balance,
+.currency,
+.divider {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .dashboardPage {
+        width: 768px;
+    }
+
+    .header {
+        width: 768px;
+        height: 80px;
+    }
+
+    .dashboard {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .dashboardData {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        margin-bottom: 20px;
+    }
+
+    .navigation {
+        width: 336px;
+        height: 134px;
+    }
+
+    .balance {
+        display: block;
+        width: 336px;
+        height: 80px;
+    }
+
+    .currency {
+        display: block;
+        width: 336px;
+        height: 80px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .dashboardPage {
+        width: 1280px;
+    }
+
+    .header {
+        width: 1280px;
+        height: 80px;
+    }
+
+    .dashboard {
+        padding-left: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .dashboardData {
+        flex-direction: column;
+        gap: 33px;
+        margin-bottom: 0;
+    }
+
+    .navigation {
+        width: 480px;
+        height: 133px;
+    }
+
+    .balance {
+        width: 480px;
+        height: 80px;
+    }
+
+    .currency {
+        width: 480px;
+        height: 380px;
+    }
+
+    .divider {
+        display: block;
+        width: 1px;
+        background-color: var(--white-600);
+        box-shadow: 1px 4px 1px 0 rgba(0, 0, 0, 0.25);
+        flex-shrink: 0;
+    }
+}

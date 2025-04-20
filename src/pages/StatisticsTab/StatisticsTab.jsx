@@ -1,8 +1,4 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
-import Navigation from '../../components/Navigation/Navigation';
-import Balance from '../../components/Balance/Balance';
-import Currency from '../../components/Currency/Currency';
 import Chart from '../../components/Chart/Chart';
 import StatisticsDashboard from '../../components/StatisticsDashboard/StatisticsDashboard';
 import StatisticsTable from '../../components/StatisticsTable/StatisticsTable';
@@ -23,18 +19,32 @@ const StatisticsTab = () => {
     ];
 
     const summary = [
-        { categoryId: '1', expenses: 8700.0 },
-        { categoryId: '2', expenses: 3800.74 },
-        { categoryId: '3', expenses: 1500.0 },
-        { categoryId: '4', expenses: 800.0 },
-        { categoryId: '5', expenses: 2208.5 },
-        { categoryId: '6', expenses: 300.0 },
-        { categoryId: '7', expenses: 3400.0 },
-        { categoryId: '8', expenses: 1230.0 },
-        { categoryId: '9', expenses: 610.0 },
+        { categoryId: '1', type: 'EXPENSE', EXPENSE: 8700.0 },
+        { categoryId: '2', type: 'EXPENSE', EXPENSE: 3800.74 },
+        { categoryId: '3', type: 'EXPENSE', EXPENSE: 1500.0 },
+        { categoryId: '4', type: 'EXPENSE', EXPENSE: 800.0 },
+        { categoryId: '5', type: 'EXPENSE', EXPENSE: 2208.5 },
+        { categoryId: '6', type: 'EXPENSE', EXPENSE: 300.0 },
+        { categoryId: '7', type: 'EXPENSE', EXPENSE: 3400.0 },
+        { categoryId: '8', type: 'EXPENSE', EXPENSE: 1230.0 },
+        { categoryId: '9', type: 'EXPENSE', EXPENSE: 610.0 },
     ];
 
-    const expenses = summary.reduce((acc, item) => acc + item.expenses, 0);
+    // Якщо витрат немає, він показує зображення із повідомленням, що немає транзакцій.
+
+    // const summary = [
+    //     { categoryId: '1', type: 'INCOME', INCOME: 8700.0 },
+    //     { categoryId: '2', type: 'INCOME', INCOME: 3800.74 },
+    //     { categoryId: '3', type: 'INCOME', INCOME: 1500.0 },
+    //     { categoryId: '4', type: 'INCOME', INCOME: 800.0 },
+    //     { categoryId: '5', type: 'INCOME', INCOME: 2208.5 },
+    //     { categoryId: '6', type: 'INCOME', INCOME: 300.0 },
+    //     { categoryId: '7', type: 'INCOME', INCOME: 3400.0 },
+    //     { categoryId: '8', type: 'INCOME', INCOME: 1230.0 },
+    //     { categoryId: '9', type: 'INCOME', INCOME: 610.0 },
+    // ];
+
+    const expenses = summary.filter(item => item.type === 'EXPENSE').reduce((acc, item) => acc + item.EXPENSE, 0);
     const income = 27350;
     const balance = income - expenses;
 

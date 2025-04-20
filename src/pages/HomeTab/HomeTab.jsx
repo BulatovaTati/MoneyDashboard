@@ -23,7 +23,6 @@ const HomeTab = () => {
 
     return (
         <div>
-            HomeTab
             {isMobile && <Balance />}
             <TransactionsList />
             <ButtonAddTransactions />

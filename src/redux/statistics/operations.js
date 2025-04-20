@@ -9,8 +9,14 @@ export const getTransactionsSummaryByPeriod = createAsyncThunk('transactions/sum
     } else {
         return thunkApi.rejectWithValue('Unable to fetch');
     }
+
     try {
-        const { data } = await userTransactionsApi.get(`/api/transactions-summary?month=${month}&year=${year}`);
+        let query = `/api/transactions-summary?year=${year}`;
+        if (month !== 'All month') {
+            query += `&month=${month}`;
+        }
+
+        const { data } = await userTransactionsApi.get(query);
         return data;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);

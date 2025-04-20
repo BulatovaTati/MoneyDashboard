@@ -18,19 +18,10 @@ body {
     color: var(--white);
     background-color: var(--background-color);
 
-    overflow: hidden;
     background-image: url('/images/gradient-desktop.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-
-    min-height: 100vh;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
 
     ::-webkit-scrollbar-thumb {
         background-color: var(--scrollbar-bcg);

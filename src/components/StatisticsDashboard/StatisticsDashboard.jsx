@@ -6,13 +6,14 @@ import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headless
 
 import css from './StatisticsDashboard.module.css';
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const months = ['All month', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const years = Array.from({ length: new Date().getFullYear() - 2020 + 1 }, (_, i) => `${2020 + i}`);
 
 const StatisticsDashboard = () => {
     const dispatch = useDispatch();
 
-    const currentMonthIndex = new Date().getMonth();
+    const currentMonthIndex = new Date().getMonth() + 1;
+
     const currentMonth = months[currentMonthIndex];
     const currentYear = `${new Date().getFullYear()}`;
 
@@ -24,12 +25,13 @@ const StatisticsDashboard = () => {
 
     useEffect(() => {
         dispatch(getTransactionsCategories());
-        dispatch(getTransactionsSummaryByPeriod({ month: selectedMonth, year: selectedYear }));
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
-        dispatch(getTransactionsSummaryByPeriod({ month: selectedMonth, year: selectedYear }));
-    }, [selectedMonth, selectedYear]);
+        const period = selectedMonth === 'All month' ? { year: selectedYear } : { month: selectedMonth, year: selectedYear };
+
+        dispatch(getTransactionsSummaryByPeriod(period));
+    }, [dispatch, selectedMonth, selectedYear]);
 
     return (
         <div className={css.wrapper}>

@@ -4,7 +4,7 @@ import css from './StatisticsTable.module.css';
 const StatisticsTable = ({ summary, categories, income, expenses }) => {
     const getCategoryName = id => {
         const category = categories.find(cat => cat.id === id);
-        return category ? category.name : 'Неизвестно';
+        return category ? category.name : 'Невідомо';
     };
 
     const getCategoryColor = index => {
@@ -20,19 +20,21 @@ const StatisticsTable = ({ summary, categories, income, expenses }) => {
             </div>
             <table className={css.table}>
                 <tbody>
-                    {summary.map((item, index) => {
-                        const categoryName = getCategoryName(item.categoryId);
-                        const color = getCategoryColor(index);
-                        return (
-                            <tr key={item.categoryId}>
-                                <td className={css.dotCell}>
-                                    <span className={css.colorDot} style={{ backgroundColor: color }} />
-                                </td>
-                                <td>{categoryName}</td>
-                                <td>{item.expenses.toFixed(2)}</td>
-                            </tr>
-                        );
-                    })}
+                    {summary
+                        .filter(item => item.type === 'EXPENSE')
+                        .map((item, index) => {
+                            const categoryName = getCategoryName(item.categoryId);
+                            const color = getCategoryColor(index);
+                            return (
+                                <tr key={item.categoryId}>
+                                    <td className={css.dotCell}>
+                                        <span className={css.colorDot} style={{ backgroundColor: color }} />
+                                    </td>
+                                    <td>{categoryName}</td>
+                                    <td>{item.EXPENSE.toFixed(2)}</td>
+                                </tr>
+                            );
+                        })}
                 </tbody>
             </table>
 

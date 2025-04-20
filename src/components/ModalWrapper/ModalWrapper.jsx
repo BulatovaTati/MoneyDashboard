@@ -1,10 +1,9 @@
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
-
 import { Icons } from '../Icons/Icons';
+import { closeModal } from '../../redux/modals/slice';
+import useMedia from '../../hooks/useMedia';
 
-import { closeModal } from '../../redux/modal/slice';
-import { useMedia } from '../../hooks/useMedia';
 import s from './ModalWrapper.module.css';
 
 Modal.setAppElement('#root');

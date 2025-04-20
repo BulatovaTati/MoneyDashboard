@@ -1,0 +1,31 @@
+.chartWrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+}
+
+.chartCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    color: var(--white);
+}
+
+@media (min-width: 768px) {
+    .chartWrapper {
+        width: 336px;
+        height: 336px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .chartWrapper {
+        width: 288px;
+        height: 288px;
+    }
+}

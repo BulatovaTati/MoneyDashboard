@@ -1,7 +1,14 @@
-import AddTransactionForm from '../AddTransactionForm/AddTransactionForm.jsx';
+import { useSelector } from 'react-redux';
+import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
+import { selectIsAddModalOpen } from '../../redux/modals/selectors';
+import ModalWrapper from '../ModalWrapper/ModalWrapper';
 
 const ModalAddTransaction = () => {
-    return <AddTransactionForm />;
+    return (
+        <ModalWrapper>
+            <AddTransactionForm />
+        </ModalWrapper>
+    );
 };
 
 export default ModalAddTransaction;

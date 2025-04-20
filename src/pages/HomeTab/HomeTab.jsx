@@ -8,7 +8,7 @@ import ButtonAddTransactions from '../../components/ButtonAddTransactions/Button
 import { getTransactionsCategories } from '../../redux/statistics/operations.js';
 
 const HomeTab = () => {
-    const { isMobile } = useMedia();
+    // const { isMobile } = useMedia();
     const dispatch = useDispatch();
 
     // Написати операцію, яка робить запит за транзакціями авторизованого користувача і записує результат у redux store

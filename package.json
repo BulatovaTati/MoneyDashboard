@@ -10,10 +10,11 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@headlessui/react": "^2.2.2",
         "@hookform/resolvers": "^3.3.4",
         "@reduxjs/toolkit": "^2.2.3",
-        "axios": "^1.6.8",
-        "chart.js": "^4.4.2",
+        "axios": "^1.8.4",
+        "chart.js": "^4.4.9",
         "clsx": "^2.1.1",
         "formik": "^2.4.6",
         "framer-motion": "^12.7.4",

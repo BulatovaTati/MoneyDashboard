@@ -1,0 +1,186 @@
+.row {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 8px;
+    color: var(--white);
+    position: relative;
+}
+
+.row::after {
+    display: block;
+    content: '';
+    width: calc(100% - 40px);
+    height: 1px;
+    background-color: var(--white-40);
+
+    position: absolute;
+    bottom: 0;
+}
+
+.row:last-child::after {
+    display: none;
+}
+
+.btnEdit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit {
+    stroke: var(--white);
+    size: 14px;
+    width: 14px;
+    height: 14px;
+}
+
+.deleteBtn {
+    width: 69px;
+    height: 29px;
+    border-radius: 20px;
+    background-position: left center;
+    background: var(--button-gradient);
+    color: var(--white);
+    padding: 4px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: var(--button-shadow);
+    transition: var(--transition);
+    background-size: 200%;
+  }
+
+  .deleteBtn:hover,
+.deleteBtn:focus {
+  background-position: right center;
+  transform: var(--scale);
+}
+
+
+
+@media (hover: hover) {
+    .colored:hover,
+    .colored:focus {
+        transform: scale(1.05);
+        background-image: linear-gradient(to right, #7000ff 0%, #9e40ba 31%, #ffc727 100%);
+        background-size: 200%;
+        background-position: right center;
+    }
+
+    .colored:active {
+        transform: scale(1.08);
+        font-size: 19px;
+    }
+
+    .btnEdit:hover,
+    .btnEdit:focus {
+        & .edit {
+            stroke: #ffc727;
+        }
+    }
+}
+
+
+.income {
+    color: #ffb627;
+}
+
+.expense {
+    color: #ff868d;
+}
+
+
+
+/* MOBILE ONLY */
+@media only screen and (max-width: 767.98px) {
+    .card {
+        width: 280px;
+        min-height: 293px;
+        border-radius: 10px;
+        background-color: var(--form-color);
+        position: relative;
+    }
+
+    .card.income::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: #ffb627; /* Жовтий для доходів */
+        border-radius: 10px 0 0 10px;
+    }
+
+    .card.expense::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: #ff868d; /* Червоний для витрат */
+        border-radius: 10px 0 0 10px;
+    }
+    
+    .row {
+        justify-content: space-between;
+    }
+
+    .rowItem:nth-child(2n) {
+        text-align: end;
+    }
+}
+/* TABLET */
+@media only screen and (min-width: 768px) {
+    .row {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        gap: 8px;
+        position: relative;
+    }
+
+    .rowItem {
+        text-wrap: wrap;
+        color: var(--white);
+    }
+
+    .rowItem:first-child {
+        max-width: 105px;
+        min-width: 105px;
+        margin-left: 0;
+        flex-grow: 3;
+    }
+    .rowItem:nth-child(2) {
+        max-width: 56px;
+        min-width: 56px;
+        text-align: center;
+    }
+    .rowItem:nth-child(3) {
+        max-width: 130px;
+        min-width: 130px;
+        flex-grow: 2;
+    }
+    .rowItem:nth-child(4) {
+        max-width: 150px;
+        min-width: 150px;
+        flex-grow: 2;
+    }
+    .rowItem:nth-child(5) {
+        width: 88px;
+        text-align: center;
+        font-weight: 600;
+        color: currentColor;
+    }
+
+    .controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+}
+/* DESKTOP */
+@media only screen and (min-width: 1280px) {
+}

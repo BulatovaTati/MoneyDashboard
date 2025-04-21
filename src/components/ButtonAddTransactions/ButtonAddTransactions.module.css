@@ -35,10 +35,6 @@
 }
 
 @media screen and (min-width: 768px) {
-    .btn {
-        margin-left: auto;
-        position: static;
-    }
     .wrap {
         padding-right: 8px;
     }

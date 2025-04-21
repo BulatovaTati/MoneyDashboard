@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTransactionsError, selectTransactionsLoading} from '../../redux/transactions/selectors';
+import { selectTransactionsError, selectTransactionsLoading } from '../../redux/transactions/selectors';
 // import { selectCategories } from '../../redux/statistics/selectors';
 
 import s from './TransactionList.module.css';
@@ -66,6 +66,62 @@ const mockTransactions = [
     },
     {
         id: '5',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '6',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '7',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '8',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '9',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '10',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '11',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '12',
         transactionDate: '2023-01-07',
         amount: 1000,
         categoryId: '2',

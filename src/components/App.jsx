@@ -9,6 +9,7 @@ import RestrictedRoute from '../routes/RestrictedRoute';
 
 import { selectIsRefreshing } from '../redux/auth/selectors';
 import { refreshThunk } from '../redux/auth/operations';
+import NotFound from '../pages/NotFound/NotFound.jsx';
 
 const HomeTab = lazy(() => import('../pages/HomeTab/HomeTab'));
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -34,9 +35,11 @@ function App() {
                     <Route path="statistics" element={<StatisticsTab />} />
                     <Route path="currency" element={isMobile ? <CurrencyTab /> : <Navigate to="/" />} />
                 </Route>
+
                 <Route path="/register" element={<RegistrationPage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="*" element={<Navigate to="/" />} />
+
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Suspense>
     );
@@ -50,13 +53,13 @@ export default App;
 //      <Suspense fallback={<Loader />}>
 //          <Routes>
 //              <Route path="/" element={<PrivateRoute component={<DashboardPage />} />}>
-//                  <Route index element={<HomeTab />} />
+//                  <Route  index element={<HomeTab />} />
 //                  <Route path="statistics" element={<StatisticsTab />} />
-//                  <Route path="currency" element={isMobile ? <CurrencyTab /> : <Navigate to="/" />} />
+//                  <Route path="currency" element={isMobile ? <CurrencyTab /> : <Navigate to="/dashboard" />} />
 //              </Route>
 //              <Route path="/register" element={<RestrictedRoute component={<RegistrationPage />} />} />
 //              <Route path="/login" element={<RestrictedRoute component={<LoginPage />} />} />
-//              <Route path="*" element={<Navigate to="/" />} />
+//               <Route path="*" element={<NotFound />} />
 //          </Routes>
 //      </Suspense>
 //  );

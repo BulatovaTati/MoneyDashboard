@@ -9,7 +9,7 @@ import { getTransactionsCategories } from '../../redux/statistics/operations.js'
 
 const HomeTab = () => {
     const { isMobile } = useMedia();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     // Написати операцію, яка робить запит за транзакціями авторизованого користувача і записує результат у redux store
     // Написати операцію, яка робить запит за категоріями транзакцій і записує результат у redux store
@@ -23,7 +23,6 @@ const HomeTab = () => {
 
     return (
         <div>
-            HomeTab
             {isMobile && <Balance />}
             <TransactionsList />
             <ButtonAddTransactions />

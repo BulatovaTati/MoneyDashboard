@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { removeToken, setToken, userTransactionsApi } from '../../api/userTransactionsApi';
 
-// https://wallet.b.goit.study/docs
-
 export const registerThunk = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.post('/api/auth/sign-up', credentials);
@@ -49,7 +47,7 @@ export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkApi)
     }
 });
 
-export const getBalanceThunk = createAsyncThunk('getBalannce', async (_, thunkApi) => {
+export const getBalanceThunk = createAsyncThunk('getBalance', async (_, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.get('/api/users/current');
         return data.balance;

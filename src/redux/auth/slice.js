@@ -65,4 +65,3 @@ const slice = createSlice({
 });
 
 export const authReducer = slice.reducer;
-export const { updateBalance } = slice.actions;

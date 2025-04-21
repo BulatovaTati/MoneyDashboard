@@ -8,35 +8,42 @@ import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 
-import s from './DashboardPage.module.css';
-import ModalLogOut from '../../components/ModalLogOut/ModalLogOut.jsx';
-import ModalEditTransaction from '../../components/ModalEditTransaction/ModalEditTransaction.jsx';
-import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction.jsx';
+import ModalLogOut from '../../components/ModalLogOut/ModalLogOut';
+import ModalEditTransaction from '../../components/ModalEditTransaction/ModalEditTransaction';
+import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
+
+import css from './DashboardPage.module.css';
 
 const DashboardPage = () => {
     const { isMobile } = useMedia();
+
     return (
-        <>
-            <Header />
-            <div className={s.container}>
-                <main className={s.main}>
-                    <div className={s.navItem}>
-                        <div className={s.wrapper}>
-                            <Navigation />
-                            {!isMobile && <Balance />}
+        <section className={css.dashboardPage}>
+            <div className={css.header}>
+                <Header />
+            </div>
+            <main>
+                <div className={css.dashboard}>
+                    <div className={css.dashboardData}>
+                        <div className={css.dashboardNavBal}>
+                            <div className={css.navigation}>
+                                <Navigation />
+                            </div>
+                            <div className={css.balance}>{!isMobile && <Balance />}</div>
                         </div>
-                        {!isMobile && <Currency />}
+                        <div className={css.currency}>{!isMobile && <Currency />}</div>
                     </div>
+                    <div className={css.divider}></div>
                     <Suspense fallback={<Loader />}>
                         <Outlet />
                     </Suspense>
-                </main>
-                <ModalLogOut />
-                <ModalEditTransaction />
-                <ModalAddTransaction />
-                <Toaster />
-            </div>
-        </>
+                    <ModalLogOut />
+                    <ModalEditTransaction />
+                    <ModalAddTransaction />
+                </div>
+            </main>
+            <Toaster />
+        </section>
     );
 };
 

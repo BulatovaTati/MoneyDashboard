@@ -4,6 +4,32 @@
     font-size: 14px;
 }
 
+/* Кастомний скролбар для WebKit (Chrome, Edge, Opera) */
+.list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background: rgba(82, 59, 126, 0.8);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+    background: rgba(82, 59, 126, 1);
+}
+
+/* Для Firefox */
+.list {
+    scrollbar-color: rgba(156, 153, 162, 0.8) rgba(255, 255, 255, 0.1);
+    scrollbar-width: thin;
+}
+
 .container {
     width: 100%;
     min-height: 100px;
@@ -31,18 +57,18 @@
         margin-top: 40px;
     }
 }
+
 /* TABLET */
 @media only screen and (min-width: 768px) {
     .list {
         width: 704px;
-        margin: auto;
-
         overflow: auto;
-        scrollbar-width: thin;
+        height: 580px;
+        margin-bottom: 41px;
     }
     .container {
         width: 704px;
-        max-height: none;
+        height: none;
     }
 
     .headRow {
@@ -62,10 +88,10 @@
         backdrop-filter: blur(50px);
         font-weight: 600;
         font-size: 14px;
+    }
 
-        &::after {
-            display: none;
-        }
+    .headRow::after {
+        display: none;
     }
 
     .rowItem {
@@ -93,12 +119,14 @@
         text-align: center;
     }
 }
+
 /* DESKTOP */
 @media only screen and (min-width: 1280px) {
     .list,
     .container {
         width: 715px;
-        max-height: none;
+        height: 420px;
+        margin-bottom: 41px;
     }
     .headRow {
         width: 715px;

@@ -7,6 +7,8 @@ import TransactionsList from '../../components/TransactionsList/TransactionsList
 import ButtonAddTransactions from '../../components/ButtonAddTransactions/ButtonAddTransactions.jsx';
 import { getTransactionsCategories } from '../../redux/statistics/operations.js';
 
+import css from './HomeTab.module.css';
+
 const HomeTab = () => {
     const { isMobile } = useMedia();
     // const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const HomeTab = () => {
     // }, [dispatch]);
 
     return (
-        <div>
+        <div className={css.homeTab}>
             {isMobile && <Balance />}
             <TransactionsList />
             <ButtonAddTransactions />

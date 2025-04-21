@@ -1,26 +1,46 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useDispatch, useSelektor } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
 import { addTransactions } from '../../redux/transactions/operations.js';
-import { selectCategories } from '../../redux/transactions/selectors.js';
+import { selectCategories } from '../../redux/statistics/selectors.js';
 import { closeModal } from '../../redux/modals/slice.js';
 
-import Notiflix from 'notiflix';
 import ToggleModal from '../ToggleModal/ToggleModal.jsx';
 import CustomIconForCalendar from './CustomIconForCalendar';
 
 import css from './AddTransactionForm.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
+const schema = yup.object().shape({
+    amount: yup.number().typeError('Amount must be a number').required('Amount is required').positive('Amount must be positive'),
+    comment: yup.string().max(100, 'Max 100 characters'),
+});
+
 const AddTransactionForm = () => {
     const [transactionDate, setTransactionDate] = useState(new Date());
     const [isTransactionIncome, setIsTransactionIncome] = useState(false);
-    const rawCategories = useSelektor(selectCategories);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+    const rawCategories = useSelector(selectCategories);
     const dispatch = useDispatch();
+
+    const {
+        register,
+        handleSubmit,
+        control,
+        reset,
+        formState: { errors },
+    } = useForm({
+        defaultValues: {
+            amount: '',
+            comment: '',
+        },
+        resolver: yupResolver(schema),
+    });
 
     const filteredCategories = rawCategories
         .filter(category => category.type !== 'INCOME')
@@ -30,42 +50,27 @@ const AddTransactionForm = () => {
             isDisabled: category.name === 'Main expenses',
         }));
 
-    const handleCategoryName = selectedCategory => {
-        setSelectedCategoryId(selectedCategory.value);
-    };
-
-    const handleClickCancel = () => {
-        dispatch(closeModal());
-    };
-
-    const formInitialValues = {
-        transactionDate: new Date(),
-        comment: '',
-        amount: '',
-        categoryId: '',
-        type: isTransactionIncome ? 'INCOME' : 'EXPENSE',
-    };
-
-    const handleSubmit = (values, options) => {
+    const onSubmit = data => {
         const categoryId = isTransactionIncome ? '063f1132-ba5d-42b4-951d-44011ca46262' : selectedCategoryId;
 
         const newTransaction = {
             type: isTransactionIncome ? 'INCOME' : 'EXPENSE',
             transactionDate: transactionDate.toISOString(),
-            comment: values.comment,
-            amount: isTransactionIncome ? parseFloat(values.amount) : -parseFloat(values.amount),
+            comment: data.comment,
+            amount: isTransactionIncome ? parseFloat(data.amount) : -parseFloat(data.amount),
             categoryId,
         };
 
         dispatch(addTransactions(newTransaction))
             .unwrap()
             .then(() => {
-                Notiflix.Notify.success(`${newTransaction.type} added successfully!`);
-                options.resetForm();
-                handleClickCancel();
+                console.log(`${newTransaction.type} added successfully!`);
+
+                reset();
+                dispatch(closeModal());
             })
             .catch(error => {
-                Notiflix.Notify.failure(`Failed to add transaction: ${error.message}`);
+                console.log(`Failed to add transaction: ${error.message}`);
             });
     };
 
@@ -80,48 +85,52 @@ const AddTransactionForm = () => {
         <div className={css.modalContainer}>
             <h2 className={css.title}>Add transaction</h2>
             <ToggleModal onChange={setIsTransactionIncome} defaultActive={false} />
-            <Formik initialValues={formInitialValues} onSubmit={handleSubmit}>
-                <Form className={css.formWrapper}>
-                    {!isTransactionIncome && (
-                        <Select
-                            name="select"
-                            className={css.selectInput}
-                            placeholder="Select a category"
-                            options={filteredCategories}
-                            required
-                            onChange={handleCategoryName}
-                            classNamePrefix="react-select"
-                            styles={reactSelectStyles}
-                        />
-                    )}
-                    <div className={css.amountDateInputWrapper}>
-                        <div>
-                            <Field className={css.amountInput} name="amount" type="number" placeholder="0.00" required autoComplete="off" />
-                            <ErrorMessage name="amount" component="div" className={css.errorForAmount} />
-                        </div>
-                        <DatePicker
-                            selected={transactionDate}
-                            onChange={date => setTransactionDate(date)}
-                            calendarStartDay={1}
-                            dateFormat="dd.MM.yyyy"
-                            maxDate={new Date()}
-                            customInput={<CustomIconForCalendar />}
-                        />
-                    </div>
+            <form className={css.formWrapper} onSubmit={handleSubmit(onSubmit)}>
+                {!isTransactionIncome && (
+                    <Select
+                        name="select"
+                        className={css.selectInput}
+                        placeholder="Select a category"
+                        options={filteredCategories}
+                        required
+                        onChange={selected => setSelectedCategoryId(selected.value)}
+                        classNamePrefix="react-select"
+                        styles={reactSelectStyles}
+                    />
+                )}
+                <div className={css.amountDateInputWrapper}>
                     <div>
-                        <Field as="textarea" rows="2" name="comment" placeholder="Comment" className={css.commentInput} />
-                        <ErrorMessage name="comment" component="div" className={css.errorForComment} />
+                        <input className={css.amountInput} type="number" step="0.01" placeholder="0.00" {...register('amount')} autoComplete="off" />
+                        {errors.amount && <div className={css.errorForAmount}>{errors.amount.message}</div>}
                     </div>
-                    <div className={css.buttonsWrapper}>
-                        <button className={css.btnAdd} type="submit">
-                            Add
-                        </button>
-                        <button className={css.btnCancel} type="button" onClick={handleClickCancel}>
-                            Cancel
-                        </button>
-                    </div>
-                </Form>
-            </Formik>
+                    <Controller
+                        control={control}
+                        name="transactionDate"
+                        render={() => (
+                            <DatePicker
+                                selected={transactionDate}
+                                onChange={date => setTransactionDate(date)}
+                                calendarStartDay={1}
+                                dateFormat="dd.MM.yyyy"
+                                maxDate={new Date()}
+                                customInput={<CustomIconForCalendar />}
+                            />
+                        )}
+                    />
+                </div>
+                <div>
+                    <textarea rows="2" placeholder="Comment" {...register('comment')} className={css.commentInput} />
+                    {errors.comment && <div className={css.errorForComment}>{errors.comment.message}</div>}
+                </div>
+                <div className={css.buttonsWrapper}>
+                    <button className={css.btnAdd} type="submit">
+                        Add
+                    </button>
+                    <button className={css.btnCancel} type="button" onClick={() => dispatch(closeModal())}>
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };

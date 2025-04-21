@@ -5,7 +5,7 @@ const Logo = ({ type }) => {
   return (
     <div className={clsx(s.logo, type === 'header' && s.headerLogo)}>
       <img
-        src="/public/favicon.svg"
+        src="/favicon.svg"
         alt="Money Guard Logo"
       />
       <h2 className={s.textLogo}>Money Guard</h2>

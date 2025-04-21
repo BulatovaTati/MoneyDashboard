@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const modalSlice = createSlice({
-    name: 'modal',
+    name: 'modals',
     initialState,
     reducers: {
         openLogOutModal(state) {

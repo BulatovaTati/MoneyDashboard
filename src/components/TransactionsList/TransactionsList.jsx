@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTransactionsError, selectTransactionsLoading} from '../../redux/transactions/selectors';
+import { selectTransactionsError, selectTransactionsLoading } from '../../redux/transactions/selectors';
 // import { selectCategories } from '../../redux/statistics/selectors';
 
 import s from './TransactionList.module.css';
@@ -17,7 +17,6 @@ function getFormattedTransactions(transactions, categories) {
     return transactions
         .map(transaction => {
             const { transactionDate: date, amount: sum, categoryId, type, comment, id } = transaction;
-            console.log('Transaction Type:', type); // Перевірка значення type
             const category = categories.find(item => item.id === categoryId)?.name || 'Invalid';
             return {
                 id,

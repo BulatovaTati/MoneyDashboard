@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { removeToken, setToken, userTransactionsApi } from '../../api/userTransactionsApi';
 
-// https://wallet.b.goit.study/docs
-
 export const registerThunk = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.post('/api/auth/sign-up', credentials);

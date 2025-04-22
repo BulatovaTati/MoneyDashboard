@@ -11,7 +11,7 @@ import css from './HomeTab.module.css';
 
 const HomeTab = () => {
     const { isMobile } = useMedia();
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     // Написати операцію, яка робить запит за транзакціями авторизованого користувача і записує результат у redux store
     // Написати операцію, яка робить запит за категоріями транзакцій і записує результат у redux store
@@ -19,9 +19,10 @@ const HomeTab = () => {
     // useEffect(() => {
     //     dispatch(getTransactions());
     // }, [dispatch]);
-    // useEffect(() => {
-    //     dispatch(getTransactionsCategories());
-    // }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getTransactionsCategories());
+    }, [dispatch]);
 
     return (
         <div className={css.homeTab}>

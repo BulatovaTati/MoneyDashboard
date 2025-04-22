@@ -19,7 +19,8 @@ export const getTransactionsSummaryByPeriod = createAsyncThunk('transactions/sum
         const { data } = await userTransactionsApi.get(query);
         return data;
     } catch (error) {
-        return thunkApi.rejectWithValue(error.message);
+        const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || 'Something went wrong';
+        return thunkApi.rejectWithValue(errorMessage);
     }
 });
 
@@ -28,6 +29,7 @@ export const getTransactionsCategories = createAsyncThunk('transactions/categori
         const { data } = await userTransactionsApi.get('/api/transaction-categories');
         return data;
     } catch (error) {
-        return thunkApi.rejectWithValue(error.message);
+        const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || 'Something went wrong';
+        return thunkApi.rejectWithValue(errorMessage);
     }
 });

@@ -1,6 +1,13 @@
 import React from 'react';
 import css from './StatisticsTable.module.css';
 
+const formatNumber = number => {
+    return number
+        .toFixed(2)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+};
+
 const StatisticsTable = ({ summary, categories, income, expenses }) => {
     const getCategoryName = id => {
         const category = categories.find(cat => cat.id === id);
@@ -31,7 +38,7 @@ const StatisticsTable = ({ summary, categories, income, expenses }) => {
                                         <span className={css.colorDot} style={{ backgroundColor: color }} />
                                     </td>
                                     <td>{categoryName}</td>
-                                    <td>{item.EXPENSE.toFixed(2)}</td>
+                                    <td>{formatNumber(item.EXPENSE)}</td>
                                 </tr>
                             );
                         })}
@@ -40,11 +47,11 @@ const StatisticsTable = ({ summary, categories, income, expenses }) => {
 
             <div className={css.expenses}>
                 <span className={css.label}>Expenses:</span>
-                <span className={css.value}>{expenses.toFixed(2)}</span>
+                <span className={css.value}>{formatNumber(expenses)}</span>
             </div>
             <div className={css.income}>
                 <span className={css.label}>Income:</span>
-                <span className={css.value}>{income.toFixed(2)}</span>
+                <span className={css.value}>{formatNumber(income)}</span>
             </div>
         </div>
     );

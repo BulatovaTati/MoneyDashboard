@@ -3,6 +3,9 @@
     width: 280px;
     height: 280px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .chartCenter {
@@ -10,46 +13,44 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-weight: 600;
-    font-size: 18px;
     text-align: center;
     color: var(--white);
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease;
-    animation: fadeInCenter 0.4s ease-in-out;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    max-width: 140px;
+    word-break: break-word;
+    line-height: 1.2;
+    padding: 0 4px;
 }
 
 .chartCenter span {
     display: block;
-    animation: fadeIn 0.4s ease;
+    animation: fadeInText 0.4s ease forwards;
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.categoryText {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.amountText {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 4px;
 }
 
 .emptyText {
-    font-weight: 600;
     font-size: 14px;
+    font-weight: 600;
     opacity: 0.8;
     transition: opacity 0.3s;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+@keyframes fadeInText {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes fadeInCenter {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -40%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
     }
 }
 

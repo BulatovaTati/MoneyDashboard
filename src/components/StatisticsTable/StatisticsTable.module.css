@@ -74,6 +74,8 @@
     color: var(--dashboard-text);
     display: flex;
     justify-content: space-between;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .income {
@@ -83,6 +85,8 @@
     color: var(--yellow);
     display: flex;
     justify-content: space-between;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .label {

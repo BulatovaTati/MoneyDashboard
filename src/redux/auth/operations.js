@@ -50,7 +50,8 @@ export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkApi)
 export const getBalanceThunk = createAsyncThunk('getBalance', async (_, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.get('/api/users/current');
-        return data.balance;
+
+        return data.data.balance;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }

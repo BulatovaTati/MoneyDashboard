@@ -1,0 +1,67 @@
+.modal {
+    background: linear-gradient(145deg, #2a2e74, #1f245e);
+    color: white;
+    border-radius: 20px;
+    padding: 60px 60px;
+    text-align: center;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    width: 533px;
+    height: 447px;
+    margin: auto;
+}
+
+.logo {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.logoutBtn {
+    background: linear-gradient(90deg, #f2994a, #bb6bd9);
+    border: none;
+    padding: 12px;
+    border-radius: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    transition: opacity 0.3s ease;
+}
+
+.logoutBtn:hover {
+    opacity: 0.9;
+}
+
+.cancelBtn {
+    background: white;
+    color: #6c63ff;
+    border: none;
+    padding: 12px;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cancelBtn:hover {
+    background: #f2f2f2;
+}

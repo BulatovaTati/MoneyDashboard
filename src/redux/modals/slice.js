@@ -30,7 +30,8 @@ const modalSlice = createSlice({
             return initialState;
         },
         addEditId: (state, { payload }) => {
-            state.isEditId = payload;},
+            state.isEditId = payload;
+        },
     },
     extraReducers: builder => {
         builder.addCase(logoutThunk.fulfilled, () => {
@@ -40,4 +41,4 @@ const modalSlice = createSlice({
 });
 
 export const { openLogOutModal, openEditModal, openAddModal, closeModal, addEditId } = modalSlice.actions;
-export const modalsReducer = modalSlice.reducer;
+export default modalSlice.reducer;

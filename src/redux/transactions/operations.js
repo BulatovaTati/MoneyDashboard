@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { userTransactionsApi } from '../../api/userTransactionsApi.js';
-// https://wallet.b.goit.study/docs
 
 export const getTransactions = createAsyncThunk('transactions/all', async (_, thunkApi) => {
     try {

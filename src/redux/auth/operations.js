@@ -15,7 +15,7 @@ export const loginThunk = createAsyncThunk('auth/login', async (credentials, thu
     try {
         const { data } = await userTransactionsApi.post('/api/auth/sign-in', credentials);
         setToken(data.token);
-        return data;
+        return data.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
@@ -31,7 +31,7 @@ export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkApi) =
     }
 });
 
-export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
+export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkApi) => {
     const savedToken = thunkApi.getState().auth.token;
     if (savedToken) {
         setToken(savedToken);
@@ -41,7 +41,7 @@ export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkApi)
 
     try {
         const { data } = await userTransactionsApi.get('/api/users/current');
-        return data;
+        return data.data;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }

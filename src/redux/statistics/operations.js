@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setToken, userTransactionsApi } from '../../api/userTransactionsApi';
-// https://wallet.b.goit.study/docs
 
 export const getTransactionsSummaryByPeriod = createAsyncThunk('transactions/summary', async ({ month, year }, thunkApi) => {
     const savedToken = thunkApi.getState().auth.token;

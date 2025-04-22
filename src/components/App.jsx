@@ -27,18 +27,18 @@ function App() {
         dispatch(refreshThunk());
     }, [dispatch]);
 
-    return (
+    return isRefreshing ? (
+        <Loader />
+    ) : (
         <Suspense fallback={<Loader />}>
             <Routes>
-                <Route path="/" element={<DashboardPage />}>
+                <Route path="/" element={<PrivateRoute component={<DashboardPage />} />}>
                     <Route index element={<HomeTab />} />
                     <Route path="statistics" element={<StatisticsTab />} />
                     <Route path="currency" element={isMobile ? <CurrencyTab /> : <Navigate to="/" />} />
                 </Route>
-
-                <Route path="/register" element={<RegistrationPage />} />
-                <Route path="/login" element={<LoginPage />} />
-
+                <Route path="/register" element={<RestrictedRoute component={<RegistrationPage />} />} />
+                <Route path="/login" element={<RestrictedRoute component={<LoginPage />} />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Suspense>
@@ -46,20 +46,3 @@ function App() {
 }
 
 export default App;
-
-//  isRefreshing ? (
-//      <Loader />
-//  ) : (
-//      <Suspense fallback={<Loader />}>
-//          <Routes>
-//              <Route path="/" element={<PrivateRoute component={<DashboardPage />} />}>
-//                  <Route  index element={<HomeTab />} />
-//                  <Route path="statistics" element={<StatisticsTab />} />
-//                  <Route path="currency" element={isMobile ? <CurrencyTab /> : <Navigate to="/dashboard" />} />
-//              </Route>
-//              <Route path="/register" element={<RestrictedRoute component={<RegistrationPage />} />} />
-//              <Route path="/login" element={<RestrictedRoute component={<LoginPage />} />} />
-//               <Route path="*" element={<NotFound />} />
-//          </Routes>
-//      </Suspense>
-//  );

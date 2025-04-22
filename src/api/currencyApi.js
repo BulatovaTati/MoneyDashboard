@@ -52,7 +52,6 @@ export const getCurrencyRates = async () => {
             throw new Error('Incomplete data fetched from API');
         }
     } catch (error) {
-        console.error('Error fetching data from API. Retrying...', error.message);
         const data = await fetchCurrencyData();
         currencyData = cacheCurrencyData(data);
     }

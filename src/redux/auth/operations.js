@@ -25,10 +25,10 @@ export const loginThunk = createAsyncThunk('auth/login', async (credentials, thu
 
 export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     try {
-        const { data } = await userTransactionsApi.delete('/api/auth/sign-out');
+        await userTransactionsApi.post('/api/auth/sign-out');
         removeToken();
-        return data;
     } catch (error) {
+        return data;
         return thunkApi.rejectWithValue(error.message);
     }
 });

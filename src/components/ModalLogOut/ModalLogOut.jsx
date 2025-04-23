@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutThunk } from '../../redux/auth/operations';
 import { closeModal } from '../../redux/modals/slice';
+import { logoutThunk } from '../../redux/auth/operations';
 import { selectIsLogOutModalOpen } from '../../redux/modals/selectors';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import Logo from '../Logo/Logo';
@@ -11,7 +11,7 @@ const ModalLogOut = () => {
     const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
 
     const handleLogOut = () => {
-        dispatch(closeModal());
+        dispatch(logoutThunk());
     };
 
     const handleCancel = () => {

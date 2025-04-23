@@ -8,7 +8,7 @@ const formatNumber = number => {
         .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };
 
-const StatisticsTable = ({ summary, categories, income, expenses }) => {
+const StatisticsTable = ({ summary, categories, incomeSummaryByPeriod, expensesSummaryByPeriod }) => {
     const getCategoryName = id => {
         const category = categories.find(cat => cat.id === id);
         return category ? category.name : 'Невідомо';
@@ -47,11 +47,11 @@ const StatisticsTable = ({ summary, categories, income, expenses }) => {
 
             <div className={css.expenses}>
                 <span className={css.label}>Expenses:</span>
-                <span className={css.value}>{formatNumber(expenses)}</span>
+                <span className={css.value}>{formatNumber(expensesSummaryByPeriod)}</span>
             </div>
             <div className={css.income}>
                 <span className={css.label}>Income:</span>
-                <span className={css.value}>{formatNumber(income)}</span>
+                <span className={css.value}>{formatNumber(incomeSummaryByPeriod)}</span>
             </div>
         </div>
     );

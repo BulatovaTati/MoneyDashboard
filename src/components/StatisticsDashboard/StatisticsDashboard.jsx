@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getTransactionsCategories, getTransactionsSummaryByPeriod } from '../../redux/statistics/operations';
+import { getTransactionsCategories, getExpenseSummaryByCategories, getIncomeAndExpenseSummaryByPeriod } from '../../redux/statistics/operations';
 
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/react';
 
 import css from './StatisticsDashboard.module.css';
 
 const months = ['All month', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 const years = Array.from({ length: new Date().getFullYear() - 2020 + 1 }, (_, i) => `${2020 + i}`);
 
 const StatisticsDashboard = () => {
     const dispatch = useDispatch();
 
     const currentMonthIndex = new Date().getMonth() + 1;
-
     const currentMonth = months[currentMonthIndex];
     const currentYear = `${new Date().getFullYear()}`;
 
@@ -30,7 +30,8 @@ const StatisticsDashboard = () => {
     useEffect(() => {
         const period = selectedMonth === 'All month' ? { year: selectedYear } : { month: selectedMonth, year: selectedYear };
 
-        dispatch(getTransactionsSummaryByPeriod(period));
+        dispatch(getExpenseSummaryByCategories(period));
+        dispatch(getIncomeAndExpenseSummaryByPeriod(period));
     }, [dispatch, selectedMonth, selectedYear]);
 
     return (

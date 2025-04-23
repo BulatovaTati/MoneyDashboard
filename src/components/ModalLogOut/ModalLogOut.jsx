@@ -11,7 +11,6 @@ const ModalLogOut = () => {
     const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
 
     const handleLogOut = () => {
-        dispatch(logoutThunk());
         dispatch(closeModal());
     };
 

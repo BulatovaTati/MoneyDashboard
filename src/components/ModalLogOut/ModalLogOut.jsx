@@ -1,12 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from '../../redux/auth/operations';
 import { closeModal } from '../../redux/modals/slice';
+import { selectIsLogOutModalOpen } from '../../redux/modals/selectors';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 import Logo from '../Logo/Logo';
 import s from './ModalLogOut.module.css';
 
 const ModalLogOut = () => {
     const dispatch = useDispatch();
+    const isLogOutModalOpen = useSelector(selectIsLogOutModalOpen);
 
     const handleLogOut = () => {
         dispatch(logoutThunk());
@@ -18,7 +20,7 @@ const ModalLogOut = () => {
     };
 
     return (
-        <ModalWrapper>
+        <ModalWrapper isOpenModal={isLogOutModalOpen}>
             <div className={s.modal}>
                 <div className={s.logo}>
                     <Logo type="modal" />

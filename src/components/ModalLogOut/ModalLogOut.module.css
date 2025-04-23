@@ -1,12 +1,12 @@
 .modal {
     background: linear-gradient(145deg, #2a2e74, #1f245e);
     color: white;
-    border-radius: 20px;
+    border-radius: 8px;
     padding: 60px 60px;
     text-align: center;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
-    width: 533px;
-    height: 447px;
+    width: 540px;
+    height: 477px;
     margin: auto;
 }
 

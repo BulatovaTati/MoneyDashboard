@@ -8,13 +8,12 @@ import s from './ModalWrapper.module.css';
 
 Modal.setAppElement('#root');
 
-const ModalWrapper = ({ children }) => {
+const ModalWrapper = ({ children, isOpenModal }) => {
     const dispatch = useDispatch();
     const { isMobile } = useMedia();
-    const isOpen = useSelector(selectIsLogOutModalOpen);
 
     return (
-        <Modal isOpen={isOpen} onRequestClose={() => dispatch(closeModal())} className={s.modal} overlayClassName={s.overlay}>
+        <Modal isOpen={isOpenModal} onRequestClose={() => dispatch(closeModal())} className={s.modal} overlayClassName={s.overlay}>
             <div className={s.modalWrapper}>
                 <div className={s.modalEllipse}></div>
                 {!isMobile && (

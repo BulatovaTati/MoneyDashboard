@@ -16,20 +16,27 @@
     }
 }
 
-.textLogo{
+.textLogo {
     font-weight: 400;
+}
+
+.modalLogo {
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
 }
 
 @media only screen and (min-width: 768px) {
     .logo {
         font-size: 26px;
 
-    img {
+        img {
             width: 36px;
             height: 36px;
         }
-.textLogo{
-    font-size: 26px;}
+        .textLogo {
+            font-size: 26px;
+        }
     }
 }
 

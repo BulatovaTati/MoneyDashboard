@@ -8,7 +8,7 @@
     backdrop-filter: blur(100px);
     box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
     padding: 12px;
-    margin: 0 auto;
+    margin: 0 20px;
   }
   
   .text {
@@ -33,6 +33,7 @@
       width: 336px;
       height: 80px;
       padding: 16px;
+      margin: 0 auto;
     }
   
     .text {

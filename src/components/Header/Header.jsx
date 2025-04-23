@@ -40,7 +40,7 @@ const Header = () => {
                     </nav>
                 </div>
             </header>
-            {isLogOutModalOpen && <ModalLogOut />}
+            <ModalLogOut />
         </>
     );
 };

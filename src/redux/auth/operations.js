@@ -8,12 +8,9 @@ export const registerThunk = createAsyncThunk('auth/sign-up', async (credentials
 
         return data.data;
     } catch (error) {
-        const message = error.response?.data?.message || error.data?.message || 'Registration failed';
+        const message = error.response?.data?.error || 'Registration failed';
         return thunkApi.rejectWithValue(message);
     }
-
-    // lolita@lolo.com
-    // lolitalolo
 });
 
 export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {

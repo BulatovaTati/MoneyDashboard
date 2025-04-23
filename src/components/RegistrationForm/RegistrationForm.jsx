@@ -41,7 +41,6 @@ const RegistrationForm = () => {
             email: data.email.trim(),
             password: data.password.trim(),
         };
-        console.log(trimmedValues);
 
         try {
             await dispatch(
@@ -55,13 +54,13 @@ const RegistrationForm = () => {
                 .then(() => navigate('/'));
             reset();
         } catch (error) {
-            if (error.message === 'Email in use') {
+            if (error === 'Email in use') {
                 setError('email', {
                     type: 'manual',
                     message: 'Email in use',
                 });
             } else {
-                showToast('error', ` ${error.message}`);
+                showToast('error', ` ${error}`);
             }
         }
     };

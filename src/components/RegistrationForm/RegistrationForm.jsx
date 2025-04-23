@@ -10,9 +10,9 @@ import RegisterInputForm from '../RegisterInputForm/RegisterInputForm';
 import FormButton from '../FormButton/FormButton';
 import { registerValidationSchema } from '../../validations/validateRegisterForm';
 import { registerThunk } from '../../redux/auth/operations';
+import { showToast } from '../CustomToaster/CustomToaster';
 
 import s from './RegistrationForm.module.css';
-import { showToast } from '../CustomToaster/CustomToaster';
 
 const RegistrationForm = () => {
     const dispatch = useDispatch();
@@ -95,15 +95,18 @@ const RegistrationForm = () => {
                             />
                         </label>
                     </div>
-                    <PasswordStrengthBar
-                        className={s.strengthBar}
-                        password={watch('confirmPassword')}
-                        barColors={['#ddd', '#25c281']}
-                        scoreWords={['', '', '', '']}
-                        minLength={6}
-                        scoreWordStyle={{ color: 'transparent' }}
-                        scoreWordClassName="strength-score"
-                    />
+                    <div className={s.strengthBarBox}>
+                        <PasswordStrengthBar
+                            className={s.strengthBar}
+                            password={watch('confirmPassword')}
+                            barColors={['#ddd', '#ef4836', '#f6b44d', '#2b90ef', '#25c281']}
+                            scoreWords={['weak', 'weak', 'okay', 'good', 'strong']}
+                            shortScoreWord={''}
+                            minLength={6}
+                            scoreWordStyle={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.6)', margin: '0' }}
+                            scoreWordClassName="strength-score"
+                        />
+                    </div>
                     <div className={s.btnBox}>
                         <FormButton type="submit" text={'Register'} variant={'multiColorButton'} />
                         <Link to="/login">

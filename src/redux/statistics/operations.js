@@ -1,25 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setToken, userTransactionsApi } from '../../api/userTransactionsApi';
+import { userTransactionsApi } from '../../api/userTransactionsApi';
 
-export const getTransactionsSummaryByPeriod = createAsyncThunk('transactions/summary', async ({ month, year }, thunkApi) => {
-    const savedToken = thunkApi.getState().auth.token;
-    if (savedToken) {
-        setToken(savedToken);
-    } else {
-        return thunkApi.rejectWithValue('Unable to fetch');
-    }
-
+export const getTransactionsSummaryByPeriod = createAsyncThunk('transactions/summary', async (period, thunkApi) => {
     try {
-        let query = `/api/transactions-summary?year=${year}`;
-        if (month !== 'All month') {
-            query += `&month=${month}`;
+        const { month, year } = period;
+        if (month || year) {
+            const { data } = await axios.get('/api/transactions-summary', {
+                params: { month, year },
+            });
+            return data;
         }
-
-        const { data } = await userTransactionsApi.get(query);
-        return data;
     } catch (error) {
-        const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || 'Something went wrong';
-        return thunkApi.rejectWithValue(errorMessage);
+        return thunkApi.rejectWithValue(error.message);
     }
 });
 
@@ -28,7 +20,6 @@ export const getTransactionsCategories = createAsyncThunk('transactions/categori
         const { data } = await userTransactionsApi.get('/api/transaction-categories');
         return data;
     } catch (error) {
-        const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || 'Something went wrong';
-        return thunkApi.rejectWithValue(errorMessage);
+        return thunkApi.rejectWithValue(error.message);
     }
 });

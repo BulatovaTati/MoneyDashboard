@@ -1,14 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { removeToken, setToken, userTransactionsApi } from '../../api/userTransactionsApi';
 
-export const registerThunk = createAsyncThunk('auth/register', async (credentials, thunkApi) => {
+export const registerThunk = createAsyncThunk('api/auth/sign-up', async (credentials, thunkApi) => {
     try {
-        const { data } = await userTransactionsApi.post('/api/auth/sign-up', credentials);
+        const { data } = await userTransactionsApi.post('api/auth/sign-up', credentials);
         setToken(data.token);
+
         return data;
     } catch (error) {
-        thunkApi.rejectWithValue(error.message);
+        return thunkApi.rejectWithValue(error.message);
     }
+
+    // lolita@lolo.com
+    // lolitalolo
 });
 
 export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {

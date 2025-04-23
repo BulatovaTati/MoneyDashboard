@@ -27,6 +27,7 @@ const RegistrationForm = () => {
         register,
         watch,
         reset,
+        setError,
         handleSubmit,
         formState: { errors },
     } = useForm({
@@ -40,6 +41,7 @@ const RegistrationForm = () => {
             email: data.email.trim(),
             password: data.password.trim(),
         };
+        console.log(trimmedValues);
 
         try {
             await dispatch(
@@ -50,10 +52,17 @@ const RegistrationForm = () => {
                 })
             )
                 .unwrap()
-                .then(() => navigate('/dashboard'));
+                .then(() => navigate('/'));
             reset();
         } catch (error) {
-            showToast('error', error.message);
+            if (error.message === 'Email in use') {
+                setError('email', {
+                    type: 'manual',
+                    message: 'Email in use',
+                });
+            } else {
+                showToast('error', ` ${error.message}`);
+            }
         }
     };
 

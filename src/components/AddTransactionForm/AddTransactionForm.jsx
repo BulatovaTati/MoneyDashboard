@@ -6,9 +6,9 @@ import { useState } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
-import { addTransactions } from '../../redux/transactions/operations.js';
-import { selectCategories } from '../../redux/statistics/selectors.js';
-import { closeModal } from '../../redux/modals/slice.js';
+import { addTransactions } from '../../redux/transactions/operations';
+import { selectCategories } from '../../redux/statistics/selectors';
+import { closeModal } from '../../redux/modals/slice';
 
 import ToggleModal from '../ToggleModal/ToggleModal.jsx';
 import CustomIconForCalendar from './CustomIconForCalendar';
@@ -57,15 +57,13 @@ const AddTransactionForm = () => {
             type: isTransactionIncome ? 'INCOME' : 'EXPENSE',
             transactionDate: transactionDate.toISOString(),
             comment: data.comment,
-            amount: isTransactionIncome ? parseFloat(data.amount) : -parseFloat(data.amount),
+            amount: isTransactionIncome ? parseFloat(data.amount) : parseFloat(data.amount),
             categoryId,
         };
 
         dispatch(addTransactions(newTransaction))
             .unwrap()
             .then(() => {
-                console.log(`${newTransaction.type} added successfully!`);
-
                 reset();
                 dispatch(closeModal());
             })

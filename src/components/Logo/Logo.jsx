@@ -7,7 +7,7 @@ const Logo = ({ type }) => {
             <img src="/public/favicon.svg" alt="Money Guard Logo" className={s.logoImage} />
             <h2 className={s.textLogo}>Money Guard</h2>
         </div>
-    );
+  );
 };
 
 export default Logo;

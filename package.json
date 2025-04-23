@@ -33,6 +33,7 @@
         "react-responsive": "^10.0.0",
         "react-router-dom": "^6.30.0",
         "react-select": "^5.10.1",
+        "recharts": "^2.15.3",
         "redux-persist": "^6.0.0",
         "yup": "^1.6.1"
     },

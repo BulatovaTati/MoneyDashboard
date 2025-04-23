@@ -1,34 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectTransactionsError, selectTransactionsLoading } from '../../redux/transactions/selectors';
-// import { selectCategories } from '../../redux/statistics/selectors';
-
-import s from './TransactionList.module.css';
-import Loader from '../Loader/Loader';
-import TransactionItem from '../TransactionsItem/TransactionsItem';
-import FormButton from '../FormButton/FormButton';
-import { openAddModal } from '../../redux/modals/slice';
+import TransactionsItem from '../TransactionsItem/TransactionsItem';
+import { useSelector } from 'react-redux';
+// import { selectTransactions } from '../../redux/transactions/selectors';
 import useMedia from '../../hooks/useMedia';
-
-function getHeadTransaction() {
-    return ['date', 'type', 'category', 'comment', 'sum'];
-}
-
-function getFormattedTransactions(transactions, categories) {
-    return transactions
-        .map(transaction => {
-            const { transactionDate: date, amount: sum, categoryId, type, comment, id } = transaction;
-            const category = categories.find(item => item.id === categoryId)?.name || 'Invalid';
-            return {
-                id,
-                date,
-                type: type === 'EXPENSE' ? '-' : type === 'INCOME' ? '+' : 'Unknown',
-                category,
-                comment,
-                sum: Math.abs(sum),
-            };
-        })
-        .toSorted((a, b) => b.date.localeCompare(a.date));
-}
+import s from './TransactionsList.module.css';
+import { openAddModal } from '../../redux/modals/slice';
+import FormButton from '../FormButton/FormButton';
+import { selectTransactionsError, selectTransactionsLoading } from '../../redux/transactions/selectors';
 
 const mockTransactions = [
     {
@@ -71,56 +48,109 @@ const mockTransactions = [
         type: 'INCOME',
         comment: 'Gift',
     },
+    {
+        id: '6',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '7',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '8',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '9',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '10',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '11',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
+    {
+        id: '12',
+        transactionDate: '2023-01-07',
+        amount: 1000,
+        categoryId: '2',
+        type: 'INCOME',
+        comment: 'Gift',
+    },
 ];
 
-const mockCategories = [
-    { id: '1', name: 'Other' },
-    { id: '2', name: 'Income' },
-    { id: '3', name: 'Car' },
-    { id: '4', name: 'Products' },
-];
 
-function TransactionList() {
-    const reduxTransactions = mockTransactions;
+const TransactionsList = () => {
+    const transactions = mockTransactions;
     const isLoading = useSelector(selectTransactionsLoading);
     const isError = useSelector(selectTransactionsError);
-    const categories = mockCategories;
+    const sortedTransactions = [...transactions].sort((a, b) => new Date(b.transactionDate) - new Date(a.transactionDate));
+
 
     const { isMobile } = useMedia();
-    const dispatch = useDispatch();
 
     return (
         <>
             {isLoading && <Loader />}
             {isError && <p className={s.text}>Oops, something went wrong...</p>}
-            {!isLoading && reduxTransactions.length === 0 ? (
+            {!isLoading && transactions.length === 0 ? (
                 <div className={s.container}>
-                    <p>No transactions available yet.</p> <p> Let's add your first transaction:</p>
+                    <p>No transactions available yet.</p>
+                    <p>Let's add your first transaction:</p>
                     <FormButton type="button" text={'Add transaction'} variant={'multiColorButton'} handlerFunction={() => dispatch(openAddModal())} />
                 </div>
             ) : (
-                <>
-                    {!isMobile && (
-                        <ul className={s.headRow}>
-                            {getHeadTransaction().map((value, idx) => {
-                                return (
-                                    <li key={idx} className={s.rowItem}>
-                                        {value}
-                                    </li>
-                                );
-                            })}
-                            <li className={s.rowItem}></li>
-                        </ul>
-                    )}
-                    <ul className={s.list}>
-                        {getFormattedTransactions(reduxTransactions, categories).map(({ id, ...item }) => {
-                            return <TransactionItem key={id} id={id} transaction={item} />;
-                        })}
-                    </ul>
-                </>
+                <div className={s.financeTableContainer}>
+                    <table className={s.financeTable}>
+                        {!isMobile && (
+                            <thead className={s.headTab}>
+                                <tr className={s.tr}>
+                                    <th className={s.date}>Date</th>
+                                    <th className={s.type}>Type</th>
+                                    <th className={s.category}>Category</th>
+                                    <th className={s.comment}>Comment</th>
+                                    <th className={transactions.length === 0 ? s.nonActions : s.sum}>Sum</th>
+                                    {transactions.length !== 0 && <th className={s.actions}></th>}
+                                </tr>
+                            </thead>
+                        )}
+                        <tbody className={s.th}>
+                            {sortedTransactions.map(transaction => (
+                                <TransactionsItem key={transaction.id} transaction={transaction} />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
         </>
     );
-}
+};
 
-export default TransactionList;
+export default TransactionsList;

@@ -1,17 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setToken, userTransactionsApi } from '../../api/userTransactionsApi';
-// https://wallet.b.goit.study/docs
+import { userTransactionsApi } from '../../api/userTransactionsApi';
 
-export const getTransactionsSummaryByPeriod = createAsyncThunk('transactions/summary', async ({ month, year }, thunkApi) => {
-    const savedToken = thunkApi.getState().auth.token;
-    if (savedToken) {
-        setToken(savedToken);
-    } else {
-        return thunkApi.rejectWithValue('Unable to fetch');
-    }
+export const getTransactionsSummaryByPeriod = createAsyncThunk('transactions/summary', async (period, thunkApi) => {
     try {
-        const { data } = await userTransactionsApi.get(`/api/transactions-summary?month=${month}&year=${year}`);
-        return data;
+        const { month, year } = period;
+        if (month || year) {
+            const { data } = await axios.get('/api/transactions-summary', {
+                params: { month, year },
+            });
+            return data;
+        }
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }

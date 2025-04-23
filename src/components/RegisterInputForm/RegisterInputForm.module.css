@@ -1,0 +1,35 @@
+.input {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--white-60);
+
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 1px solid var(--white-40);
+    width: 280px;
+    height: 35px;
+    padding-left: 50px;
+}
+
+.inputIcon {
+    fill: var(--white-40);
+    stroke: none;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 24px;
+    font-size: 20px;
+    color: var(--white-40);
+}
+.inputBox {
+    position: relative;
+}
+@media only screen and (min-width: 768px) {
+    .input {
+        width: 409px;
+    }
+}

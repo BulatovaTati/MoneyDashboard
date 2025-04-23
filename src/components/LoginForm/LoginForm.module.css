@@ -10,25 +10,25 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-image: url('/images/gradient-mobile.webp');
 }
 
 @media only screen and (min-resolution: 192dpi) {
 .backdrop {
-    background-image: url('/public/images/gradient-mobile.webp');
+    background-image: url('/images/login-modal-mob@2x.webp');
 }
 }
 
 @media only screen and (min-width: 768px) {
-.backdrop {
-background-image: url('/public/images/login-tablet.webp');
-    background-image: url('/public/images/login-tablet.webp');
-}
+  .backdrop {
+    background-image: url('/images/login-tablet.webp');
+  }
 }
 
-@media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
-.backdrop {
-    background-image: url('/public/images/login-tablet.webp');
-}
+@media only screen and (min-width: 768px) and (max-width: 1279px) and (min-resolution: 192dpi) {
+  .backdrop {
+    background-image: url('/images/bg-login-tab@2x.webp');
+  }
 }
 
 @media only screen and (min-width: 1280px) {
@@ -36,13 +36,13 @@ background-image: url('/public/images/login-tablet.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('/public/images/login-desktop.webp');
+    background-image: url('/images/login-desktop.webp');
 }
 }
 
 @media only screen and (min-width: 1280px) and (min-resolution: 192dpi) {
 .backdrop {
-    background-image: url('/public/images/login-desktop.webp');
+    background-image: url('/images/bg-login-desk@2x.webp');
 }
 }
 

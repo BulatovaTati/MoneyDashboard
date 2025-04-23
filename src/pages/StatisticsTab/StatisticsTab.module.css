@@ -1,6 +1,7 @@
 .statistics {
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 20px;
 }
 
 .statisticsTitle {
@@ -54,6 +55,7 @@
     .statistics {
         padding-left: 69px;
         padding-top: 32px;
+        padding-bottom: 32px;
         padding-right: 16px;
     }
 

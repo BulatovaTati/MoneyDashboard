@@ -49,3 +49,16 @@
 .progressBarComponent {
     width: auto;
 }
+
+.toggleBtn {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--white-60);;
+    font-size: 18px;
+    padding: 0;
+}

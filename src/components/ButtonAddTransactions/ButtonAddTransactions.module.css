@@ -15,21 +15,33 @@
     justify-content: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  @media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
     .btn {
-      bottom: 20px;
-      right: 20px;
+        bottom: 20px;
+        right: 20px;
     }
-  }
-  
-  .btn:hover {
+}
+
+.btn:hover {
     transform: scale(1.05);
     background: linear-gradient(96.76deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%);
     transition: all 1s ease 0s;
-  }
-  
-  .btn:active {
+}
+
+.btn:active {
     transform: scale(0.95);
-  }
+}
+
+@media screen and (min-width: 768px) {
+    .wrap {
+        padding-right: 8px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .wrap {
+        padding-right: 24px;
+    }
+}

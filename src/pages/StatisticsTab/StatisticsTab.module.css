@@ -1,0 +1,78 @@
+.statistics {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.statisticsTitle {
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.chart {
+    width: 280px;
+    height: 280px;
+    margin-bottom: 32px;
+}
+
+.statisticsDashboard {
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .statistics {
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    .statisticsTitle {
+        margin-bottom: 20px;
+    }
+
+    .chart {
+        width: 336px;
+        height: 336px;
+        margin-bottom: 0;
+    }
+
+    .statisticsData {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .statisticsDashboard {
+        margin-top: 20px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .statistics {
+        padding-left: 69px;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        padding-right: 16px;
+    }
+
+    .statisticsTitle {
+        margin-left: 15px;
+    }
+
+    .chart {
+        width: 288px;
+        height: 288px;
+    }
+
+    .statisticsData {
+        width: 395px;
+    }
+
+    .statisticsDashboard {
+        margin-top: 65px;
+    }
+}

@@ -11,71 +11,49 @@ import Logo from '../../components/Logo/Logo';
 import FormButton from '../../components/FormButton/FormButton';
 
 export const LoginForm = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-      resolver: yupResolver(loginValidatiSchema),
-      mode: 'onChange',
-  });
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm({
+        resolver: yupResolver(loginValidatiSchema),
+        mode: 'onChange',
+    });
 
-  const onSubmit = async (data) => {
-    try {
-      await dispatch(loginThunk(data)).unwrap();
-      reset();
-      navigate('/dashboard'); 
-    } catch (error) {
-      alert('Login failed: ' + error.message); 
-    }
-  };
+    const onSubmit = async data => {
+        try {
+            await dispatch(loginThunk(data)).unwrap();
+            reset();
+            navigate('/');
+        } catch (error) {
+            alert('Login failed: ' + error.message);
+        }
+    };
 
-  return (
-    <div className={s.backdrop}>
-      <div className={s.modal}>
-        <Logo />
-        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-          <div className={s.inputs}>
-            <InputFormField
-              icon={MdOutlineMailOutline}
-              type="email"
-              name="email"
-              placeholder="E - mail"
-              register={register}
-              error={errors.email}
-            />
-            <InputFormField
-              icon={MdLock}
-              type="password"
-              name="password"
-              placeholder="Password"
-              register={register}
-              error={errors.password}
-            />
-          </div>
+    return (
+        <div className={s.backdrop}>
+            <div className={s.modal}>
+                <Logo />
+                <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+                    <div className={s.inputs}>
+                        <InputFormField icon={MdOutlineMailOutline} type="email" name="email" placeholder="E - mail" register={register} error={errors.email} />
+                        <InputFormField icon={MdLock} type="password" name="password" placeholder="Password" register={register} error={errors.password} />
+                    </div>
 
-          <div className={s.btns}>
-            <FormButton
-              type="submit"
-              text={'LogIn'}
-              variant={'multiColorButton'}
-            />
-            <Link to="/register">
-              <FormButton
-                type="button"
-                text={'Register'}
-                variant={'whiteButton'}
-              />
-            </Link>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+                    <div className={s.btns}>
+                        <FormButton type="submit" text={'LogIn'} variant={'multiColorButton'} />
+                        <Link to="/register">
+                            <FormButton type="button" text={'Register'} variant={'whiteButton'} />
+                        </Link>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
 };
 
 export default LoginForm;

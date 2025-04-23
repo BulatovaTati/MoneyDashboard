@@ -28,12 +28,10 @@ const slice = createSlice({
                 state.isLoggedIn = true;
             })
             .addCase(refreshThunk.rejected, state => {
-                state.isRefreshing = false;
-                state.isAuthLoading = false;
-                state.isLoggedIn = false;
+                return initialState;
             })
             .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-                state.user.name = payload.username;
+                state.user.name = payload.name;
                 state.user.email = payload.email;
                 state.user.balance = payload.balance;
 
@@ -65,4 +63,3 @@ const slice = createSlice({
 });
 
 export const authReducer = slice.reducer;
-export const { updateBalance } = slice.actions;

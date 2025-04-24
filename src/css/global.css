@@ -5,14 +5,11 @@ html {
 body {
     margin: 0;
     padding: 0;
-
-    min-width: 100vw;
+    width: 100%;
     min-height: 100vh;
-
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 18px;
-    /* letter-spacing: 0.1em; переносить слова */
     line-height: 1.5;
 
     color: var(--white);

@@ -5,11 +5,17 @@ const initialState = {
     isTransactionsLoading: false,
     isTransactionsError: null,
     transactions: [],
+    currentTransaction: null,
 };
 
 const slice = createSlice({
     name: 'transactions',
     initialState,
+    reducers: {
+        setCurrentTransaction(state, action) {
+            state.currentTransaction = action.payload;
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(getTransactions.fulfilled, (state, { payload }) => {
@@ -47,3 +53,4 @@ const slice = createSlice({
 });
 
 export const transactionsReducer = slice.reducer;
+export const { setCurrentTransaction } = slice.actions;

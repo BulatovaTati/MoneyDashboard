@@ -7,21 +7,23 @@ import s from './Balance.module.css';
 const Balance = () => {
     const balance = useSelector(selectUserBalance);
     const dispatch = useDispatch();
-  
+
     useEffect(() => {
-      dispatch(getBalanceThunk());
+        dispatch(getBalanceThunk());
     }, [dispatch]);
-  
+
     const formattedBalance = new Intl.NumberFormat('en-IN', {
-      minimumFractionDigits: 2,
-    }).format(balance || 0).replace(',', '.'); 
-  
+        minimumFractionDigits: 2,
+    })
+        .format(balance || 0)
+        .replace(',', '.');
+
     return (
-      <div className={s.balanceWrapper}>
-        <p className={s.text}> Balance</p>
-        <p className={s.amount}>₴ {formattedBalance}</p>
-      </div>
+        <div className={s.balanceWrapper}>
+            <p className={s.text}> Your balance</p>
+            <p className={s.amount}>₴ {formattedBalance}</p>
+        </div>
     );
-  };
-  
+};
+
 export default Balance;

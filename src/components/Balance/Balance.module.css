@@ -1,64 +1,62 @@
 .balanceWrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 4px;
     justify-content: center;
     border-radius: 8px;
     background-color: rgba(82, 59, 126, 0.6);
     backdrop-filter: blur(100px);
     box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-    padding: 12px;
+    padding: 8px 32px;
     margin: 0 20px;
-  }
-  
-  .text {
+    margin-bottom: 36px;
+}
+
+.text {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 12px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 4px;
-  }
-  
-  .amount {
+}
+
+.amount {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 30px;
     color: #ffffff;
-  }
-  
-  /* === Tablet === */
-  @media (min-width: 768px) {
+}
+
+/* === Tablet === */
+@media (min-width: 768px) {
     .balanceWrapper {
-      width: 336px;
-      height: 80px;
-      padding: 16px;
-      margin: 0 auto;
+        width: 336px;
+        gap: 12px;
+        padding-left: 40px;
+        margin: 0 auto;
     }
-  
+
     .text {
-      font-size: 12px;
-      margin-bottom: 6px;
+        font-size: 12px;
     }
-  
+
     .amount {
-      font-size: 30px;
+        font-size: 30px;
     }
-  }
-  
-  /* === Desktop === */
-  @media (min-width: 1280px) {
+}
+
+/* === Desktop === */
+@media (min-width: 1280px) {
     .balanceWrapper {
-      width: 480px;
-      height: 80px;
+        width: 480px;
+        padding-left: 56px;
     }
-  
+
     .text {
-      font-size: 12px;
+        font-size: 12px;
     }
-  
+
     .amount {
-      font-size: 30px;
+        font-size: 30px;
     }
-  }
-  
+}

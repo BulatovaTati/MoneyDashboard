@@ -20,7 +20,7 @@ const slice = createSlice({
             })
             .addCase(editTransactions.fulfilled, (state, { payload }) => {
                 const transactionIndex = state.transactions.findIndex(transaction => {
-                    return transaction.id === payload.id;
+                    return transaction._id === payload._id;
                 });
                 if (transactionIndex !== -1) {
                     state.transactions[transactionIndex] = payload;
@@ -28,7 +28,7 @@ const slice = createSlice({
             })
             .addCase(deleteTransactions.fulfilled, (state, { payload }) => {
                 state.transactions = state.transactions.filter(transaction => {
-                    return transaction.id !== payload;
+                    return transaction._id !== payload;
                 });
             })
             .addMatcher(isAnyOf(getTransactions.fulfilled, addTransactions.fulfilled, editTransactions.fulfilled, deleteTransactions.fulfilled), state => {

@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { closeModal } from '../../redux/modals/slice';
-import { selectIsLogOutModalOpen } from '../../redux/modals/selectors';
 import Modal from 'react-modal';
 import useMedia from '../../hooks/useMedia';
 import { Icons } from '../Icons/Icons';
@@ -13,7 +12,7 @@ const ModalWrapper = ({ children, isOpenModal }) => {
     const { isMobile } = useMedia();
 
     return (
-        <Modal isOpen={isOpenModal} onRequestClose={() => dispatch(closeModal())} className={s.modal} overlayClassName={s.overlay}>
+        <Modal isOpen={isOpenModal} onRequestClose={() => dispatch(closeModal())} className={s.modal} overlayClassName={s.overlay} preventScroll={false}>
             <div className={s.modalWrapper}>
                 <div className={s.modalEllipse}></div>
                 {!isMobile && (

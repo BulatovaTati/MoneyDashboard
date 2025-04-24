@@ -22,7 +22,7 @@ const TransactionsList = () => {
             {!isLoading && transactions.length === 0 ? (
                 <div className={s.container}>
                     <p>No transactions available yet.</p>
-                    <p>Let's add your first transaction:</p>
+                    <p>Let's add your first transaction</p>
                     <FormButton
                         type="button"
                         text="Add transaction"

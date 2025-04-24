@@ -10,6 +10,10 @@ const initialState = {
 const slice = createSlice({
     name: 'transactions',
     initialState,
+    reducers: {
+        setCurrentTransaction(state, action) {
+          state.currentTransaction = action.payload;
+        },},
     extraReducers: builder => {
         builder
             .addCase(getTransactions.fulfilled, (state, { payload }) => {

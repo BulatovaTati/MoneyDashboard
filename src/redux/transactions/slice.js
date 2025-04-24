@@ -47,3 +47,4 @@ const slice = createSlice({
 });
 
 export const transactionsReducer = slice.reducer;
+export const { setCurrentTransaction } = slice.actions;

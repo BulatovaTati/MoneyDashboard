@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -29,7 +29,7 @@ const RegistrationForm = () => {
         reset,
         setError,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid },
     } = useForm({
         resolver: yupResolver(registerValidationSchema),
         mode: 'onChange',
@@ -108,7 +108,7 @@ const RegistrationForm = () => {
                         />
                     </div>
                     <div className={s.btnBox}>
-                        <FormButton type="submit" text={'Register'} variant={'multiColorButton'} />
+                        <FormButton type="submit" text={'Register'} variant={'multiColorButton'} isDisabled={!isValid} />
                         <Link to="/login">
                             <FormButton type="button" text={'Log in'} variant={'whiteButton'} />
                         </Link>

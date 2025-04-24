@@ -1,10 +1,13 @@
 import React from 'react';
 // import { useSelector } from 'react-redux';
-import // selectStatLoading,
-// selectStatError,
-// selectSummary,
-// selectCategories,
-'../../redux/statistics/selectors';
+// import {
+//     selectStatLoading,
+//     selectStatError,
+//     selectSummary,
+//     selectCategories,
+//     selectIncomeSummaryByPeriod,
+//     selectExpenseSummaryByPeriod,
+// } from '../../redux/statistics/selectors';
 
 import Chart from '../../components/Chart/Chart';
 import StatisticsDashboard from '../../components/StatisticsDashboard/StatisticsDashboard';
@@ -40,18 +43,16 @@ const summary = [
     { categoryId: '10', type: 'INCOME', INCOME: 350.0 },
 ];
 
-// const summary = [];
-
 // const categories = useSelector(selectCategories);
 // const summary = useSelector(selectSummary);
 // const isLoading = useSelector(selectStatLoading);
 // const error = useSelector(selectStatError);
+// const incomeSummaryByPeriod = useSelector(selectIncomeSummaryByPeriod);
+// const expensesSummaryByPeriod = useSelector(selectExpenseSummaryByPeriod);
 
-const expenses = summary.filter(item => item.type === 'EXPENSE').reduce((acc, item) => acc + item.EXPENSE, 0);
+const expensesSummaryByPeriod = summary.filter(item => item.type === 'EXPENSE').reduce((acc, item) => acc + item.EXPENSE, 0);
 
-const income = summary.filter(item => item.type === 'INCOME').reduce((acc, item) => acc + item.INCOME, 0);
-
-const balance = income - expenses;
+const incomeSummaryByPeriod = summary.filter(item => item.type === 'INCOME').reduce((acc, item) => acc + item.INCOME, 0);
 
 const StatisticsTab = () => {
     // if (isLoading) {
@@ -72,7 +73,7 @@ const StatisticsTab = () => {
                 <h2 className={css.statisticsTitle}>Statistics</h2>
 
                 <div className={css.chart}>
-                    <Chart summary={summary} categories={categories} balance={balance} />
+                    <Chart summary={summary} categories={categories} expensesSummaryByPeriod={expensesSummaryByPeriod} />
                 </div>
             </div>
 
@@ -81,10 +82,65 @@ const StatisticsTab = () => {
                     <StatisticsDashboard />
                 </div>
 
-                <StatisticsTable summary={summary} categories={categories} income={income} expenses={expenses} />
+                <StatisticsTable summary={summary} categories={categories} incomeSummaryByPeriod={incomeSummaryByPeriod} expensesSummaryByPeriod={expensesSummaryByPeriod} />
             </div>
         </div>
     );
 };
 
 export default StatisticsTab;
+
+// ДЛЯ БЕКЕНДА робочого
+
+// import React from 'react';
+// import { useSelector } from 'react-redux';
+// import {
+//   selectSummaryByCategories,
+//   selectSummaryByPeriod,
+//   selectStatLoading,
+//   selectStatError,
+// } from '../../redux/statistics/selectors';
+
+// import Chart from '../../components/Chart/Chart';
+// import StatisticsDashboard from '../../components/StatisticsDashboard/StatisticsDashboard';
+// import StatisticsTable from '../../components/StatisticsTable/StatisticsTable';
+// import Loader from '../../components/Loader/Loader';
+
+// import css from './StatisticsTab.module.css';
+
+// const StatisticsTab = () => {
+//   const summaryByCategories = useSelector(selectSummaryByCategories);
+//   const { incomeSummaryByPeriod, expenseSummaryByPeriod } = useSelector(selectSummaryByPeriod);
+//   const isLoading = useSelector(selectStatLoading);
+//   const error = useSelector(selectStatError);
+
+//   if (isLoading) return <Loader />;
+//   if (error) return <p className={css.error}>{error}</p>;
+
+//   return (
+//     <div className={css.statistics}>
+//       <div>
+//         <h2 className={css.statisticsTitle}>Statistics</h2>
+//         <div className={css.chart}>
+//           <Chart
+//             summary={summaryByCategories}
+//             expensesSummaryByPeriod={expenseSummaryByPeriod}
+//           />
+//         </div>
+//       </div>
+
+//       <div className={css.statisticsData}>
+//         <div className={css.statisticsDashboard}>
+//           <StatisticsDashboard />
+//         </div>
+//         <StatisticsTable
+//           summary={summaryByCategories}
+//           incomeSummaryByPeriod={incomeSummaryByPeriod}
+//           expensesSummaryByPeriod={expenseSummaryByPeriod}
+//         />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default StatisticsTab;

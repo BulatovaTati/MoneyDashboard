@@ -5,12 +5,11 @@ import css from './Chart.module.css';
 
 ChartJS.register(ArcElement, Tooltip);
 
-// Функция форматирования для добавления пробелов между тысячами
 const formatNumber = number => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };
 
-const Chart = ({ summary, categories, balance }) => {
+const Chart = ({ summary, categories, expensesSummaryByPeriod }) => {
     const chartRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(null);
 
@@ -55,18 +54,8 @@ const Chart = ({ summary, categories, balance }) => {
         },
         cutout: '70%',
         onHover: (event, elements) => {
-            const isMobile = window.innerWidth < 1024;
-
             if (event?.native?.target) {
                 event.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
-            }
-
-            if (isMobile) {
-                if (elements.length > 0) {
-                    setActiveIndex(elements[0].index);
-                } else {
-                    setActiveIndex(null);
-                }
             }
         },
     };
@@ -113,7 +102,7 @@ const Chart = ({ summary, categories, balance }) => {
                             <span className={css.amountText}>₴ {formatNumber(activeAmount)}</span>
                         </>
                     ) : (
-                        <span className={css.amountText}>₴ {formatNumber(balance.toFixed(2))}</span>
+                        <span className={css.amountText}>₴ {formatNumber(expensesSummaryByPeriod.toFixed(2))}</span>
                     )
                 ) : (
                     <p className={css.emptyText}>No expenses</p>

@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 });
 
 const AddTransactionForm = () => {
-    const [transactionDate, setTransactionDate] = useState(new Date());
+    const [date, setTransactionDate] = useState(new Date());
     const [isTransactionIncome, setIsTransactionIncome] = useState(false);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const rawCategories = useSelector(selectCategories);
@@ -55,7 +55,7 @@ const AddTransactionForm = () => {
 
         const newTransaction = {
             type: isTransactionIncome ? 'INCOME' : 'EXPENSE',
-            date: transactionDate.toISOString(),
+            date: date.toISOString(),
             comment: data.comment,
             amount: isTransactionIncome ? parseFloat(data.amount) : parseFloat(data.amount),
             categoryId,
@@ -103,10 +103,10 @@ const AddTransactionForm = () => {
                     </div>
                     <Controller
                         control={control}
-                        name="transactionDate"
+                        name="date"
                         render={() => (
                             <DatePicker
-                                selected={transactionDate}
+                                selected={date}
                                 onChange={date => setTransactionDate(date)}
                                 calendarStartDay={1}
                                 dateFormat="dd.MM.yyyy"

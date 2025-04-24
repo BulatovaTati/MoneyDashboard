@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 
-import { selectCategories } from '../../redux/statistics/selectors.js';
-import { selectTransactions } from '../../redux/transactions/selectors.js';
-import { editTransactions } from '../../redux/transactions/operations.js';
-import { closeModal } from '../../redux/modals/slice.js';
-import CustomIconForCalendar from '../AddTransactionForm/CustomIconForCalendar.jsx';
+import { selectCategories } from '../../redux/statistics/selectors';
+import { selectCurrentTransaction } from '../../redux/transactions/selectors';
+import { editTransactions } from '../../redux/transactions/operations';
+import { closeModal } from '../../redux/modals/slice';
+import CustomIconForCalendar from '../AddTransactionForm/CustomIconForCalendar';
 import css from './EditTransactionForm.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -22,13 +22,13 @@ const ValidationEditTransaction = () => {
 
 const EditTransactionForm = () => {
     const dispatch = useDispatch();
-    const { transaction } = useSelector(selectTransactions);
+    const { transaction } = useSelector(selectCurrentTransaction);
     const categories = useSelector(selectCategories);
+    const [isLoading, setIsLoading] = useState(false);
+    const [startDate, setStartDate] = useState(new Date(transaction.date));
 
     if (!transaction) return null;
 
-    const [startDate, setStartDate] = useState(new Date(transaction.transactionDate));
-    const [isLoading, setIsLoading] = useState(false);
     const {
         register,
         handleSubmit,
@@ -49,7 +49,7 @@ const EditTransactionForm = () => {
             amount: parseFloat(data.amount) * (transaction.type === 'EXPENSE' ? -1 : 1),
             type: transaction.type,
             categoryId: transaction.categoryId,
-            id: transaction.id,
+            id: transaction._id,
         };
 
         dispatch(editTransactions(updatedTransaction))
@@ -84,7 +84,7 @@ const EditTransactionForm = () => {
                         </div>
                         <Controller
                             control={control}
-                            name="transactionDate"
+                            name="date"
                             render={() => (
                                 <DatePicker
                                     selected={startDate}

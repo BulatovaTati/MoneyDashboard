@@ -4,8 +4,9 @@ import { selectIsEditModalOpen } from '../../redux/modals/selectors';
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 
 const ModalEditTransaction = () => {
+    const isEditModalOpen = useSelector(selectIsEditModalOpen);
     return (
-        <ModalWrapper>
+        <ModalWrapper isOpenModal={isEditModalOpen}>
             <EditTransactionForm />
         </ModalWrapper>
     );

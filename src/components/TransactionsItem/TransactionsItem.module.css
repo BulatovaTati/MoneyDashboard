@@ -197,8 +197,8 @@ td.expense {
   }
 
   .actionBtn {
-    justify-content: space-between;
     display: flex;
+    justify-content: space-between;
   }
 
   .editBtn {

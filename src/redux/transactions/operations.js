@@ -24,7 +24,7 @@ export const addTransactions = createAsyncThunk('transactions/add', async (trans
 
 export const deleteTransactions = createAsyncThunk('transactions/delete', async (id, thunkApi) => {
     try {
-        await userTransactionsApi.delete(`/api/transactions/${id}`);             thunkAPI.dispatch(getBalanceThunk());
+        await userTransactionsApi.delete(`/api/transactions/${id}`);             thunkApi.dispatch(getBalanceThunk());
         return id;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
@@ -34,8 +34,8 @@ export const deleteTransactions = createAsyncThunk('transactions/delete', async 
 export const editTransactions = createAsyncThunk('transactions/edit', async ({ id, transaction }, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.patch(`/api/transactions/${id}`, transaction);
-      thunkAPI.dispatch(getBalanceThunk());
-      thunkAPI.dispatch(getTransactions());
+      thunkApi.dispatch(getBalanceThunk());
+      thunkApi.dispatch(getTransactions());
         return data;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);

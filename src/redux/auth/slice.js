@@ -43,7 +43,7 @@ const slice = createSlice({
                 state.user.balance = payload;
             })
             .addMatcher(isAnyOf(loginThunk.fulfilled, registerThunk.fulfilled), (state, { payload }) => {
-                state.user.name = payload.user.username;
+                state.user.name = payload.user.name;
                 state.user.email = payload.user.email;
                 state.user.balance = payload.user.balance;
                 state.token = payload.token;

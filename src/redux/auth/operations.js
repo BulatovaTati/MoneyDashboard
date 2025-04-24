@@ -4,6 +4,7 @@ import { removeToken, setToken, userTransactionsApi } from '../../api/userTransa
 export const registerThunk = createAsyncThunk('auth/sign-up', async (credentials, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.post('/api/auth/sign-up', credentials);
+
         setToken(data.data.token);
 
         return data.data;
@@ -16,7 +17,9 @@ export const registerThunk = createAsyncThunk('auth/sign-up', async (credentials
 export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     try {
         const { data } = await userTransactionsApi.post('/api/auth/sign-in', credentials);
-        setToken(data.token);
+
+        setToken(data.data.token);
+
         return data.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -28,7 +31,6 @@ export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkApi) =
         await userTransactionsApi.post('/api/auth/sign-out');
         removeToken();
     } catch (error) {
-        return data;
         return thunkApi.rejectWithValue(error.message);
     }
 });
@@ -43,6 +45,7 @@ export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkApi)
 
     try {
         const { data } = await userTransactionsApi.get('/api/users/current');
+
         return data.data;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);

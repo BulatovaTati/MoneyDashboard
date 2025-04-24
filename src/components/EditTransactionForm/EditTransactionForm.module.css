@@ -1,0 +1,231 @@
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form {
+    max-width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.toggleRow {
+    margin-bottom: 60px;
+}
+
+.toggle {
+    text-align: right;
+    font-family: var(--font-family);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 0 12px;
+}
+
+.title {
+    color: var(--white);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 40px 0 32px;
+    padding-top: 32px;
+}
+.header {
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    color: var(--white);
+}
+
+.categoryLabel {
+    color: var(--white);
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 20px;
+    border-bottom: solid 1px var(--white-40);
+    width: 280px;
+    text-align: left;
+    margin-bottom: 40px;
+    transition: var(--transition);
+    &:hover,
+    &:focus {
+        border-bottom: solid 1px var(--yellow);
+        transition: var(--transition);
+    }
+}
+
+.numInput,
+.dateInput,
+.textInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px var(--white-40);
+    color: var(--white);
+    width: 280px;
+    outline: none;
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: var(--transition);
+    &:hover,
+    &:focus {
+        border-bottom: solid 1px var(--yellow);
+    }
+}
+
+.numInput {
+    font-weight: 600;
+    padding-left: 20px;
+}
+.dateInput {
+    border: none;
+}
+
+.textInput {
+    padding: 0 20px 40px;
+}
+
+.twoInput {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-height: 99px;
+}
+
+.datePicker {
+    display: flex;
+}
+
+@media only screen and (min-width: 768px) {
+    .title {
+        font-size: 30px;
+        width: 381px;
+        height: 40px;
+        flex-direction: column;
+        flex-shrink: 0;
+        padding: 40px 0;
+        margin: 0;
+    }
+
+    .categoryLabel {
+        padding-left: 8px;
+        width: 394px;
+    }
+
+    .numInput {
+        width: 181px;
+        padding: 8px;
+        text-align: center;
+    }
+    .textInput {
+        padding: 8px;
+        width: 394px;
+    }
+
+    .dateInput {
+        width: 181px;
+        padding: 0;
+        justify-content: space-between;
+        align-items: normal;
+        border: none;
+    }
+
+    .twoInput {
+        flex-direction: row;
+        gap: 32px;
+        max-width: 394px;
+        flex-shrink: 0;
+        align-items: end;
+    }
+
+    .form {
+        max-width: 394px;
+    }
+}
+
+.buttonsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.saveButton,
+.cancelButton {
+    color: var(--white);
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    min-width: 300px;
+    padding: 13px 68px;
+    border-radius: 20px;
+    border: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+    background-position: left center;
+    transition: var(--transition);
+    &:hover,
+    &:focus {
+        background-size: 200%;
+        background-position: right center;
+        transform: var(--scale);
+        outline: none;
+    }
+}
+
+.saveButton {
+    background: var(--button-gradient);
+    color: var(--white);
+}
+
+.cancelButton {
+    background: var(--white);
+    color: var(--text-button);
+}
+.errorField {
+    display: flex;
+    position: relative;
+}
+
+.message {
+    color: var(--yellow);
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+}
+
+.activeToggle {
+    color: var(--yellow);
+}
+
+.inactiveToggle {
+    color: #e0e0e0;
+}

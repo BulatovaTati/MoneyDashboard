@@ -8,6 +8,7 @@ import ButtonAddTransactions from '../../components/ButtonAddTransactions/Button
 import { getTransactionsCategories } from '../../redux/statistics/operations.js';
 
 import css from './HomeTab.module.css';
+import EditTransactionForm from '../../components/EditTransactionForm/EditTransactionForm.jsx';
 
 const HomeTab = () => {
     const { isMobile } = useMedia();
@@ -28,6 +29,7 @@ const HomeTab = () => {
         <div className={css.homeTab}>
             {isMobile && <Balance />}
             <TransactionsList />
+            <EditTransactionForm />
             <ButtonAddTransactions />
         </div>
     );

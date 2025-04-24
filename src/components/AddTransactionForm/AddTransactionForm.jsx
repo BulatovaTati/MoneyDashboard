@@ -18,7 +18,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const schema = yup.object().shape({
     amount: yup.number().typeError('Amount must be a number').required('Amount is required').positive('Amount must be positive'),
-    comment: yup.string().max(100, 'Max 100 characters'),
+    comment: yup.string().max(100, 'Max 100 characters').required('Comment is required'),
 });
 
 const AddTransactionForm = () => {

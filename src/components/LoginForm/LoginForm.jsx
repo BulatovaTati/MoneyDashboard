@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import s from './LoginForm.module.css';
 import Logo from '../../components/Logo/Logo';
 import FormButton from '../../components/FormButton/FormButton';
+import { showToast } from '../../components/CustomToaster/CustomToaster'; 
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
@@ -30,8 +31,8 @@ export const LoginForm = () => {
             reset();
             navigate('/');
         } catch (error) {
-            alert('Login failed: ' + error.message);
-        }
+    showToast('error', 'Login failed: ' + error.message);
+    }
     };
 
     return (

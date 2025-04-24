@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { setToken, userTransactionsApi } from '../../api/userTransactionsApi';
 
 export const getTransactionsCategories = createAsyncThunk('transactions/categories', async (_, thunkApi) => {
@@ -24,12 +25,8 @@ export const getExpenseSummaryByCategories = createAsyncThunk('transactions/summ
         if (month !== 'All month') {
             query += `&month=${month}`;
         }
-
-        const { data } = await userTransactionsApi.get(query);
-        return data;
     } catch (error) {
-        const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || 'Something went wrong';
-        return thunkApi.rejectWithValue(errorMessage);
+        return thunkApi.rejectWithValue(error.message);
     }
 });
 
@@ -52,7 +49,6 @@ export const getIncomeAndExpenseSummaryByPeriod = createAsyncThunk('transactions
             expenseSummaryByPeriod: data.expenseSummaryByPeriod,
         };
     } catch (error) {
-        const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || 'Something went wrong';
-        return thunkApi.rejectWithValue(errorMessage);
+        return thunkApi.rejectWithValue(error.message);
     }
 });

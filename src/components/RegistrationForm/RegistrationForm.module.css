@@ -1,0 +1,131 @@
+.background {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 20px;
+    background-color: #101010;
+
+    background-image: url('/public/images/register/gradient-mobile-min.png');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@media only screen and (min-resolution: 192dpi) {
+    .background {
+        background-image: url('/public/images/register/gradient-mobile@2x-min.png');
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .background {
+        background-image: url('/public/images/register/tablet-back-dollars-min.png'), url('/public/images/register/gradient-tablet-min.png');
+
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
+    .background {
+        background-image: url('/public/images/register/tablet-back-dollars@2x-min.png'), url('/public/images/register/gradient-tablet@2x-min.png');
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .background {
+        background-image: url('/public/images/register/desktop-back-dollars-min.png'), url('/public/images/register/gradient-desktop-min.png');
+    }
+}
+
+@media only screen and (min-width: 1280px) and (min-resolution: 192dpi) {
+    .background {
+        background-image: url('/public/images/register/desktop-back-dollars@2x-min.png'), url('/public/images/register/gradient-desktop@2x-min.png');
+    }
+}
+
+.modal {
+    width: 280px;
+    margin: 0 auto;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.logoTitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    color: var(--white);
+}
+
+.form {
+    position: relative;
+}
+.inpBox {
+    display: flex;
+    flex-direction: column;
+
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.strengthBarBox {
+    position: absolute;
+    top: 62%;
+}
+.strengthBar {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .modal {
+        border-radius: 8px;
+        width: 533px;
+        backdrop-filter: blur(100px);
+        box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+        background: var(--form-color);
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .logoIcon {
+        width: 36px;
+        height: 36px;
+    }
+    .logoTitle {
+        font-size: 26px;
+    }
+    .form {
+        width: 409px;
+    }
+    .strengthBar {
+        width: 409px;
+    }
+}

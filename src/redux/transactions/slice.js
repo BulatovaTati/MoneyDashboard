@@ -13,10 +13,10 @@ const slice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getTransactions.fulfilled, (state, { payload }) => {
-                state.transactions = payload;
+                state.transactions = payload.data;
             })
             .addCase(addTransactions.fulfilled, (state, { payload }) => {
-                state = state.transactions.push(payload);
+                state.transactions.push(payload);
             })
             .addCase(editTransactions.fulfilled, (state, { payload }) => {
                 const transactionIndex = state.transactions.findIndex(transaction => {

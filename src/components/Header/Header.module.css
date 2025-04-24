@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    color: white;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.exitIcon {
+    display: flex;
+    gap: 8px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+}
+.IconExit {
+    color: rgba(255, 255, 255, 0.6);
+    fill: #fff;
+}
+
+.separator {
+    height: 30px;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.6);
+}

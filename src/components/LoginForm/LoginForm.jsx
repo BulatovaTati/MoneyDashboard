@@ -31,7 +31,7 @@ export const LoginForm = () => {
             reset();
             navigate('/');
         } catch (error) {
-    showToast('error', 'Login failed: ' + error.message);
+            showToast('error', 'Incorrect email or password. Please try again.');
     }
     };
 

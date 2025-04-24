@@ -33,9 +33,9 @@
 
     .dashboard {
         padding-left: 32px;
-        padding-right: 32px;
+        padding-right: 32px; 
         padding-bottom: 32px;
-    }
+    }  
 
     .dashboardData {
         display: flex;
@@ -64,7 +64,7 @@
 
 @media (min-width: 1280px) {
     .dashboardPage {
-        width: 1280px;
+        width: 100%;
     }
 
     .header {
@@ -73,7 +73,7 @@
     }
 
     .dashboard {
-        padding-left: 0;
+        padding-left: 0px;
         display: flex;
         flex-direction: row;
     }

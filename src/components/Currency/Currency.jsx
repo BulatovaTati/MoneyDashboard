@@ -52,7 +52,7 @@ const Currency = () => {
                                 <th className={s.item}>Sale</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className= {s.font}>
                             <tr className={s.tr}>
                                 <td className={s.item}>USD</td>
                                 <td className={s.item}>{usdRate.rateBuy}</td>

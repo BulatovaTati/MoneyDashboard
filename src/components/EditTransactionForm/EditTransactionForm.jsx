@@ -44,7 +44,7 @@ const EditTransactionForm = () => {
 
     const onSubmit = data => {
         const updatedTransaction = {
-            transactionDate: startDate.toISOString(),
+            date: startDate.toISOString(),
             comment: data.comment,
             amount: parseFloat(data.amount) * (transaction.type === 'EXPENSE' ? -1 : 1),
             type: transaction.type,

@@ -55,7 +55,7 @@ const AddTransactionForm = () => {
 
         const newTransaction = {
             type: isTransactionIncome ? 'INCOME' : 'EXPENSE',
-            transactionDate: transactionDate.toISOString(),
+            date: transactionDate.toISOString(),
             comment: data.comment,
             amount: isTransactionIncome ? parseFloat(data.amount) : parseFloat(data.amount),
             categoryId,

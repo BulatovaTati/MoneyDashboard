@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { userTransactionsApi } from '../../api/userTransactionsApi.js';
-import { getBalanceThunk } from '../auth/operations.js';
+import { userTransactionsApi } from '../../api/userTransactionsApi';
+import { getBalanceThunk } from '../auth/operations';
 
 export const getTransactions = createAsyncThunk('transactions/all', async (_, thunkApi) => {
     try {

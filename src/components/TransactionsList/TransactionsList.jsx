@@ -1,5 +1,5 @@
 import TransactionsItem from '../TransactionsItem/TransactionsItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
 import useMedia from '../../hooks/useMedia';
 import s from './TransactionsList.module.css';
@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader';
 import { selectTransactionsError, selectTransactionsLoading } from '../../redux/transactions/selectors';
 
 const TransactionsList = () => {
+    const dispatch = useDispatch();
     const transactions = useSelector(selectTransactions);
     const isLoading = useSelector(selectTransactionsLoading);
     const isError = useSelector(selectTransactionsError);
@@ -23,12 +24,7 @@ const TransactionsList = () => {
                 <div className={s.container}>
                     <p>No transactions available yet.</p>
                     <p>Let's add your first transaction</p>
-                    <FormButton
-                        type="button"
-                        text="Add transaction"
-                        variant="multiColorButton"
-                        handlerFunction={() => dispatch(openAddModal())}
-                    />
+                    <FormButton type="button" text="Add transaction" variant="multiColorButton" handlerFunction={() => dispatch(openAddModal())} />
                 </div>
             ) : (
                 <div className={s.financeTableContainer}>
@@ -47,10 +43,7 @@ const TransactionsList = () => {
                         )}
                         <tbody className={s.th}>
                             {sortedTransactions.map((transaction, index) => (
-                                <TransactionsItem
-                                    key={transaction.id || `${transaction.transactionDate}-${index}`}
-                                    transaction={transaction}
-                                />
+                                <TransactionsItem key={transaction.id || `${transaction.transactionDate}-${index}`} transaction={transaction} />
                             ))}
                         </tbody>
                     </table>

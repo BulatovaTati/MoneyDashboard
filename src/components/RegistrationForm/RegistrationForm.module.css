@@ -3,10 +3,6 @@
     top: 0;
     right: 0;
 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
     width: 100vw;
     height: 100vh;
 
@@ -15,17 +11,24 @@
     align-items: center;
 
     padding: 0 20px;
+    background-color: #101010;
+
+    background-image: url('/public/images/register/gradient-mobile-min.png');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 @media only screen and (min-resolution: 192dpi) {
     .background {
-        background-image: url('/images/gradient-mobile.webp');
+        background-image: url('/public/images/register/gradient-mobile@2x-min.png');
     }
 }
 
 @media only screen and (min-width: 768px) {
     .background {
-        background-image: url('/public/images/register/tablet-back-dollars-min.png');
+        background-image: url('/public/images/register/tablet-back-dollars-min.png'), url('/public/images/register/gradient-tablet-min.png');
 
         padding: 0;
     }
@@ -33,28 +36,20 @@
 
 @media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
     .background {
-        background-image: url('/public/images/register/tablet-back-dollars@2x-min.png');
+        background-image: url('/public/images/register/tablet-back-dollars@2x-min.png'), url('/public/images/register/gradient-tablet@2x-min.png');
     }
 }
 
 @media only screen and (min-width: 1280px) {
     .background {
-        background-image: url('/public/images/register/desktop-back-dollars-min.png');
+        background-image: url('/public/images/register/desktop-back-dollars-min.png'), url('/public/images/register/gradient-desktop-min.png');
     }
 }
 
 @media only screen and (min-width: 1280px) and (min-resolution: 192dpi) {
     .background {
-        background-image: url('/public/images/register/desktop-back-dollars@2x-min.png');
+        background-image: url('/public/images/register/desktop-back-dollars@2x-min.png'), url('/public/images/register/gradient-desktop@2x-min.png');
     }
-}
-
-.logoBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
 }
 
 .modal {
@@ -66,6 +61,13 @@
     flex-direction: column;
     align-items: center;
 }
+.logoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
 
 .logoTitle {
     font-family: 'Poppins', sans-serif;
@@ -74,18 +76,27 @@
     color: var(--white);
 }
 
+.form {
+    position: relative;
+}
 .inpBox {
     display: flex;
     flex-direction: column;
+
     gap: 40px;
     align-items: center;
+    margin-bottom: 40px;
+}
+.strengthBarBox {
+    position: absolute;
+    top: 62%;
 }
 .strengthBar {
     width: 280px;
-    margin-bottom: 12px;
     margin-left: auto;
     margin-right: auto;
 }
+
 .btnBox {
     display: flex;
     flex-direction: column;
@@ -104,17 +115,17 @@
         padding-top: 40px;
         padding-bottom: 40px;
     }
-    .form {
-        width: 409px;
-    }
-    .strengthBar {
-        width: 409px;
-    }
     .logoIcon {
         width: 36px;
         height: 36px;
     }
     .logoTitle {
         font-size: 26px;
+    }
+    .form {
+        width: 409px;
+    }
+    .strengthBar {
+        width: 409px;
     }
 }

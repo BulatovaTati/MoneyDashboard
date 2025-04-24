@@ -5,6 +5,7 @@ import useMedia from '../../hooks/useMedia';
 import s from './TransactionsList.module.css';
 import { openAddModal } from '../../redux/modals/slice';
 import FormButton from '../FormButton/FormButton';
+import Loader from '../Loader/Loader'
 import { selectTransactionsError, selectTransactionsLoading } from '../../redux/transactions/selectors';
 
 const mockTransactions = [

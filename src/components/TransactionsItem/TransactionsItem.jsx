@@ -60,6 +60,7 @@ function TransactionsItem({ transaction }) {
         {formSum}
       </td>
       <td className={s.actionBtn}>
+        
                             <button type="button" className={s.editBtn} onClick={onEdit}>
                             <LuPencil style={{ width: '14px', height: '14px' }} />
                             </button>
@@ -95,6 +96,7 @@ function TransactionsItem({ transaction }) {
               {sum}
             </td>
             <td className={s.actionBtn}>
+            <div className={s.buttonContainer}>
             <button type="button" className={s.deleteBtn} onClick={onDelete}>
                     Delete
                 </button>
@@ -102,7 +104,7 @@ function TransactionsItem({ transaction }) {
                 <LuPencil style={{ width: '14px', height: '14px' }} />
                     Edit
                 </button>
-
+                </div>
             </td>
         </tr>
     );

@@ -38,7 +38,7 @@ function TransactionsItem({ transaction }) {
 
 
     const onDelete = async () => {
-        dispatch(deleteTransactions(transaction.id));
+        dispatch(deleteTransactions(transaction._id));
     };
 
     return !isMobile ? (

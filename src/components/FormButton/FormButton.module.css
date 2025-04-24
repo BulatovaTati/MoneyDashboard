@@ -37,6 +37,14 @@
     font-size: 19px;
 }
 
+.multiColorButton:disabled {
+    background: var(--white-40);
+    color: var(--wite-60);
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.6;
+}
+
 .whiteButton {
     color: #623f8b;
     background: #fcfcfc;

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,6 +15,8 @@ import { showToast } from '../CustomToaster/CustomToaster';
 import s from './RegistrationForm.module.css';
 
 const RegistrationForm = () => {
+    const [hasTriedSubmit, setHasTriedSubmit] = useState(false);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -29,13 +31,15 @@ const RegistrationForm = () => {
         reset,
         setError,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid },
     } = useForm({
         resolver: yupResolver(registerValidationSchema),
         mode: 'onChange',
     });
 
     const onSubmit = async data => {
+        setHasTriedSubmit(false);
+
         const trimmedValues = {
             name: data.name.trim(),
             email: data.email.trim(),
@@ -72,7 +76,7 @@ const RegistrationForm = () => {
                     <img src="/favicon.svg" alt="Logo" width="26" height="26" className={s.logoIcon} />
                     <h2 className={s.logoTitle}>Money Guard</h2>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
+                <form onSubmit={handleSubmit(onSubmit, () => setHasTriedSubmit(true))} className={s.form}>
                     <div className={s.inpBox}>
                         <label htmlFor={nameId}>
                             <RegisterInputForm iconName={'icon-user'} type="name" name="name" placeholder="Name" register={register} error={errors.name} id={nameId} />
@@ -108,7 +112,7 @@ const RegistrationForm = () => {
                         />
                     </div>
                     <div className={s.btnBox}>
-                        <FormButton type="submit" text={'Register'} variant={'multiColorButton'} />
+                        <FormButton type="submit" text={'Register'} variant={'multiColorButton'} isDisabled={hasTriedSubmit && !isValid} />
                         <Link to="/login">
                             <FormButton type="button" text={'Log in'} variant={'whiteButton'} />
                         </Link>

@@ -4,10 +4,6 @@
     max-height: calc(100vh - 110px);
     border-radius: 10px;
     padding: 10px;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    height: calc(100vh - 110px); 
 }
 /* 
 .container {
@@ -143,6 +139,10 @@
 }
 
 @media only screen and (max-width: 1279px) {
+    /* .financeTable tbody {
+        max-height: calc(100vh - 385px);
+      } */
+    
     .container {
         width: 100%;
         min-height: 100px;

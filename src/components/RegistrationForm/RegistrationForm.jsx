@@ -15,6 +15,8 @@ import { showToast } from '../CustomToaster/CustomToaster';
 import s from './RegistrationForm.module.css';
 
 const RegistrationForm = () => {
+    const [hasTriedSubmit, setHasTriedSubmit] = useState(false);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -36,6 +38,8 @@ const RegistrationForm = () => {
     });
 
     const onSubmit = async data => {
+        setHasTriedSubmit(false);
+
         const trimmedValues = {
             name: data.name.trim(),
             email: data.email.trim(),
@@ -72,7 +76,7 @@ const RegistrationForm = () => {
                     <img src="/favicon.svg" alt="Logo" width="26" height="26" className={s.logoIcon} />
                     <h2 className={s.logoTitle}>Money Guard</h2>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
+                <form onSubmit={handleSubmit(onSubmit, () => setHasTriedSubmit(true))} className={s.form}>
                     <div className={s.inpBox}>
                         <label htmlFor={nameId}>
                             <RegisterInputForm iconName={'icon-user'} type="name" name="name" placeholder="Name" register={register} error={errors.name} id={nameId} />

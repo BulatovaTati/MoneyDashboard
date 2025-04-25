@@ -12,7 +12,6 @@
 
 .navigation {
     width: 320px;
-    height: 96px;
 }
 
 .balance,
@@ -40,25 +39,20 @@
     .dashboardData {
         display: flex;
         flex-direction: row;
+        align-items: end;
         gap: 32px;
         margin-bottom: 20px;
     }
-
+    .currency {
+        display: block;
+    }
     .navigation {
         width: 336px;
-        height: 134px;
     }
 
     .balance {
         display: block;
         width: 336px;
-        height: 80px;
-    }
-
-    .currency {
-        display: block;
-        width: 336px;
-        height: 80px;
     }
 }
 
@@ -86,17 +80,10 @@
 
     .navigation {
         width: 480px;
-        height: 133px;
     }
 
     .balance {
         width: 480px;
-        height: 80px;
-    }
-
-    .currency {
-        width: 480px;
-        height: 380px;
     }
 
     .divider {

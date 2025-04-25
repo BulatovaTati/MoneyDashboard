@@ -6,12 +6,12 @@ import { useState } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
-import { addTransactions } from '../../redux/transactions/operations';
-import { selectCategories } from '../../redux/statistics/selectors';
-import { closeModal } from '../../redux/modals/slice';
+import { addTransactions } from '../../redux/transactions/operations.js';
+import { selectCategories } from '../../redux/statistics/selectors.js';
+import { closeModal } from '../../redux/modals/slice.js';
 
 import ToggleModal from '../ToggleModal/ToggleModal.jsx';
-import CustomIconForCalendar from './CustomIconForCalendar';
+import CustomIconForCalendar from './CustomIconForCalendar.jsx';
 
 import css from './AddTransactionForm.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -47,7 +47,8 @@ const AddTransactionForm = () => {
         .map(category => ({
             value: category.id,
             label: category.name,
-            isDisabled: category.name === 'Main expenses',
+
+            // isDisabled: category.name === 'Main expenses',
         }));
 
     const onSubmit = data => {
@@ -76,6 +77,15 @@ const AddTransactionForm = () => {
         option: (provided, state) => ({
             ...provided,
             color: state.isDisabled ? '#d4d4d4' : '#fff',
+            cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+        }),
+        control: provided => ({
+            ...provided,
+            cursor: 'pointer',
+        }),
+        dropdownIndicator: provided => ({
+            ...provided,
+            cursor: 'pointer',
         }),
     };
 

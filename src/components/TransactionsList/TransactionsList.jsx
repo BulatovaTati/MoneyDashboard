@@ -43,7 +43,7 @@ const TransactionsList = () => {
                         )}
                         <tbody className={s.th}>
                             {sortedTransactions.map((transaction, index) => (
-                                <TransactionsItem key={transaction.id || `${transaction.transactionDate}-${index}`} transaction={transaction} />
+                                <TransactionsItem key={transaction.id || `${transaction.date}-${index}`} transaction={transaction} />
                             ))}
                         </tbody>
                     </table>

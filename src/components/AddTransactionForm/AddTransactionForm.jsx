@@ -6,12 +6,12 @@ import { useState } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
-import { addTransactions } from '../../redux/transactions/operations.js';
-import { selectCategories } from '../../redux/statistics/selectors.js';
-import { closeModal } from '../../redux/modals/slice.js';
+import { addTransactions } from '../../redux/transactions/operations';
+import { selectCategories } from '../../redux/statistics/selectors';
+import { closeModal } from '../../redux/modals/slice';
 
 import ToggleModal from '../ToggleModal/ToggleModal.jsx';
-import CustomIconForCalendar from './CustomIconForCalendar.jsx';
+import CustomIconForCalendar from './CustomIconForCalendar';
 
 import css from './AddTransactionForm.module.css';
 import 'react-datepicker/dist/react-datepicker.css';

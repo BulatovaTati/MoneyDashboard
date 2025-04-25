@@ -38,16 +38,16 @@ const slice = createSlice({
                 });
             })
             .addMatcher(isAnyOf(getTransactions.fulfilled, addTransactions.fulfilled, editTransactions.fulfilled, deleteTransactions.fulfilled), state => {
-                state.isTransLoading = false;
-                state.isTransError = null;
+                state.isTransactionsLoading = false;
+                state.isTransactionsError = null;
             })
             .addMatcher(isAnyOf(getTransactions.pending, addTransactions.pending, editTransactions.pending, deleteTransactions.pending), state => {
-                state.isTransLoading = true;
-                state.isTransError = null;
+                state.isTransactionsLoading = true;
+                state.isTransactionsError = null;
             })
             .addMatcher(isAnyOf(getTransactions.rejected, addTransactions.rejected, editTransactions.rejected, deleteTransactions.rejected), (state, { payload }) => {
-                state.isTransLoading = false;
-                state.isTransError = payload;
+                state.isTransactionsLoading = false;
+                state.isTransactionsError = payload;
             });
     },
 });

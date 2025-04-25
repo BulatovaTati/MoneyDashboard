@@ -47,7 +47,8 @@ const AddTransactionForm = () => {
         .map(category => ({
             value: category.id,
             label: category.name,
-            isDisabled: category.name === 'Main expenses',
+
+            // isDisabled: category.name === 'Main expenses',
         }));
 
     const onSubmit = data => {
@@ -76,6 +77,15 @@ const AddTransactionForm = () => {
         option: (provided, state) => ({
             ...provided,
             color: state.isDisabled ? '#d4d4d4' : '#fff',
+            cursor: state.isDisabled ? 'not-allowed' : 'pointer',
+        }),
+        control: provided => ({
+            ...provided,
+            cursor: 'pointer',
+        }),
+        dropdownIndicator: provided => ({
+            ...provided,
+            cursor: 'pointer',
         }),
     };
 

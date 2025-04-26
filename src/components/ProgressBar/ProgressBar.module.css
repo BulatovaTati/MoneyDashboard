@@ -1,0 +1,14 @@
+.strengthBarBox {
+    position: absolute;
+    top: 62%;
+}
+.strengthBar {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media only screen and (min-width: 768px) {
+    .strengthBar {
+        width: 409px;
+    }
+}

@@ -4,7 +4,6 @@ import { useId, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import PasswordStrengthBar from 'react-password-strength-bar-with-style-item';
 
 import RegisterInputForm from '../RegisterInputForm/RegisterInputForm';
 import FormButton from '../FormButton/FormButton';
@@ -13,6 +12,7 @@ import { registerThunk } from '../../redux/auth/operations';
 import { showToast } from '../CustomToaster/CustomToaster';
 
 import s from './RegistrationForm.module.css';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 const RegistrationForm = () => {
     const [hasTriedSubmit, setHasTriedSubmit] = useState(false);
@@ -99,18 +99,8 @@ const RegistrationForm = () => {
                             />
                         </label>
                     </div>
-                    <div className={s.strengthBarBox}>
-                        <PasswordStrengthBar
-                            className={s.strengthBar}
-                            password={watch('confirmPassword')}
-                            barColors={['#ddd', '#ef4836', '#f6b44d', '#2b90ef', '#25c281']}
-                            scoreWords={['weak', 'weak', 'okay', 'good', 'strong']}
-                            shortScoreWord={''}
-                            minLength={6}
-                            scoreWordStyle={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.6)', margin: '0' }}
-                            scoreWordClassName="strength-score"
-                        />
-                    </div>
+
+                    <ProgressBar watch={watch} />
                     <div className={s.btnBox}>
                         <FormButton type="submit" text={'Register'} variant={'multiColorButton'} isDisabled={hasTriedSubmit && !isValid} />
                         <Link to="/login">

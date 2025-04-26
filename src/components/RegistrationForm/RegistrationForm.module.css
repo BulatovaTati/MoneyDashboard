@@ -87,15 +87,6 @@
     align-items: center;
     margin-bottom: 40px;
 }
-.strengthBarBox {
-    position: absolute;
-    top: 62%;
-}
-.strengthBar {
-    width: 280px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .btnBox {
     display: flex;
@@ -123,9 +114,6 @@
         font-size: 26px;
     }
     .form {
-        width: 409px;
-    }
-    .strengthBar {
         width: 409px;
     }
 }

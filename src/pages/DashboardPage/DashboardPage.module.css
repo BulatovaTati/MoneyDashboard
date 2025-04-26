@@ -5,11 +5,6 @@
     margin: 0 auto;
 }
 
-.header {
-    width: 320px;
-    height: 60px;
-}
-
 .navigation {
     width: 320px;
 }
@@ -23,11 +18,6 @@
 @media (min-width: 768px) {
     .dashboardPage {
         width: 768px;
-    }
-
-    .header {
-        width: 768px;
-        height: 80px;
     }
 
     .dashboard {
@@ -59,11 +49,6 @@
 @media (min-width: 1280px) {
     .dashboardPage {
         width: 1280px;
-    }
-
-    .header {
-        width: 1280px;
-        height: 80px;
     }
 
     .dashboard {

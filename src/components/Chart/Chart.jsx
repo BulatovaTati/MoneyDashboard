@@ -5,31 +5,26 @@ import css from './Chart.module.css';
 
 ChartJS.register(ArcElement, Tooltip);
 
-const formatNumber = number => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-};
+const formatNumber = number => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
-const Chart = ({ summary, categories, expensesSummaryByPeriod }) => {
+const Chart = ({ summary, expensesSummaryByPeriod }) => {
     const chartRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(null);
 
     const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#8E44AD', '#2ECC71', '#F39C12', '#E74C3C', '#3498DB', '#1ABC9C', '#D35400'];
-    const expensesOnly = summary?.filter(item => item.type === 'EXPENSE') || [];
-    const hasExpenses = expensesOnly.length > 0;
+    const hasExpenses = summary.length > 0;
 
-    const labels = hasExpenses
-        ? expensesOnly.map(item => {
-              const category = categories.find(cat => cat.id === item.categoryId);
-              return category ? category.name : 'Невідомо';
-          })
-        : ['No Data'];
+    const labels = hasExpenses ? summary.map(item => item.category) : ['No Data'];
+    const values = hasExpenses ? summary.map(item => item.total) : [1];
 
     const data = {
         labels,
         datasets: [
             {
-                data: hasExpenses ? expensesOnly.map(item => item.EXPENSE) : [1],
-                backgroundColor: hasExpenses ? expensesOnly.map((_, i) => (activeIndex === null ? colors[i] : i === activeIndex ? colors[i] : `${colors[i]}80`)) : ['#e0e0e0'],
+                data: values,
+                backgroundColor: hasExpenses
+                    ? values.map((_, i) => (activeIndex === null ? colors[i % colors.length] : i === activeIndex ? colors[i % colors.length] : `${colors[i % colors.length]}80`))
+                    : ['#e0e0e0'],
                 borderWidth: 1,
             },
         ],
@@ -38,19 +33,8 @@ const Chart = ({ summary, categories, expensesSummaryByPeriod }) => {
     const options = {
         responsive: true,
         plugins: {
-            legend: {
-                display: false,
-            },
-            tooltip: {
-                enabled: false,
-                callbacks: {
-                    label: function (context) {
-                        const label = context.label || '';
-                        const value = context.raw || 0;
-                        return `${label}: ₴${formatNumber(value.toFixed(2))}`;
-                    },
-                },
-            },
+            legend: { display: false },
+            tooltip: { enabled: false },
         },
         cutout: '70%',
         onHover: (event, elements) => {
@@ -65,31 +49,21 @@ const Chart = ({ summary, categories, expensesSummaryByPeriod }) => {
         if (!chart) return;
 
         const points = chart.getElementsAtEventForMode(event.nativeEvent, 'nearest', { intersect: true }, true);
-
-        if (points.length > 0) {
-            setActiveIndex(points[0].index);
-        } else {
-            setActiveIndex(null);
-        }
+        setActiveIndex(points.length > 0 ? points[0].index : null);
     };
 
     useEffect(() => {
         const handleOutsideClick = e => {
-            if (!chartRef.current?.canvas) return;
-
-            if (!chartRef.current.canvas.contains(e.target)) {
+            if (!chartRef.current?.canvas.contains(e.target)) {
                 setActiveIndex(null);
             }
         };
-
         window.addEventListener('click', handleOutsideClick);
-        return () => {
-            window.removeEventListener('click', handleOutsideClick);
-        };
+        return () => window.removeEventListener('click', handleOutsideClick);
     }, []);
 
     const activeCategory = activeIndex !== null ? labels[activeIndex] : null;
-    const activeAmount = activeIndex !== null ? expensesOnly[activeIndex]?.EXPENSE?.toFixed(2) : null;
+    const activeAmount = activeIndex !== null ? values[activeIndex].toFixed(2) : null;
 
     return (
         <div className={css.chartWrapper}>

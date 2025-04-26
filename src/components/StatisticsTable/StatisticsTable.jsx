@@ -8,12 +8,7 @@ const formatNumber = number => {
         .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };
 
-const StatisticsTable = ({ summary, categories, incomeSummaryByPeriod, expensesSummaryByPeriod }) => {
-    const getCategoryName = id => {
-        const category = categories.find(cat => cat.id === id);
-        return category ? category.name : 'Невідомо';
-    };
-
+const StatisticsTable = ({ summary, incomeSummaryByPeriod, expensesSummaryByPeriod }) => {
     const getCategoryColor = index => {
         const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#8E44AD', '#2ECC71', '#F39C12', '#E74C3C', '#3498DB', '#1ABC9C', '#D35400'];
         return colors[index % colors.length];
@@ -27,21 +22,18 @@ const StatisticsTable = ({ summary, categories, incomeSummaryByPeriod, expensesS
             </div>
             <table className={css.table}>
                 <tbody>
-                    {summary
-                        .filter(item => item.type === 'EXPENSE')
-                        .map((item, index) => {
-                            const categoryName = getCategoryName(item.categoryId);
-                            const color = getCategoryColor(index);
-                            return (
-                                <tr key={item.categoryId}>
-                                    <td className={css.dotCell}>
-                                        <span className={css.colorDot} style={{ backgroundColor: color }} />
-                                    </td>
-                                    <td>{categoryName}</td>
-                                    <td>{formatNumber(item.EXPENSE)}</td>
-                                </tr>
-                            );
-                        })}
+                    {summary.map((item, index) => {
+                        const color = getCategoryColor(index);
+                        return (
+                            <tr key={item.category}>
+                                <td className={css.dotCell}>
+                                    <span className={css.colorDot} style={{ backgroundColor: color }} />
+                                </td>
+                                <td>{item.category}</td>
+                                <td>{formatNumber(item.total)}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
 

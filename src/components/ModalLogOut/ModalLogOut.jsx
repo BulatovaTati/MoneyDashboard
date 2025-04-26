@@ -19,8 +19,8 @@ const ModalLogOut = () => {
     };
 
     return (
-        <ModalWrapper isOpenModal={isLogOutModalOpen}>
-            <div className={s.modal}>
+        <ModalWrapper isOpenModal={isLogOutModalOpen} className="customModalSize">
+            <div className="customModalSize">
                 <div className={s.logo}>
                     <Logo type="modal" />
                 </div>

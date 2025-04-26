@@ -31,32 +31,32 @@ const DashboardPage = () => {
     }, [dispatch]);
 
     return (
-        <section className={css.dashboardPage}>
-            <div className={css.header}>
-                <Header />
-            </div>
-            <main>
-                <div className={css.dashboard}>
-                    <div className={css.dashboardData}>
-                        <div>
-                            <div className={css.navigation}>
-                                <Navigation />
+        <>
+            <Header />
+            <section className={css.dashboardPage}>
+                <main>
+                    <div className={css.dashboard}>
+                        <div className={css.dashboardData}>
+                            <div>
+                                <div className={css.navigation}>
+                                    <Navigation />
+                                </div>
+                                <div className={css.balance}>{!isMobile && <Balance />}</div>
                             </div>
-                            <div className={css.balance}>{!isMobile && <Balance />}</div>
+                            <div className={css.currency}>{!isMobile && <Currency />}</div>
                         </div>
-                        <div className={css.currency}>{!isMobile && <Currency />}</div>
+                        <div className={css.divider}></div>
+                        <Suspense fallback={<Loader />}>
+                            <Outlet />
+                        </Suspense>
+                        <ModalLogOut />
+                        <ModalEditTransaction />
+                        <ModalAddTransaction />
                     </div>
-                    <div className={css.divider}></div>
-                    <Suspense fallback={<Loader />}>
-                        <Outlet />
-                    </Suspense>
-                    <ModalLogOut />
-                    <ModalEditTransaction />
-                    <ModalAddTransaction />
-                </div>
-            </main>
-            <Toaster />
-        </section>
+                </main>
+                <Toaster />
+            </section>
+        </>
     );
 };
 

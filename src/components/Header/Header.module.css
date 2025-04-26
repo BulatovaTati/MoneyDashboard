@@ -1,9 +1,19 @@
+.headerWrapper {
+    background: linear-gradient(45deg, rgba(46, 23, 70, 1), rgba(46, 34, 95, 1));
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
     padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
     color: white;
+    width: 100%;
+    max-width: 1280px;
 }
 
 .nav ul {
@@ -11,7 +21,21 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    padding: 0;
+    margin: 0;
 }
+
+/* .nav li {
+    display: flex;
+    align-items: center;
+} */
+
+/* .nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+} */
 
 .nav a {
     color: white;
@@ -21,11 +45,13 @@
 
 .exitIcon {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
     color: #fff;
     background-color: transparent;
     border: none;
 }
+
 .IconExit {
     color: rgba(255, 255, 255, 0.6);
     fill: #fff;
@@ -35,4 +61,56 @@
     height: 30px;
     width: 2px;
     background-color: rgba(255, 255, 255, 0.6);
+}
+
+.nameText {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.other {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 60px;
+        position: relative;
+        z-index: 10000;
+        background: linear-gradient(45deg, rgba(46, 23, 70, 1), rgba(46, 34, 95, 1));
+        overflow-x: hidden;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .logo {
+        width: 86px;
+        height: 36px;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .exitText {
+        display: none;
+    }
+
+    .exitIcon {
+        gap: 8px;
+    }
+
+    .nav ul {
+        gap: 8px;
+    }
 }

@@ -58,7 +58,7 @@ const RegistrationForm = () => {
                 .then(() => navigate('/'));
             reset();
         } catch (error) {
-            if (error === 'Email in use') {
+            if (error === 'Request failed with status code 409') {
                 setError('email', {
                     type: 'manual',
                     message: 'Email in use',

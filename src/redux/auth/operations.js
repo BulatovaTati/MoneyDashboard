@@ -9,7 +9,7 @@ export const registerThunk = createAsyncThunk('auth/sign-up', async (credentials
 
         return data.data;
     } catch (error) {
-        const message = error.response?.data?.error || 'Registration failed';
+        const message = error.message || 'Registration failed';
         return thunkApi.rejectWithValue(message);
     }
 });

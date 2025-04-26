@@ -5,7 +5,7 @@ import { setToken, userTransactionsApi } from '../../api/userTransactionsApi';
 export const getTransactionsCategories = createAsyncThunk('transactions/categories', async (_, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.get('/api/transaction-categories');
-        return data;
+        return data.data;
     } catch (error) {
         const errorMessage = error.response?.data?.message || error.response?.data?.error || error.message || 'Something went wrong';
         return thunkApi.rejectWithValue(errorMessage);

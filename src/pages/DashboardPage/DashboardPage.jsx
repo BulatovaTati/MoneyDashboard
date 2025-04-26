@@ -23,11 +23,8 @@ const DashboardPage = () => {
     const { isMobile } = useMedia();
 
     useEffect(() => {
-        dispatch(getTransactions());
-    }, [dispatch]);
-
-    useEffect(() => {
         dispatch(getTransactionsCategories());
+        dispatch(getTransactions());
     }, [dispatch]);
 
     return (

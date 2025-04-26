@@ -25,12 +25,7 @@ const slice = createSlice({
                 state.transactions.push(payload);
             })
             .addCase(editTransactions.fulfilled, (state, { payload }) => {
-                const transactionIndex = state.transactions.findIndex(transaction => {
-                    return transaction._id === payload._id;
-                });
-                if (transactionIndex !== -1) {
-                    state.transactions[transactionIndex] = payload;
-                }
+                state.transactions = state.transactions.map(item => (item._id === state.currentTransaction._id ? payload : item));
             })
             .addCase(deleteTransactions.fulfilled, (state, { payload }) => {
                 state.transactions = state.transactions.filter(transaction => {

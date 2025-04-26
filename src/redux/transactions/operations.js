@@ -32,16 +32,14 @@ export const deleteTransactions = createAsyncThunk('transactions/delete', async 
     }
 });
 
-export const editTransactions = createAsyncThunk('transactions/edit', async ({ id, transaction }, thunkApi) => {
+export const editTransactions = createAsyncThunk('transactions/edit', async ({ id, updatedTransaction }, thunkApi) => {
     try {
-        const { data } = await userTransactionsApi.patch(`/api/transactions/${id}`, transaction);
+        const { data } = await userTransactionsApi.patch(`/api/transactions/${id}`, updatedTransaction);
 
         thunkApi.dispatch(getBalanceThunk());
         thunkApi.dispatch(getTransactions());
         return data;
     } catch (error) {
-        console.error('Failed to edit transaction:', error.response?.data || error.message);
-
         return thunkApi.rejectWithValue(error.message);
     }
 });

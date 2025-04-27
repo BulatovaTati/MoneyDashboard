@@ -9,9 +9,9 @@ const StatisticsDashboard = ({ selectedMonth, selectedYear, onMonthChange, onYea
     return (
         <div className={css.wrapper}>
             {/* Month */}
-            <div className={css.dropdownWrapper}>
-                <Listbox value={selectedMonth} onChange={onMonthChange}>
-                    <div>
+            <Listbox value={selectedMonth} onChange={onMonthChange}>
+                {({ open }) => (
+                    <div className={`${css.dropdownWrapper} ${open ? css.open : ''}`}>
                         <ListboxButton className={css.dropdownButton}>{selectedMonth}</ListboxButton>
                         <ListboxOptions className={css.dropdownList}>
                             {months.map(month => (
@@ -21,13 +21,13 @@ const StatisticsDashboard = ({ selectedMonth, selectedYear, onMonthChange, onYea
                             ))}
                         </ListboxOptions>
                     </div>
-                </Listbox>
-            </div>
+                )}
+            </Listbox>
 
             {/* Year */}
-            <div className={css.dropdownWrapper}>
-                <Listbox value={selectedYear} onChange={onYearChange}>
-                    <div>
+            <Listbox value={selectedYear} onChange={onYearChange}>
+                {({ open }) => (
+                    <div className={`${css.dropdownWrapper} ${open ? css.open : ''}`}>
                         <ListboxButton className={css.dropdownButton}>{selectedYear}</ListboxButton>
                         <ListboxOptions className={css.dropdownList}>
                             {years.map(year => (
@@ -37,8 +37,8 @@ const StatisticsDashboard = ({ selectedMonth, selectedYear, onMonthChange, onYea
                             ))}
                         </ListboxOptions>
                     </div>
-                </Listbox>
-            </div>
+                )}
+            </Listbox>
         </div>
     );
 };

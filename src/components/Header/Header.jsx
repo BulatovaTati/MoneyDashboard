@@ -24,7 +24,7 @@ const Header = () => {
             <header className={s.headerWrapper}>
                 <div className={s.header}>
                     <div className={s.logo}>
-                        <Logo type="header" />
+                        <Logo type="header" imageClassName={s.customImage} textClassName={s.customText} />
                     </div>
                     <div className={s.other}>
                         <nav className={s.nav}>

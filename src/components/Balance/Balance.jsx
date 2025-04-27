@@ -10,7 +10,7 @@ const Balance = () => {
 
     useEffect(() => {
         dispatch(getBalanceThunk());
-    }, [dispatch]);
+    }, []);
 
     const formattedBalance = new Intl.NumberFormat('en-IN', {
         minimumFractionDigits: 2,

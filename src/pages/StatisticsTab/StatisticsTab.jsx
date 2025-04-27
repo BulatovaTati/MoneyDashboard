@@ -31,11 +31,11 @@ const StatisticsTab = () => {
 
     useEffect(() => {
         dispatch(getTransactionsCategories());
-    }, [dispatch]);
+    }, []);
 
     useEffect(() => {
         fetchData(selectedMonth, selectedYear);
-    }, [dispatch, selectedMonth, selectedYear]);
+    }, [selectedMonth, selectedYear]);
 
     const fetchData = (monthName, year) => {
         if (!monthName || !year) return;

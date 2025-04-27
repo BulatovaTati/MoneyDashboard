@@ -42,7 +42,7 @@
     transition: transform 0.3s ease;
 }
 
-.dropdownWrapper.open::after {
+.open::after {
     transform: translateY(-50%) rotate(-135deg);
 }
 

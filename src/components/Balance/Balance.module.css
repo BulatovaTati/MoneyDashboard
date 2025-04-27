@@ -1,61 +1,43 @@
 .balanceWrapper {
+    width: 280px;
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    justify-content: center;
+    gap: 12px;
+    padding: 8px 0 11px 32px;
+    margin-bottom: 32px;
+
     border-radius: 8px;
-    background-color: rgba(82, 59, 126, 0.6);
-    backdrop-filter: blur(100px);
-    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-    padding: 8px 32px;
-    margin: -28px 20px 36px 20px;
+    background: rgba(82, 59, 126, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    backdrop-filter: blur(50px);
 }
-
 .text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
+    color: var(--white-40);
     font-size: 12px;
+    line-height: 1.2;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
 }
-
 .amount {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
+    color: var(--white);
     font-size: 30px;
-    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: wrap;
 }
 
-/* === Tablet === */
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
     .balanceWrapper {
         width: 336px;
-        gap: 12px;
-        padding-left: 40px;
-        margin: 0 auto;
-    }
-
-    .text {
-        font-size: 12px;
-    }
-
-    .amount {
-        font-size: 30px;
+        padding: 8px 0 11px 40px;
+        margin-bottom: 0;
     }
 }
-
-/* === Desktop === */
-@media (min-width: 1280px) {
+@media only screen and (min-width: 1280px) {
     .balanceWrapper {
-        width: 480px;
-        padding-left: 56px;
-    }
-
-    .text {
-        font-size: 12px;
-    }
-
-    .amount {
-        font-size: 30px;
+        border-radius: 0;
+        width: 100%;
+        padding: 8px 0 11px 56px;
     }
 }

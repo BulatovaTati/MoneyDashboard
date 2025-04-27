@@ -1,7 +1,9 @@
-.wrapper {
-    width: 320px;
+.container {
+    padding-top: 12px;
+}
 
-    margin-top: -16px;
+.wrapper {
+    width: 100%;
     background-color: #4a56e21a;
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(50px);
@@ -24,27 +26,30 @@
     width: 100%;
     padding: 13px 0;
     font-size: 16px;
+    font-family: 'Circe', sans-serif;
     font-weight: 600;
 }
 
 .item {
     padding: 8px 20px 6px;
     text-align: center;
-}
-
-.font {
     font-family: 'Circe', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
 }
 
 @media only screen and (min-width: 768px) {
     .header {
         padding: 12px 0;
     }
+    .container {
+        padding-top: 0;
+    }
+
     .wrapper {
+        height: 214px;
         border-radius: 0px 0px 8px 8px;
-        width: 336px;
+    }
+    .graph {
+        height: 96px;
     }
 }
 @media only screen and (min-width: 1280px) {
@@ -52,16 +57,13 @@
         padding: 16px 0;
     }
     .wrapper {
-        height: 380px;
-        width: 480px;
-        margin-top: 0;
+        height: 395px;
     }
 
     .item {
         padding: 16px 25px;
     }
     .graph {
-        margin-top: 40px;
         height: 167px;
     }
 }

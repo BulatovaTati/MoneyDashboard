@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStatLoading, selectStatError, selectSummary, selectIncomeSummaryByPeriod, selectExpenseSummaryByPeriod } from '../../redux/statistics/selectors';
 
-import { getTransactionsCategories, getExpenseSummaryByCategories, getIncomeAndExpenseSummaryByPeriod } from '../../redux/statistics/operations';
+import { getExpenseSummaryByCategories, getIncomeAndExpenseSummaryByPeriod } from '../../redux/statistics/operations';
 
 import Chart from '../../components/Chart/Chart';
 import StatisticsDashboard from '../../components/StatisticsDashboard/StatisticsDashboard';
@@ -30,12 +30,8 @@ const StatisticsTab = () => {
     const [selectedYear, setSelectedYear] = useState(currentYear);
 
     useEffect(() => {
-        dispatch(getTransactionsCategories());
-    }, [dispatch]);
-
-    useEffect(() => {
         fetchData(selectedMonth, selectedYear);
-    }, [dispatch, selectedMonth, selectedYear]);
+    }, [selectedMonth, selectedYear]);
 
     const fetchData = (monthName, year) => {
         if (!monthName || !year) return;
@@ -73,7 +69,6 @@ const StatisticsTab = () => {
         <div className={css.statistics}>
             <div>
                 <h2 className={css.statisticsTitle}>Statistics</h2>
-
                 <div className={css.chart}>
                     <Chart summary={summary || []} expensesSummaryByPeriod={expensesSummaryByPeriod || 0} />
                 </div>
@@ -83,7 +78,6 @@ const StatisticsTab = () => {
                 <div className={css.statisticsDashboard}>
                     <StatisticsDashboard selectedMonth={selectedMonth} selectedYear={selectedYear} onMonthChange={handleMonthChange} onYearChange={handleYearChange} />
                 </div>
-
                 <StatisticsTable summary={summary || []} incomeSummaryByPeriod={incomeSummaryByPeriod || 0} expensesSummaryByPeriod={expensesSummaryByPeriod || 0} />
             </div>
         </div>

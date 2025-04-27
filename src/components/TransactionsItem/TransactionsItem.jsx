@@ -21,8 +21,13 @@ const formatDate = dateString => {
 function TransactionsItem({ transaction }) {
     if (!transaction) return null;
 
-    const sum = Math.abs(transaction.amount);
-    const formSum = new Intl.NumberFormat().format(sum);
+    const formatNumber = number => {
+        return number
+            .toFixed(2)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    };
+
     const categories = useSelector(selectCategories);
     const category = getTransactionCategory(transaction.categoryId, categories);
     const dispatch = useDispatch();
@@ -43,7 +48,7 @@ function TransactionsItem({ transaction }) {
             <td className={s.type}>{transaction.type === 'INCOME' ? '+' : '-'}</td>
             <td className={s.category}>{category}</td>
             <td className={s.comment}>{transaction.comment}</td>
-            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formSum}</td>
+            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formatNumber(transaction.amount)}</td>
             <td className={s.actionBtn}>
                 <button type="button" className={s.editBtn} onClick={onEdit}>
                     <LuPencil style={{ width: '14px', height: '14px' }} />
@@ -59,7 +64,7 @@ function TransactionsItem({ transaction }) {
             <td className={s.type}>{transaction.type === 'INCOME' ? '+' : '-'}</td>
             <td className={s.category}>{category}</td>
             <td className={s.comment}>{transaction.comment}</td>
-            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formSum}</td>
+            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formatNumber(transaction.amount)}</td>
             <td className={s.actionBtn}>
                 <button type="button" className={s.deleteBtn} onClick={onDelete}>
                     Delete

@@ -16,6 +16,17 @@
     max-width: 1280px;
 }
 
+.customImage {
+    width: 23px !important;
+    height: 22px !important;
+}
+
+.customText {
+    width: 116px !important;
+    height: 26px !important;
+    font-size: 17px !important;
+}
+
 .nav ul {
     list-style: none;
     display: flex;
@@ -24,18 +35,6 @@
     padding: 0;
     margin: 0;
 }
-
-/* .nav li {
-    display: flex;
-    align-items: center;
-} */
-
-/* .nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-} */
 
 .nav a {
     color: white;
@@ -47,14 +46,13 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.6);
     background-color: transparent;
     border: none;
 }
 
 .IconExit {
-    color: rgba(255, 255, 255, 0.6);
-    fill: #fff;
+    fill: rgba(255, 255, 255, 0.6);
 }
 
 .separator {
@@ -76,7 +74,7 @@
     align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767.98px) {
     .header {
         display: flex;
         align-items: center;
@@ -96,6 +94,17 @@
     .logo {
         width: 86px;
         height: 36px;
+    }
+
+    .customImage {
+        width: 13px !important;
+        height: 16px !important;
+    }
+
+    .customText {
+        width: 86px !important;
+        height: 19px !important;
+        font-size: 12px !important;
     }
 
     .separator {

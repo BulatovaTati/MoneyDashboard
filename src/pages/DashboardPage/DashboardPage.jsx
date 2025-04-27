@@ -25,7 +25,7 @@ const DashboardPage = () => {
     useEffect(() => {
         dispatch(getTransactionsCategories());
         dispatch(getTransactions());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

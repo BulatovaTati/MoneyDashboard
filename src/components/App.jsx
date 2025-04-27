@@ -26,7 +26,7 @@ function App() {
 
     useEffect(() => {
         dispatch(refreshThunk());
-    }, []);
+    }, [dispatch]);
 
     return isRefreshing ? (
         <Loader />

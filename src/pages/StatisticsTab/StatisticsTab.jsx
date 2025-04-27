@@ -30,10 +30,6 @@ const StatisticsTab = () => {
     const [selectedYear, setSelectedYear] = useState(currentYear);
 
     useEffect(() => {
-        dispatch(getTransactionsCategories());
-    }, []);
-
-    useEffect(() => {
         fetchData(selectedMonth, selectedYear);
     }, [selectedMonth, selectedYear]);
 

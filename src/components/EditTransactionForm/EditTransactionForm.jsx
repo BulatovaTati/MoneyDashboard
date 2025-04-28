@@ -10,9 +10,9 @@ import { selectCurrentTransaction } from '../../redux/transactions/selectors';
 import { editTransactions } from '../../redux/transactions/operations';
 import { closeModal } from '../../redux/modals/slice';
 import CustomIconForCalendar from '../AddTransactionForm/CustomIconForCalendar';
-import css from './EditTransactionForm.module.css';
+import { showToast } from '../CustomToaster/CustomToaster';
 import 'react-datepicker/dist/react-datepicker.css';
-import { showToast } from '../CustomToaster/CustomToaster.jsx';
+import css from './EditTransactionForm.module.css';
 
 const ValidationEditTransaction = () => {
     return yup.object().shape({

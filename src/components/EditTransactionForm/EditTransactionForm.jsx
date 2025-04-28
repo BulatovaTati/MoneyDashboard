@@ -69,14 +69,6 @@ const EditTransactionForm = () => {
 
     return (
         <>
-            <div className={css.backdrop}>
-                <button className={css.closeButton} type="button" onClick={() => dispatch(closeModal())}>
-                    <svg width="24" height="24" viewBox="0 0 32 32">
-                        <path d="M1.778 1.778l28.444 28.444" stroke="currentColor" strokeWidth="1.7778" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="4" />
-                        <path d="M1.778 30.222l28.444-28.444" stroke="currentColor" strokeWidth="1.7778" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="4" />
-                    </svg>
-                </button>
-            </div>
             <div className={css.modal}>
                 <div className={css.header}>
                     <h2 className={css.title}>Edit transaction</h2>

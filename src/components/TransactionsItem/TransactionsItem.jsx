@@ -8,8 +8,10 @@ import { LuPencil } from 'react-icons/lu';
 import { setCurrentTransaction } from '../../redux/transactions/slice';
 
 const getTransactionCategory = (categoryId, categories) => {
-    const transactionCategory = categories.find(item => item.id === categoryId);
+    const transactionCategory = categories?.data?.find(item => item.id === categoryId);
     return transactionCategory ? transactionCategory.name : 'Unknown';
+    // const transactionCategory = categories.find(item => item.id === categoryId);
+    // return transactionCategory ? transactionCategory.name : 'Unknown';
 };
 
 const formatDate = dateString => {
@@ -43,7 +45,7 @@ function TransactionsItem({ transaction }) {
             <td className={s.type}>{transaction.type === 'INCOME' ? '+' : '-'}</td>
             <td className={s.category}>{category}</td>
             <td className={s.comment}>{transaction.comment}</td>
-            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formatNumber(transaction.amount)}</td>
+            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formSum}</td>
             <td className={s.actionBtn}>
                 <button type="button" className={s.editBtn} onClick={onEdit}>
                     <LuPencil style={{ width: '14px', height: '14px' }} />
@@ -59,7 +61,7 @@ function TransactionsItem({ transaction }) {
             <td className={s.type}>{transaction.type === 'INCOME' ? '+' : '-'}</td>
             <td className={s.category}>{category}</td>
             <td className={s.comment}>{transaction.comment}</td>
-            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formatNumber(transaction.amount)}</td>
+            <td className={transaction.type === 'INCOME' ? s.income : s.expense}>{formSum}</td>
             <td className={s.actionBtn}>
                 <button type="button" className={s.deleteBtn} onClick={onDelete}>
                     Delete

@@ -91,12 +91,6 @@ const AddTransactionForm = () => {
 
     return (
         <div className={css.modalContainer}>
-            <button className={css.closeButton} type="button" onClick={() => dispatch(closeModal())}>
-                <svg width="24" height="24" viewBox="0 0 32 32">
-                    <path d="M1.778 1.778l28.444 28.444" stroke="currentColor" strokeWidth="1.7778" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="4" />
-                    <path d="M1.778 30.222l28.444-28.444" stroke="currentColor" strokeWidth="1.7778" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="4" />
-                </svg>
-            </button>
             <h2 className={css.title}>Add transaction</h2>
             <ToggleModal onChange={setIsTransactionIncome} defaultActive={false} />
             <form className={css.formWrapper} onSubmit={handleSubmit(onSubmit)}>

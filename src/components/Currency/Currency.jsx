@@ -3,6 +3,7 @@ import CurrencyChart from './CurrencyChart';
 import { getCurrencyRates } from '../../api/currencyApi';
 import s from '../Currency/Currency.module.css';
 import Loader from '../Loader/Loader.jsx';
+import clsx from 'clsx';
 
 const Currency = () => {
     const [usdRate, setUsdRate] = useState({ rateBuy: 0, rateSell: 0 });
@@ -39,35 +40,37 @@ const Currency = () => {
     ];
 
     return (
-        <div className={s.wrapper}>
-            {loading && <Loader />}
-            {error && <p className={s.error}>{error}</p>}
-            {!loading && !error && (
-                <>
-                    <table className={s.tab}>
-                        <thead>
-                            <tr className={s.header}>
-                                <th className={s.item}>Currency</th>
-                                <th className={s.item}>Purchase</th>
-                                <th className={s.item}>Sale</th>
-                            </tr>
-                        </thead>
-                        <tbody className= {s.font}>
-                            <tr className={s.tr}>
-                                <td className={s.item}>USD</td>
-                                <td className={s.item}>{usdRate.rateBuy}</td>
-                                <td className={s.item}>{usdRate.rateSell}</td>
-                            </tr>
-                            <tr className={s.tr}>
-                                <td className={s.item}>EUR</td>
-                                <td className={s.item}>{euroRate.rateBuy}</td>
-                                <td className={s.item}>{euroRate.rateSell}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <CurrencyChart data={data} />
-                </>
-            )}
+        <div className={s.container}>
+            <div className={s.wrapper}>
+                {loading && <Loader />}
+                {error && <p className={s.error}>{error}</p>}
+                {!loading && !error && (
+                    <>
+                        <table className={s.tab}>
+                            <thead>
+                                <tr className={clsx(s.tr, s.header)}>
+                                    <th className={s.item}>Currency</th>
+                                    <th className={s.item}>Purchase</th>
+                                    <th className={s.item}>Sale</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className={s.tr}>
+                                    <td className={s.item}>USD</td>
+                                    <td className={s.item}>{usdRate.rateBuy}</td>
+                                    <td className={s.item}>{usdRate.rateSell}</td>
+                                </tr>
+                                <tr className={s.tr}>
+                                    <td className={s.item}>EUR</td>
+                                    <td className={s.item}>{euroRate.rateBuy}</td>
+                                    <td className={s.item}>{euroRate.rateSell}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <CurrencyChart data={data} />
+                    </>
+                )}
+            </div>
         </div>
     );
 };

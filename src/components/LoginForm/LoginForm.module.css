@@ -7,40 +7,44 @@
     right: 0;
     width: 100%;
     height: 100%;
-    background: #101010 url('/images/gradient-mobile.webp') no-repeat center / cover;
+    background-color: #101010;
+    background-image: url('/images/login/gradient-mobile.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 @media only screen and (min-resolution: 192dpi) {
-.backdrop {
-    background-image: url('/images/login-modal-mob@2x.webp');
-}
+    .backdrop {
+        background-image: url('/images/login/gradient-mobile@2x.webp');
+    }
 }
 
 @media only screen and (min-width: 768px) {
-.backdrop {
-    background-image: url('/images/login-tablet.webp');
-}
+    .backdrop {
+        background-image: url('/images/login/login-tablet.webp');
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1279px) and (min-resolution: 192dpi) {
-.backdrop {
-    background-image: url('/images/bg-login-tab@2x.webp');
-}
+    .backdrop {
+        background-image: url('/images/login/bg-login-tab@2x.webp');
+    }
 }
 
 @media only screen and (min-width: 1280px) {
-.backdrop {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: url('/images/login-desktop.webp');
-}
+    .backdrop {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('/images/login/login-desktop.webp');
+    }
 }
 
 @media only screen and (min-width: 1280px) and (min-resolution: 192dpi) {
-.backdrop {
-    background-image: url('/images/bg-login-desk@2x.webp');
-}
+    .backdrop {
+        background-image: url('/images/login/bg-login-desk@2x.webp');
+    }
 }
 
 .modal {
@@ -53,25 +57,23 @@
 }
 
 @media only screen and (min-width: 768px) {
-.modal {
-    border-radius: 8px;
-    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.35);
-    width: 533px;
-    height: 570px;
-    padding: 80px 62px;
-    background: rgba(255, 255, 255, 0.1);
-    background-position: -60px -60px;
-    background-size: 125% 125%;
-    background-position: center;
-    background-image: url('/images/login-modal-desk@1x.webp'),
-    url('/images/login-modal-circle-desk@1x.webp');
-}
+    .modal {
+        border-radius: 8px;
+        box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.35);
+        width: 533px;
+        height: 570px;
+        padding: 80px 62px;
+        background: rgba(255, 255, 255, 0.1);
+        background-position: -60px -60px;
+        background-size: 125% 125%;
+        background-position: center;
+        background-image: url('/images/login-modal-desk@1x.webp'), url('/images/login-modal-circle-desk@1x.webp');
+    }
 }
 
 @media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
-.modal {
-    background-image: url('/images/login-modal-desk@2x.webp'),
-    url('/images/login-modal-circle-desk@2x.webp');
+    .modal {
+        background-image: url('/images/login-modal-desk@2x.webp'), url('/images/login-modal-circle-desk@2x.webp');
     }
 }
 

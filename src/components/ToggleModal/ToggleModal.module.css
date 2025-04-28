@@ -41,14 +41,14 @@
     border-radius: 50%;
     background-color: var(--dashboard-text);
     box-shadow: 0px 6px 15px 0px rgba(255, 134, 141, 0.5);
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .toggleCircleActive {
     left: -5px;
     background-color: var(--yellow);
     box-shadow: 0px 6px 15px 0px rgba(255, 199, 39, 0.5);
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 .plusToggle {

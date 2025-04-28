@@ -30,9 +30,9 @@ const DashboardPage = () => {
     return (
         <>
             <Header />
-            <section className={css.dashboardPage}>
-                <main>
-                    <div className={css.dashboard}>
+            <main>
+                <section className={css.dashboardPage}>
+                    <>
                         <div className={css.dashboardData}>
                             <div>
                                 <div className={css.navigation}>
@@ -42,17 +42,17 @@ const DashboardPage = () => {
                             </div>
                             <div className={css.currency}>{!isMobile && <Currency />}</div>
                         </div>
-                        <div className={css.divider}></div>
+
                         <Suspense fallback={<Loader />}>
                             <Outlet />
                         </Suspense>
                         <ModalLogOut />
                         <ModalEditTransaction />
                         <ModalAddTransaction />
-                    </div>
-                </main>
-                <Toaster />
-            </section>
+                    </>
+                </section>
+            </main>
+            <Toaster />
         </>
     );
 };

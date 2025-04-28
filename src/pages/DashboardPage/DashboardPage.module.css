@@ -1,8 +1,8 @@
 .dashboardPage {
     width: 320px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
 }
 
 .navigation {
@@ -18,9 +18,6 @@
 @media (min-width: 768px) {
     .dashboardPage {
         width: 768px;
-    }
-
-    .dashboard {
         padding-left: 32px;
         padding-right: 32px;
         padding-bottom: 32px;
@@ -28,20 +25,21 @@
 
     .dashboardData {
         display: flex;
-        flex-direction: row;
-        align-items: end;
         gap: 32px;
         margin-bottom: 20px;
     }
+
     .currency {
         display: block;
     }
+
     .navigation {
         width: 336px;
     }
 
     .balance {
         display: block;
+        height: 80px;
         width: 336px;
     }
 }
@@ -49,18 +47,32 @@
 @media (min-width: 1280px) {
     .dashboardPage {
         width: 1280px;
-    }
-
-    .dashboard {
-        padding-left: 0;
-        display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        padding: 0;
+        padding-right: 16px;
     }
 
     .dashboardData {
+        position: relative;
+        display: flex;
         flex-direction: column;
-        gap: 33px;
+        justify-content: space-between;
+
+        width: 480px;
+        max-height: calc(100vh - 110px);
         margin-bottom: 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            border-right: 1px solid var(--white-60);
+            filter: var(--drop-shadow);
+        }
     }
 
     .navigation {
@@ -68,14 +80,7 @@
     }
 
     .balance {
+        height: 80px;
         width: 480px;
-    }
-
-    .divider {
-        display: block;
-        width: 1px;
-        background-color: var(--white-600);
-        box-shadow: 1px 4px 1px 0 rgba(0, 0, 0, 0.25);
-        flex-shrink: 0;
     }
 }

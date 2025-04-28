@@ -138,8 +138,8 @@
     border: none;
     border-bottom: 2px solid var(--white-40);
     overflow: hidden;
-    transition: var(--transition);
-    color: var(--white-60);
+    transition: all 0.3s ease;
+    color: var(--white);
     background-color: transparent;
     &:focus,
     &:hover {
@@ -167,6 +167,7 @@
 .commentInput {
     padding: 0 20px 32px;
     resize: none;
+
     &::placeholder {
         font-weight: 400;
         font-size: 18px;
@@ -210,7 +211,7 @@
     border: none;
     box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
     background-position: left center;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     &:hover,
     &:focus {
         background-size: 200%;
@@ -241,12 +242,4 @@ input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
-
-input[type='number'] {
-    input[type='number'] {
-        appearance: textfield; /* Standard */
-        -moz-appearance: textfield; /* Firefox */
-        -webkit-appearance: none; /* Chrome, Safari, Edge */
-    }
 }

@@ -12,10 +12,11 @@ const Balance = () => {
         dispatch(getBalanceThunk());
     }, [dispatch]);
 
-    const formattedBalance = new Intl.NumberFormat('en-IN', {
+    const formattedBalance = new Intl.NumberFormat('uk-UA', {
+        style: 'decimal',
         minimumFractionDigits: 2,
     })
-        .format(balance || 0)
+        .format(balance)
         .replace(',', '.');
 
     return (

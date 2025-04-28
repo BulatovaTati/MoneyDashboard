@@ -7,17 +7,15 @@ const ButtonAddTransactions = () => {
     const dispatch = useDispatch();
 
     return (
-        <div className={s.wrap}>
-            <button
-                className={s.btn}
-                type="button"
-                onClick={() => {
-                    dispatch(openAddModal());
-                }}
-            >
-                  <FiPlus className={s.icon} /> 
-            </button>
-        </div>
+        <button
+            className={s.btn}
+            type="button"
+            onClick={() => {
+                dispatch(openAddModal());
+            }}
+        >
+            <FiPlus className={s.icon} />
+        </button>
     );
 };
 

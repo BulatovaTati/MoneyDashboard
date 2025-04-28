@@ -9,11 +9,11 @@ const HomeTab = () => {
     const { isMobile } = useMedia();
 
     return (
-        <div className={s.homeTab}>
+        <>
             {isMobile && <Balance />}
             <TransactionsList />
             <ButtonAddTransactions />
-        </div>
+        </>
     );
 };
 

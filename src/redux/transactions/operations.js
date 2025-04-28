@@ -14,7 +14,6 @@ export const getTransactions = createAsyncThunk('transactions/all', async (_, th
 export const addTransactions = createAsyncThunk('transactions/add', async (transaction, thunkApi) => {
     try {
         const { data } = await userTransactionsApi.post('/api/transactions', transaction);
-        console.log('data: ', data);
 
         thunkApi.dispatch(getBalanceThunk());
         return data;

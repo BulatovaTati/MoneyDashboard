@@ -46,13 +46,18 @@ const EditTransactionForm = () => {
         const updatedTransaction = {
             date: startDate.toISOString(),
             comment: data.comment,
-            amount: parseFloat(data.amount) * (transaction.type === 'EXPENSE' ? -1 : 1),
+            amount: parseFloat(data.amount),
             type: transaction.type,
             categoryId: transaction.categoryId,
-            id: transaction._id,
+            // date: startDate.toISOString(),
+            // comment: data.comment,
+            // amount: parseFloat(data.amount) * (transaction.type === 'EXPENSE' ? -1 : 1),
+            // type: transaction.type,
+            // categoryId: transaction.categoryId,
+            // id: transaction._id,
         };
 
-        dispatch(editTransactions(updatedTransaction))
+        dispatch(editTransactions({ id: transaction._id, updatedTransaction }))
             .unwrap()
             .then(() => dispatch(closeModal()))
             .catch(error => {
@@ -60,11 +65,18 @@ const EditTransactionForm = () => {
             });
     };
 
-    const currentCategory = categories.find(cat => cat.id === transaction.categoryId)?.name;
+    const currentCategory = categories.data?.find(cat => cat.id === transaction.categoryId)?.name;
 
     return (
         <>
-            <div className={css.backdrop} onClick={() => dispatch(closeModal())}></div>
+            <div className={css.backdrop}>
+                <button className={css.closeButton} type="button" onClick={() => dispatch(closeModal())}>
+                    <svg width="24" height="24" viewBox="0 0 32 32">
+                        <path d="M1.778 1.778l28.444 28.444" stroke="currentColor" strokeWidth="1.7778" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="4" />
+                        <path d="M1.778 30.222l28.444-28.444" stroke="currentColor" strokeWidth="1.7778" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="4" />
+                    </svg>
+                </button>
+            </div>
             <div className={css.modal}>
                 <div className={css.header}>
                     <h2 className={css.title}>Edit transaction</h2>

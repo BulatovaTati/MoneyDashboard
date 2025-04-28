@@ -21,14 +21,9 @@ const formatDate = dateString => {
 function TransactionsItem({ transaction }) {
     if (!transaction) return null;
 
-    const formatNumber = number => {
-        return number
-            .toFixed(2)
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-    };
-
-    const categories = useSelector(selectCategories);
+    const sum = Math.abs(transaction.amount);
+    const formSum = new Intl.NumberFormat().format(sum);
+    const categories = useSelector(selectCategories).data;
     const category = getTransactionCategory(transaction.categoryId, categories);
     const dispatch = useDispatch();
     const { isMobile } = useMedia();

@@ -2,7 +2,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
@@ -19,10 +19,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 const schema = yup.object().shape({
     amount: yup.number().typeError('Amount must be a number').required('Amount is required').positive('Amount must be positive'),
     comment: yup.string().max(100, 'Max 100 characters').required('Comment is required'),
+    date: yup.date().required('Date is required'),
 });
 
 const AddTransactionForm = () => {
     const [date, setTransactionDate] = useState(new Date());
+
     const [isTransactionIncome, setIsTransactionIncome] = useState(false);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const rawCategories = useSelector(selectCategories);
@@ -38,17 +40,20 @@ const AddTransactionForm = () => {
         defaultValues: {
             amount: '',
             comment: '',
+            date: new Date(),
         },
         resolver: yupResolver(schema),
     });
+
+    useEffect(() => {
+        setTransactionDate(new Date());
+    }, []);
 
     const filteredCategories = rawCategories
         .filter(category => category.type !== 'INCOME')
         .map(category => ({
             value: category.id,
             label: category.name,
-
-            // isDisabled: category.name === 'Main expenses',
         }));
 
     const onSubmit = data => {
@@ -56,16 +61,16 @@ const AddTransactionForm = () => {
 
         const newTransaction = {
             type: isTransactionIncome ? 'INCOME' : 'EXPENSE',
-            date: date.toISOString(),
-            comment: data.comment,
-            amount: isTransactionIncome ? parseFloat(data.amount) : parseFloat(data.amount),
+            date: new Date(data.date).toISOString(),
+            comment: data.comment.trim(),
+            amount: parseFloat(data.amount),
             categoryId,
         };
 
         dispatch(addTransactions(newTransaction))
             .unwrap()
             .then(() => {
-                reset();
+                reset({ amount: '', comment: '', date: new Date() });
                 dispatch(closeModal());
             })
             .catch(error => {
@@ -114,17 +119,12 @@ const AddTransactionForm = () => {
                     <Controller
                         control={control}
                         name="date"
-                        render={() => (
-                            <DatePicker
-                                selected={date}
-                                onChange={date => setTransactionDate(date)}
-                                calendarStartDay={1}
-                                dateFormat="dd.MM.yyyy"
-                                maxDate={new Date()}
-                                customInput={<CustomIconForCalendar />}
-                            />
+                        defaultValue={new Date()}
+                        render={({ field }) => (
+                            <DatePicker selected={field.value} onChange={field.onChange} calendarStartDay={1} dateFormat="dd.MM.yyyy" maxDate={new Date()} customInput={<CustomIconForCalendar />} />
                         )}
                     />
+                    {errors.date && <div className={css.errorForDate}>{errors.date.message}</div>} {}
                 </div>
                 <div>
                     <textarea rows="2" placeholder="Comment" {...register('comment')} className={css.commentInput} />

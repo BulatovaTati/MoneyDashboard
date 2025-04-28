@@ -6,6 +6,7 @@
 }
 
 .form {
+    /* margin-top: 60px; */
     max-width: 280px;
     display: flex;
     align-items: center;
@@ -41,7 +42,7 @@
     justify-content: center;
     flex-shrink: 0;
     margin: 40px 0 32px;
-    padding-top: 32px;
+    /* padding-top: 32px; */
 }
 .header {
     font-weight: 400;
@@ -149,6 +150,7 @@
     }
 
     .twoInput {
+        /* margin-top: 60px; */
         flex-direction: row;
         gap: 32px;
         max-width: 394px;

@@ -200,10 +200,6 @@
     text-align: center;
 }
 
-.column3 .listboxButton {
-    width: 155px;
-}
-
 .column2 .listboxOptions {
     width: 105px;
     text-align: center;
@@ -215,7 +211,7 @@
 
 .column4 {
     width: 105px;
-    padding-left: 16px;
+    padding-left: 10px;
 }
 
 .column5 {
@@ -248,7 +244,6 @@
         padding: 0;
         max-height: 60vh;
         overflow-y: scroll;
-        scrollbar-width: none;
     }
 
     .financeTable,

@@ -4,16 +4,20 @@ td.income {
     text-align: right;
     padding-right: 16px;
 }
+
 td.expense {
     color: #f87171;
     font-weight: 600 !important;
     text-align: right;
     padding-right: 16px;
 }
+
 .tableSection,
 .tableSectionExp {
     margin: 0 auto;
+    cursor: pointer;
 }
+
 .date,
 .type,
 .category,
@@ -22,33 +26,40 @@ td.expense {
     padding: 16px 0;
     word-wrap: break-word;
 }
+
 .date {
     text-align: left;
     padding-left: 20px;
 }
+
 .type {
     width: auto;
     text-align: left;
     padding-left: 20px;
 }
+
 .category,
 .comment {
     text-align: left;
 }
+
 .actionBtn {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
     padding: 24px;
+    transition: all 0.3s ease;
 }
+
 .editBtn {
     color: #9ca3af;
     background: none;
     border: none;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
+
 .deleteBtn {
     width: 69px;
     height: 29px;
@@ -61,30 +72,38 @@ td.expense {
     cursor: pointer;
     font-size: 14px;
     box-shadow: var(--button-shadow);
-    transition: var(--transition);
     background-size: 200%;
+    transition: all 0.3s ease;
 }
+
 .deleteBtn:hover,
-.deleteBtn:focus {
-    background-position: right center;
+.deleteBtn:focus,
+.editBtn:hover,
+.editBtn:focus {
     transform: var(--scale);
 }
+
 .column1 {
     width: 105px;
 }
+
 .column2 {
     width: 105px;
     text-align: center;
 }
+
 .column3 {
     width: 155px;
 }
+
 .column4 {
     width: 105px;
 }
+
 .column5 {
     width: 105px;
 }
+
 .column6 {
     width: 140px;
 }
@@ -93,7 +112,7 @@ td.expense {
     .mobileSection,
     .mobileSectionExp {
         position: relative;
-        background: #523b7e99;
+        background-color: #523b7e99;
         border-radius: 10px;
         margin: 0 auto 12px;
         padding: 12px 20px;
@@ -118,9 +137,11 @@ td.expense {
         height: 100%;
         border-radius: 10px 0 0 10px;
     }
+
     .mobileSection::before {
         background-color: #fbbf24;
     }
+
     .mobileSectionExp::before {
         background-color: #ff6a3d;
     }
@@ -132,10 +153,12 @@ td.expense {
         padding: 8px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
+
     .spanLabel {
         font-weight: 600;
         font-size: 16px;
     }
+
     .spanValue {
         text-align: right;
         word-wrap: break-word;
@@ -146,6 +169,7 @@ td.expense {
         color: #fbbf24;
         font-weight: 600;
     }
+
     .spanValue.expense {
         color: #f87171;
         font-weight: 600;
@@ -156,6 +180,7 @@ td.expense {
         justify-content: space-between;
         margin-top: 12px;
     }
+
     .editBtn {
         display: flex;
         align-items: center;
@@ -164,6 +189,6 @@ td.expense {
         background: none;
         border: none;
         cursor: pointer;
-        transition: var(--transition);
+        transition: all 0.3 ease;
     }
 }

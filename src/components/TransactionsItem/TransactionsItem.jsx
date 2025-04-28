@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useMedia from '../../hooks/useMedia';
-import { deleteTransactions } from '../../redux/transactions/operations';
-import { openEditModal } from '../../redux/modals/slice';
 import { LuPencil } from 'react-icons/lu';
-import { setCurrentTransaction } from '../../redux/transactions/slice';
 import { AnimatePresence, motion } from 'framer-motion';
-import s from './TransactionsItem.module.css';
+
+import { openEditModal } from '../../redux/modals/slice';
+import { deleteTransactions } from '../../redux/transactions/operations';
+import { setCurrentTransaction } from '../../redux/transactions/slice';
 import { selectCategories } from '../../redux/statistics/selectors';
+
+import s from './TransactionsItem.module.css';
 
 const getTransactionCategory = (categoryId, categories) => {
     const found = categories.find(item => item.id === categoryId);

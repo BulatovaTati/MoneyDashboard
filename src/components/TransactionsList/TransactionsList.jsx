@@ -15,8 +15,8 @@ import { selectCategories } from '../../redux/statistics/selectors';
 
 import s from './TransactionsList.module.css';
 
-const typeOptions = ['All Types', '+', '-'];
-const categoryOptions = ['All Categories', 'Main expenses', 'Products', 'Car', 'Self care', 'Child care', 'Household products', 'Education', 'Leisure', 'Other expenses', 'Entertainment', 'Income'];
+const typeOptions = ['Type', '+', '-'];
+const categoryOptions = ['Category', 'Main expenses', 'Products', 'Car', 'Self care', 'Child care', 'Household products', 'Education', 'Leisure', 'Other expenses', 'Entertainment', 'Income'];
 
 const mapTypeSymbolToKey = symb => (symb === '+' ? 'INCOME' : symb === '-' ? 'EXPENSE' : null);
 
@@ -35,8 +35,8 @@ function TransactionsList() {
 
     const [sortField, setSortField] = useState(null);
     const [sortOrder, setSortOrder] = useState('desc');
-    const [selectedType, setSelectedType] = useState('All Types');
-    const [selectedCategory, setSelectedCategory] = useState('All Categories');
+    const [selectedType, setSelectedType] = useState('Type');
+    const [selectedCategory, setSelectedCategory] = useState('Category');
 
     const toggleSort = field => {
         if (sortField === field) {
@@ -50,11 +50,11 @@ function TransactionsList() {
     const sortedFilteredTransactions = useMemo(() => {
         let list = [...transactions];
 
-        if (selectedType !== 'All Types') {
+        if (selectedType !== 'Type') {
             const key = mapTypeSymbolToKey(selectedType);
             list = list.filter(t => t.type === key);
         }
-        if (selectedCategory !== 'All Categories') {
+        if (selectedCategory !== 'Category') {
             list = list.filter(t => getCategoryName(t.categoryId, categories) === selectedCategory);
         }
         if (sortField) {
@@ -145,9 +145,7 @@ function TransactionsList() {
                                 )}
                             </Listbox>
                         </th>
-
                         <th className={`${s.comment} ${s.column4}`}>Comment</th>
-
                         <th className={`${s.sum} ${s.column5}`} onClick={() => toggleSort('sum')}>
                             Sum
                             <FaSort
@@ -158,7 +156,6 @@ function TransactionsList() {
                                 }}
                             />
                         </th>
-
                         <th className={`${s.actions} ${s.column6}`}></th>
                     </tr>
                 </thead>

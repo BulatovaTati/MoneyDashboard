@@ -101,7 +101,6 @@
 
 .financeTable tbody::-webkit-scrollbar-thumb {
     background-color: #6b5e97;
-    border-radius: 4px;
 }
 
 .financeTable tbody::-webkit-scrollbar-track {

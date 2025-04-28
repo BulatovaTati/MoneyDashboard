@@ -20,15 +20,17 @@ body {
     background-attachment: fixed;
 
     ::-webkit-scrollbar-thumb {
-        background-color: var(--scrollbar-bcg);
+        scrollbar-color: #6b5e97 #2d2a40;
     }
+
     ::-webkit-scrollbar-thumb:hover {
-        background-color: var(--dashboard-text);
+        background-color: #6b5e97;
     }
 
     * {
         scrollbar-width: thin;
-        scrollbar-color: var(--scrollbar-color) transparent;
+        scrollbar-color: #6b5e97 transparent;
+        border-radius: 4px;
     }
 }
 

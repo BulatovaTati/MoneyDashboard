@@ -10,8 +10,9 @@ import { selectCurrentTransaction } from '../../redux/transactions/selectors';
 import { editTransactions } from '../../redux/transactions/operations';
 import { closeModal } from '../../redux/modals/slice';
 import CustomIconForCalendar from '../AddTransactionForm/CustomIconForCalendar';
-import css from './EditTransactionForm.module.css';
+import { showToast } from '../CustomToaster/CustomToaster';
 import 'react-datepicker/dist/react-datepicker.css';
+import css from './EditTransactionForm.module.css';
 
 const ValidationEditTransaction = () => {
     return yup.object().shape({
@@ -24,7 +25,6 @@ const EditTransactionForm = () => {
     const dispatch = useDispatch();
     const { transaction } = useSelector(selectCurrentTransaction);
     const categories = useSelector(selectCategories);
-    const [isLoading, setIsLoading] = useState(false);
     const [startDate, setStartDate] = useState(new Date(transaction.date));
 
     if (!transaction) return null;
@@ -46,25 +46,23 @@ const EditTransactionForm = () => {
         const updatedTransaction = {
             date: startDate.toISOString(),
             comment: data.comment,
-            amount: parseFloat(data.amount) * (transaction.type === 'EXPENSE' ? -1 : 1),
+            amount: parseFloat(data.amount),
             type: transaction.type,
             categoryId: transaction.categoryId,
-            id: transaction._id,
         };
 
-        dispatch(editTransactions(updatedTransaction))
+        dispatch(editTransactions({ id: transaction._id, updatedTransaction }))
             .unwrap()
             .then(() => dispatch(closeModal()))
             .catch(error => {
-                console.error('Failed to edit transaction:', error.message);
+                showToast('error', 'Please try again.');
             });
     };
 
-    const currentCategory = categories.find(cat => cat.id === transaction.categoryId)?.name;
+    const currentCategory = categories.data?.find(cat => cat.id === transaction.categoryId)?.name;
 
     return (
         <>
-            <div className={css.backdrop} onClick={() => dispatch(closeModal())}></div>
             <div className={css.modal}>
                 <div className={css.header}>
                     <h2 className={css.title}>Edit transaction</h2>

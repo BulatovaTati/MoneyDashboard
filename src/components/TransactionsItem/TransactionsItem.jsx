@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useMedia from '../../hooks/useMedia';
 import { LuPencil } from 'react-icons/lu';
@@ -31,21 +30,28 @@ const itemVariants = {
 const defaultTransition = { duration: 0.3, ease: 'easeInOut' };
 
 function TransactionsItem({ transaction }) {
-    if (!transaction) return null;
     const dispatch = useDispatch();
     const { isMobile } = useMedia();
     const categories = useSelector(selectCategories);
+
+    if (!transaction) return null;
+
+    const formatNumber = number => {
+        return number
+            .toFixed(2)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    };
 
     const onEdit = () => {
         dispatch(openEditModal());
         dispatch(setCurrentTransaction({ transaction }));
     };
+
     const onDelete = () => {
         dispatch(deleteTransactions(transaction._id));
     };
 
-    const sum = Math.abs(transaction.amount);
-    const formSum = new Intl.NumberFormat().format(sum);
     const categoryName = getTransactionCategory(transaction.categoryId, categories);
     const isIncome = transaction.type === 'INCOME';
 
@@ -57,7 +63,7 @@ function TransactionsItem({ transaction }) {
                     <td className={`${s.type} ${s.column2}`}>{isIncome ? '+' : '-'}</td>
                     <td className={`${s.category} ${s.column3}`}>{categoryName}</td>
                     <td className={`${s.comment} ${s.column4}`}>{transaction.comment}</td>
-                    <td className={`${isIncome ? s.income : s.expense} ${s.column5}`}>{formSum}</td>
+                    <td className={`${isIncome ? s.income : s.expense} ${s.column5}`}>{formatNumber(transaction.amount)}</td>
                     <td className={`${s.actionBtn} ${s.column6}`}>
                         <button type="button" className={s.editBtn} onClick={onEdit}>
                             <LuPencil style={{ width: '14px', height: '14px' }} />
@@ -87,7 +93,7 @@ function TransactionsItem({ transaction }) {
                     </div>
                     <div className={s.field}>
                         <span className={s.spanLabel}>Sum</span>
-                        <span className={`${s.spanValue} ${isIncome ? s.income : s.expense}`}>{formSum}</span>
+                        <span className={`${s.spanValue} ${isIncome ? s.income : s.expense}`}>{formatNumber(transaction.amount)}</span>
                     </div>
                     <div className={s.actionsMobile}>
                         <button type="button" className={s.deleteBtn} onClick={onDelete}>

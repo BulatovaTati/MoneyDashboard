@@ -116,15 +116,6 @@ td.expense {
         border-radius: 10px;
         margin: 0 auto 12px;
         padding: 12px 20px;
-        width: 280px;
-        max-height: 60vh;
-        overflow-y: scroll;
-        scrollbar-width: none;
-    }
-
-    .mobileSection::-webkit-scrollbar,
-    .mobileSectionExp::-webkit-scrollbar {
-        display: none;
     }
 
     .mobileSection::before,

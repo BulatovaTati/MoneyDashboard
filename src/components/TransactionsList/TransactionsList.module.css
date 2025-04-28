@@ -9,7 +9,7 @@
     width: 100%;
     min-height: 100px;
     height: 100%;
-    margin-left: 112px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,7 +90,6 @@
 }
 
 .sum {
-    text-align: right;
     cursor: pointer;
 }
 
@@ -164,7 +163,7 @@
     padding: 10px 16px;
     cursor: pointer;
     color: #fff;
-    transition: background 0.2s;
+    transition: background-color 0.2s ease;
 }
 
 .listboxOption:hover,
@@ -211,7 +210,6 @@
 
 .column4 {
     width: 105px;
-    padding-left: 10px;
 }
 
 .column5 {

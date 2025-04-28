@@ -15,7 +15,6 @@ body {
     color: var(--white);
     background-color: var(--background-color);
 
-    background-image: url('/images/gradient-desktop.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -35,19 +34,19 @@ body {
 
 @media only screen and (max-width: 767.98px) {
     body {
-        background-image: url('/images/gradient-mobile.webp');
+        background-image: url('/images/gradient-mob.webp');
     }
 }
 
 @media only screen and (min-width: 768px) {
     body {
-        background-image: url('/images/gradient-tablet.webp');
+        background-image: url('/images/gradient-tab.webp');
     }
 }
 
 @media only screen and (min-width: 1280px) {
     body {
-        background-image: url('/images/gradient-desktop.webp');
+        background-image: url('/images/gradient-desk.webp');
     }
 }
 

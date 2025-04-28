@@ -1,221 +1,185 @@
 td.income {
-  color: #fbbf24;
-  font-weight: 600 !important;
-  text-align: right;
-  padding-right: 16px;
+    color: #fbbf24;
+    font-weight: 600 !important;
+    text-align: right;
+    padding-right: 16px;
 }
 
 td.expense {
-  color: #f87171;
-  font-weight: 600 !important;
-  text-align: right;
-  padding-right: 16px;
+    color: #f87171;
+    font-weight: 600 !important;
+    text-align: right;
+    padding-right: 16px;
 }
 
-.tableSection {
-  margin: 0 auto;
-}
-
+.tableSection,
 .tableSectionExp {
-  margin: 0 auto;
+    margin: 0 auto;
+    cursor: pointer;
 }
 
 .date,
 .type,
 .category,
 .comment {
-  font-weight: 400;
-  padding: 16px 0;
-  word-wrap: break-word;
+    font-weight: 400;
+    padding: 16px 0;
+    word-wrap: break-word;
 }
 
 .date {
-  text-align: left;
-  padding-left: 20px;
+    text-align: left;
+    padding-left: 20px;
 }
 
 .type {
-  width: auto;
-  text-align: left;
-  padding-left: 20px;
+    width: auto;
+    text-align: left;
+    padding-left: 20px;
 }
 
 .category,
 .comment {
-  text-align: left;
+    text-align: left;
 }
-
-.buttonContainer {
-  display: flex;
-} 
 
 .actionBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 24px;
-}
-
-.comment:first-letter {
-  text-transform: capitalize;
-}
-
-.textEdit {
-  display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 24px;
+    transition: all 0.3s ease;
 }
 
 .editBtn {
-  color: #9ca3af;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.editIcon:hover,
-.editIcon:focus {
-  scale: 1.5;
-  stroke: var(--white);
+    color: #9ca3af;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .deleteBtn {
-  width: 69px;
-  height: 29px;
-  border-radius: 20px;
-  background-position: left center;
-  background: var(--button-gradient);
-  color: var(--white);
-  padding: 4px 12px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  box-shadow: var(--button-shadow);
-  transition: var(--transition);
-  background-size: 200%;
+    width: 69px;
+    height: 29px;
+    border-radius: 20px;
+    background-position: left center;
+    background: var(--button-gradient);
+    color: var(--white);
+    padding: 4px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: var(--button-shadow);
+    background-size: 200%;
+    transition: all 0.3s ease;
 }
 
 .deleteBtn:hover,
-.deleteBtn:focus {
-  background-position: right center;
-  transform: var(--scale);
+.deleteBtn:focus,
+.editBtn:hover,
+.editBtn:focus {
+    transform: var(--scale);
 }
 
-@media screen and (max-width: 767px) {
-  .textEdit {
-    display: contents;
-    font-size: 16px;
-  }
+.column1 {
+    width: 105px;
+}
 
-  .textEdit:hover {
-    transform: var(--scale);
-    color: var(--white);
-  }
+.column2 {
+    width: 105px;
+    text-align: center;
+}
 
-  .editIcon:hover,
-  .editIcon:focus {
-    scale: 1;
-    stroke: rgba(255, 255, 255, 0.6);
-  }
+.column3 {
+    width: 155px;
+}
 
-  .editBtn:hover,
-  .editBtn:focus {
-    transform: var(--scale);
-    color: var(--white);
-  }
+.column4 {
+    width: 105px;
+}
 
-  .deleteBtn:hover {
-    background-position: right center;
-    transform: var(--scale);
-  }
+.column5 {
+    width: 105px;
+}
 
-  .tableSection::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 10;
-    width: 5px;
-    height: 100%;
-    background-color: #fbbf24;
-    border-radius: 10px 0 0 10px;
-  }
+.column6 {
+    width: 140px;
+}
 
-  .tableSectionExp::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 10;
-    width: 5px;
-    height: 100%;
-    background-color: #ff6a3d;
-    border-radius: 10px 0 0 10px;
-  }
+@media screen and (max-width: 767.98px) {
+    .mobileSection,
+    .mobileSectionExp {
+        position: relative;
+        background-color: #523b7e99;
+        border-radius: 10px;
+        margin: 0 auto 12px;
+        padding: 12px 20px;
+    }
 
-  .tableSection td {
-    padding: 12px 20px;
-    display: flex;
-  }
+    .mobileSection::before,
+    .mobileSectionExp::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        border-radius: 10px 0 0 10px;
+    }
 
-  .tableSectionExp td {
-    padding: 12px 20px;
-    display: flex;
-  }
+    .mobileSection::before {
+        background-color: #fbbf24;
+    }
 
-  .date {
-    justify-content: space-between;
-  }
+    .mobileSectionExp::before {
+        background-color: #ff6a3d;
+    }
 
-  .type {
-    justify-content: space-between;
+    .field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-    text-align: left;
-    padding-left: 32px;
-  }
+    .spanLabel {
+        font-weight: 600;
+        font-size: 16px;
+    }
 
-  .category {
-    justify-content: space-between;
+    .spanValue {
+        text-align: right;
+        word-wrap: break-word;
+        font-size: 16px;
+    }
 
-    text-align: left;
-    padding-left: 16px;
-  }
+    .spanValue.income {
+        color: #fbbf24;
+        font-weight: 600;
+    }
 
-  .comment {
-    justify-content: space-between;
-    gap: 5px;
-    text-align: left;
-    padding-left: 16px;
-  }
+    .spanValue.expense {
+        color: #f87171;
+        font-weight: 600;
+    }
 
-  .comment p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .actionsMobile {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+    }
 
-  .income,
-  .expense {
-    justify-content: space-between;
-  }
-
-  .actionBtn {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .editBtn {
-    align-items: center;
-    display: flex;
-    gap: 5px;
-  }
-
-  .spanDate,
-  .spanType,
-  .spanType,
-  .spanCategory,
-  .spanComment {
-    font-weight: 600;
-  }
-
-  .spanSum {
-    color: white;
-  }
+    .editBtn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #9ca3af;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3 ease;
+    }
 }

@@ -13,7 +13,7 @@
     padding: 0 20px;
     background-color: #101010;
 
-    background-image: url('/public/images/register/gradient-mobile.webp');
+    background-image: url('/images/register/gradient-mobile.webp');
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,33 +22,32 @@
 
 @media only screen and (min-resolution: 192dpi) {
     .background {
-        background-image: url('/public/images/register/gradient-mobile@2x.webp');
+        background-image: url('/images/register/gradient-mobile@2x.webp');
     }
 }
 
 @media only screen and (min-width: 768px) {
     .background {
-        background-image: url('/public/images/register/tablet-back-dollars-min.png'), url('/public/images/register/gradient-tablet.webp');
-
+        background-image: url('/images/register/tablet-back-dollars-min.png'), url('/public/images/register/gradient-tablet.webp');
         padding: 0;
     }
 }
 
 @media only screen and (min-width: 768px) and (min-resolution: 192dpi) {
     .background {
-        background-image: url('/public/images/register/tablet-back-dollars@2x-min.png'), url('/public/images/register/gradient-tablet@2x.webp');
+        background-image: url('/images/register/tablet-back-dollars@2x-min.png'), url('/public/images/register/gradient-tablet@2x.webp');
     }
 }
 
 @media only screen and (min-width: 1280px) {
     .background {
-        background-image: url('/public/images/register/desktop-back-dollars-min.png'), url('/public/images/register/gradient-desktop.webp');
+        background-image: url('/images/register/desktop-back-dollars-min.png'), url('/public/images/register/gradient-desktop.webp');
     }
 }
 
 @media only screen and (min-width: 1280px) and (min-resolution: 192dpi) {
     .background {
-        background-image: url('/public/images/register/desktop-back-dollars@2x-min.png'), url('/public/images/register/gradient-desktop@2x.webp');
+        background-image: url('/images/register/desktop-back-dollars@2x-min.png'), url('/public/images/register/gradient-desktop@2x.webp');
     }
 }
 

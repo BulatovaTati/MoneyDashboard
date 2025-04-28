@@ -12,6 +12,7 @@ import { closeModal } from '../../redux/modals/slice';
 import CustomIconForCalendar from '../AddTransactionForm/CustomIconForCalendar';
 import css from './EditTransactionForm.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import { showToast } from '../CustomToaster/CustomToaster.jsx';
 
 const ValidationEditTransaction = () => {
     return yup.object().shape({
@@ -24,7 +25,6 @@ const EditTransactionForm = () => {
     const dispatch = useDispatch();
     const { transaction } = useSelector(selectCurrentTransaction);
     const categories = useSelector(selectCategories);
-    const [isLoading, setIsLoading] = useState(false);
     const [startDate, setStartDate] = useState(new Date(transaction.date));
 
     if (!transaction) return null;
@@ -49,19 +49,13 @@ const EditTransactionForm = () => {
             amount: parseFloat(data.amount),
             type: transaction.type,
             categoryId: transaction.categoryId,
-            // date: startDate.toISOString(),
-            // comment: data.comment,
-            // amount: parseFloat(data.amount) * (transaction.type === 'EXPENSE' ? -1 : 1),
-            // type: transaction.type,
-            // categoryId: transaction.categoryId,
-            // id: transaction._id,
         };
 
         dispatch(editTransactions({ id: transaction._id, updatedTransaction }))
             .unwrap()
             .then(() => dispatch(closeModal()))
             .catch(error => {
-                console.error('Failed to edit transaction:', error.message);
+                showToast('error', 'Please try again.');
             });
     };
 

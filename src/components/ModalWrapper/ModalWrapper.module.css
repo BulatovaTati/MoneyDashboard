@@ -6,9 +6,7 @@
     border: 0;
     display: flex;
     justify-content: flex-end;
-    z-index: 10;
     transition: transform 0.3s ease, fill 0.3s ease;
-
     &:hover,
     &:focus {
         transform: scale(1.1);

@@ -6,7 +6,6 @@
 }
 
 .form {
-    /* margin-top: 60px; */
     max-width: 280px;
     display: flex;
     align-items: center;
@@ -21,7 +20,6 @@
 
 .toggle {
     text-align: right;
-    font-family: var(--font-family);
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -32,7 +30,6 @@
 .title {
     color: var(--white);
     text-align: center;
-    font-family: Poppins;
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
@@ -42,7 +39,7 @@
     justify-content: center;
     flex-shrink: 0;
     margin: 40px 0 32px;
-    /* padding-top: 32px; */
+    padding-top: 32px;
 }
 .header {
     font-weight: 400;
@@ -53,7 +50,7 @@
 
 .categoryLabel {
     color: var(--white);
-    font-family: var(--font-family);
+    font-family: inherit;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -63,11 +60,10 @@
     width: 280px;
     text-align: left;
     margin-bottom: 40px;
-    transition: var(--transition);
+    transition: all 0.3 ease;
     &:hover,
     &:focus {
         border-bottom: solid 1px var(--yellow);
-        transition: var(--transition);
     }
 }
 
@@ -80,12 +76,12 @@
     color: var(--white);
     width: 280px;
     outline: none;
-    font-family: var(--font-family);
+    font-family: inherit;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    transition: var(--transition);
+    transition: all 0.3 ease;
     &:hover,
     &:focus {
         border-bottom: solid 1px var(--yellow);
@@ -150,7 +146,6 @@
     }
 
     .twoInput {
-        /* margin-top: 60px; */
         flex-direction: row;
         gap: 32px;
         max-width: 394px;
@@ -169,30 +164,20 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin-bottom: 40px;
 }
-
 .saveButton,
 .cancelButton {
-    color: var(--white);
+    width: 280px;
+    padding: 12px 0;
     text-align: center;
-    font-family: var(--font-family);
     font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    min-width: 300px;
-    padding: 13px 68px;
-    border-radius: 20px;
-    border: none;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-align: center;
+    border-radius: 20px;
+    border: none;
     box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
     background-position: left center;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     &:hover,
     &:focus {
         background-size: 200%;

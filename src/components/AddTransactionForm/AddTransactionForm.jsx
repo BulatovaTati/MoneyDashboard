@@ -2,7 +2,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
@@ -10,6 +10,7 @@ import { addTransactions } from '../../redux/transactions/operations';
 import { selectCategories } from '../../redux/statistics/selectors';
 import { closeModal } from '../../redux/modals/slice';
 
+import { showToast } from '../CustomToaster/CustomToaster';
 import ToggleModal from '../ToggleModal/ToggleModal.jsx';
 import CustomIconForCalendar from './CustomIconForCalendar';
 
@@ -23,8 +24,6 @@ const schema = yup.object().shape({
 });
 
 const AddTransactionForm = () => {
-    const [date, setTransactionDate] = useState(new Date());
-
     const [isTransactionIncome, setIsTransactionIncome] = useState(false);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const rawCategories = useSelector(selectCategories);
@@ -44,10 +43,6 @@ const AddTransactionForm = () => {
         },
         resolver: yupResolver(schema),
     });
-
-    useEffect(() => {
-        setTransactionDate(new Date());
-    }, []);
 
     const filteredCategories = rawCategories
         .filter(category => category.type !== 'INCOME')
@@ -74,7 +69,7 @@ const AddTransactionForm = () => {
                 dispatch(closeModal());
             })
             .catch(error => {
-                console.log(`Failed to add transaction: ${error.message}`);
+                showToast('error', 'Please try again.');
             });
     };
 

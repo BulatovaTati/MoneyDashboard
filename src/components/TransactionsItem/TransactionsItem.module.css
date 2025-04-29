@@ -15,7 +15,6 @@ td.expense {
 .tableSection,
 .tableSectionExp {
     margin: 0 auto;
-    cursor: pointer;
 }
 
 .date,

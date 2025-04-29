@@ -1,13 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { FaSort } from 'react-icons/fa';
+import { formatNumber } from '../../helpers/formatNumber';
+import { getCategoryColor } from '../../helpers/getCategoryColor';
 import css from './StatisticsTable.module.css';
-
-const formatNumber = number => {
-    return number
-        .toFixed(2)
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-};
 
 const StatisticsTable = ({ summary, incomeSummaryByPeriod, expensesSummaryByPeriod }) => {
     const [sortField, setSortField] = useState(null);
@@ -37,11 +32,6 @@ const StatisticsTable = ({ summary, incomeSummaryByPeriod, expensesSummaryByPeri
 
         return sorted;
     }, [summary, sortField, sortOrder]);
-
-    const getCategoryColor = index => {
-        const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#8E44AD', '#2ECC71', '#F39C12', '#E74C3C', '#3498DB', '#1ABC9C', '#D35400'];
-        return colors[index % colors.length];
-    };
 
     return (
         <div className={css.tableWrapper}>

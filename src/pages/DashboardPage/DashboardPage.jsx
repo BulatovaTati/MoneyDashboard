@@ -42,7 +42,6 @@ const DashboardPage = () => {
                             </div>
                             <div className={css.currency}>{!isMobile && <Currency />}</div>
                         </div>
-
                         <Suspense fallback={<Loader />}>
                             <Outlet />
                         </Suspense>

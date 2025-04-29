@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectStatLoading, selectStatError, selectSummary, selectIncomeSummaryByPeriod, selectExpenseSummaryByPeriod } from '../../redux/statistics/selectors';
-
 import { getExpenseSummaryByCategories, getIncomeAndExpenseSummaryByPeriod } from '../../redux/statistics/operations';
 
 import Chart from '../../components/Chart/Chart';
 import StatisticsDashboard from '../../components/StatisticsDashboard/StatisticsDashboard';
 import StatisticsTable from '../../components/StatisticsTable/StatisticsTable';
 import Loader from '../../components/Loader/Loader';
+import { months } from '../../helpers/constants';
 
 import css from './StatisticsTab.module.css';
 
@@ -19,8 +19,6 @@ const StatisticsTab = () => {
     const error = useSelector(selectStatError);
     const incomeSummaryByPeriod = useSelector(selectIncomeSummaryByPeriod);
     const expensesSummaryByPeriod = useSelector(selectExpenseSummaryByPeriod);
-
-    const months = ['All month', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const now = new Date();
     const currentMonthName = months[now.getMonth() + 1];

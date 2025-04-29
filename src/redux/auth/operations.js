@@ -3,7 +3,7 @@ import { removeToken, setToken, userTransactionsApi } from '../../api/userTransa
 
 export const registerThunk = createAsyncThunk('auth/sign-up', async (credentials, thunkApi) => {
     try {
-        const { data } = await userTransactionsApi.post('/api/auth/sign-up', credentials);
+        const { data } = await userTransactionsApi.post('/api/auth/register', credentials);
 
         setToken(data.data.token);
 
@@ -16,7 +16,7 @@ export const registerThunk = createAsyncThunk('auth/sign-up', async (credentials
 
 export const loginThunk = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     try {
-        const { data } = await userTransactionsApi.post('/api/auth/sign-in', credentials);
+        const { data } = await userTransactionsApi.post('/api/auth/login', credentials);
 
         setToken(data.data.token);
 
@@ -28,7 +28,7 @@ export const loginThunk = createAsyncThunk('auth/login', async (credentials, thu
 
 export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     try {
-        await userTransactionsApi.post('/api/auth/sign-out');
+        await userTransactionsApi.post('/api/auth/logout');
         removeToken();
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);

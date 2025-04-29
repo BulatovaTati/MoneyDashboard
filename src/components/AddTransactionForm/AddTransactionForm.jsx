@@ -1,6 +1,5 @@
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Select from 'react-select';
@@ -11,17 +10,14 @@ import { selectCategories } from '../../redux/statistics/selectors';
 import { closeModal } from '../../redux/modals/slice';
 
 import { showToast } from '../CustomToaster/CustomToaster';
-import ToggleModal from '../ToggleModal/ToggleModal.jsx';
+import ToggleModal from '../ToggleModal/ToggleModal';
 import CustomIconForCalendar from './CustomIconForCalendar';
+import FormButton from '../FormButton/FormButton.jsx';
+import { validationAddTransaction } from '../../validations/validateForms';
+import { reactSelectStyles } from '../../helpers/reactSelectStyles';
 
 import css from './AddTransactionForm.module.css';
 import 'react-datepicker/dist/react-datepicker.css';
-
-const schema = yup.object().shape({
-    amount: yup.number().typeError('Amount must be a number').required('Amount is required').positive('Amount must be positive'),
-    comment: yup.string().max(100, 'Max 100 characters').required('Comment is required'),
-    date: yup.date().required('Date is required'),
-});
 
 const AddTransactionForm = () => {
     const [isTransactionIncome, setIsTransactionIncome] = useState(false);
@@ -41,7 +37,7 @@ const AddTransactionForm = () => {
             comment: '',
             date: new Date(),
         },
-        resolver: yupResolver(schema),
+        resolver: yupResolver(validationAddTransaction),
     });
 
     const filteredCategories = rawCategories
@@ -71,22 +67,6 @@ const AddTransactionForm = () => {
             .catch(error => {
                 showToast('error', 'Please try again.');
             });
-    };
-
-    const reactSelectStyles = {
-        option: (provided, state) => ({
-            ...provided,
-            color: state.isDisabled ? '#d4d4d4' : '#fff',
-            cursor: state.isDisabled ? 'not-allowed' : 'pointer',
-        }),
-        control: provided => ({
-            ...provided,
-            cursor: 'pointer',
-        }),
-        dropdownIndicator: provided => ({
-            ...provided,
-            cursor: 'pointer',
-        }),
     };
 
     return (
@@ -126,12 +106,8 @@ const AddTransactionForm = () => {
                     {errors.comment && <div className={css.errorForComment}>{errors.comment.message}</div>}
                 </div>
                 <div className={css.buttonsWrapper}>
-                    <button className={css.btnAdd} type="submit">
-                        Add
-                    </button>
-                    <button className={css.btnCancel} type="button" onClick={() => dispatch(closeModal())}>
-                        Cancel
-                    </button>
+                    <FormButton type={'submit'} text={'Add'} variant={'multiColorButton'} />
+                    <FormButton type={'button'} text={'cancel'} variant={'whiteButton'} handlerFunction={() => dispatch(closeModal())} />
                 </div>
             </form>
         </div>

@@ -13,17 +13,9 @@ import { openAddModal } from '../../redux/modals/slice';
 import { selectTransactions, selectTransactionsLoading, selectTransactionsError } from '../../redux/transactions/selectors';
 import { selectCategories } from '../../redux/statistics/selectors';
 
+import { getCategoryName } from '../../helpers/getCategoryName';
+import { categoryOptions, mapTypeSymbolToKey, typeOptions } from '../../helpers/constants';
 import s from './TransactionsList.module.css';
-
-const typeOptions = ['Type', '+', '-'];
-const categoryOptions = ['Category', 'Main expenses', 'Products', 'Car', 'Self care', 'Child care', 'Household products', 'Education', 'Leisure', 'Other expenses', 'Entertainment', 'Income'];
-
-const mapTypeSymbolToKey = symb => (symb === '+' ? 'INCOME' : symb === '-' ? 'EXPENSE' : null);
-
-const getCategoryName = (categoryId, categories) => {
-    const cat = categories.find(c => c.id === categoryId);
-    return cat ? cat.name : 'Unknown';
-};
 
 function TransactionsList() {
     const dispatch = useDispatch();

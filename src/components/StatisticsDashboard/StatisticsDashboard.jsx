@@ -1,9 +1,7 @@
 import React from 'react';
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/react';
+import { months, years } from '../../helpers/constants';
 import css from './StatisticsDashboard.module.css';
-
-const months = ['All month', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const years = Array.from({ length: new Date().getFullYear() - 2020 + 1 }, (_, i) => `${2020 + i}`);
 
 const StatisticsDashboard = ({ selectedMonth, selectedYear, onMonthChange, onYearChange }) => {
     return (

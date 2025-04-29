@@ -8,7 +8,6 @@
 .container {
     width: 100%;
     min-height: 100px;
-    height: 100%;
 
     display: flex;
     flex-direction: column;
@@ -222,7 +221,9 @@
         width: 100%;
         min-height: 100px;
         margin: auto;
+        padding-top: 46px;
     }
+
     .financeTableContainer {
         width: 704px;
     }

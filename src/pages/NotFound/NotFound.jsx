@@ -1,5 +1,4 @@
-import { Link, Navigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import FormButton from '../../components/FormButton/FormButton';
 import s from './NotFound.module.css';
 

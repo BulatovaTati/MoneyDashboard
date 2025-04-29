@@ -1,24 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
-import useMedia from '../../hooks/useMedia';
 import { LuPencil } from 'react-icons/lu';
 import { AnimatePresence, motion } from 'framer-motion';
+import useMedia from '../../hooks/useMedia';
 
 import { openEditModal } from '../../redux/modals/slice';
 import { deleteTransactions } from '../../redux/transactions/operations';
 import { setCurrentTransaction } from '../../redux/transactions/slice';
 import { selectCategories } from '../../redux/statistics/selectors';
+import { formatDate } from '../../helpers/formatDate';
+import { formatNumber } from '../../helpers/formatNumber';
 
 import s from './TransactionsItem.module.css';
 
 const getTransactionCategory = (categoryId, categories) => {
     const found = categories.find(item => item.id === categoryId);
     return found ? found.name : 'Unknown';
-};
-
-const formatDate = dateString => {
-    if (!dateString) return 'Invalid date';
-    const options = { day: '2-digit', month: '2-digit', year: '2-digit' };
-    return new Date(dateString).toLocaleDateString('uk-UA', options);
 };
 
 const itemVariants = {
@@ -35,13 +31,6 @@ function TransactionsItem({ transaction }) {
     const categories = useSelector(selectCategories);
 
     if (!transaction) return null;
-
-    const formatNumber = number => {
-        return number
-            .toFixed(2)
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-    };
 
     const onEdit = () => {
         dispatch(openEditModal());

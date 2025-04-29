@@ -1,6 +1,5 @@
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
@@ -9,17 +8,14 @@ import { selectCategories } from '../../redux/statistics/selectors';
 import { selectCurrentTransaction } from '../../redux/transactions/selectors';
 import { editTransactions } from '../../redux/transactions/operations';
 import { closeModal } from '../../redux/modals/slice';
+
 import CustomIconForCalendar from '../AddTransactionForm/CustomIconForCalendar';
 import { showToast } from '../CustomToaster/CustomToaster';
+import FormButton from '../FormButton/FormButton';
+import { validationEditTransaction } from '../../validations/validateForms';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import css from './EditTransactionForm.module.css';
-
-const ValidationEditTransaction = () => {
-    return yup.object().shape({
-        amount: yup.number().typeError('Amount must be a number').positive('Amount must be a positive number').required('Amount is required'),
-        comment: yup.string().max(100, 'Comment cannot exceed 100 characters').required('Comment is required'),
-    });
-};
 
 const EditTransactionForm = () => {
     const dispatch = useDispatch();
@@ -39,7 +35,7 @@ const EditTransactionForm = () => {
             amount: Math.abs(transaction.amount),
             comment: transaction.comment,
         },
-        resolver: yupResolver(ValidationEditTransaction()),
+        resolver: yupResolver(validationEditTransaction),
     });
 
     const onSubmit = data => {
@@ -70,9 +66,7 @@ const EditTransactionForm = () => {
                     <span className={`${css.toggle} ${transaction.type === 'EXPENSE' ? css.activeToggle : css.inactiveToggle}`}>Expense</span>
                 </p>
             </div>
-
             {transaction.type === 'EXPENSE' && <p className={currentCategory ? css.categoryLabel : css.categoryLabelEmpty}>{currentCategory}</p>}
-
             <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
                 <div className={css.twoInput}>
                     <div className={css.errorField}>
@@ -94,22 +88,17 @@ const EditTransactionForm = () => {
                         )}
                     />
                 </div>
-
                 <div className={css.errorField}>
                     <input type="text" placeholder="Comment" className={css.textInput} {...register('comment')} />
                     {errors.comment && <span className={css.message}>{errors.comment.message}</span>}
                 </div>
-
                 <div className={css.buttonsWrapper}>
-                    <button type="submit" className={`${css.button} ${css.saveButton}`}>
-                        Save
-                    </button>
-                    <button type="button" className={`${css.button} ${css.cancelButton}`} onClick={() => dispatch(closeModal())}>
-                        Cancel
-                    </button>
+                    <FormButton type={'submit'} text={'Save'} variant={'multiColorButton'} />
+                    <FormButton type={'button'} text={'cancel'} variant={'whiteButton'} handlerFunction={() => dispatch(closeModal())} />
                 </div>
             </form>
         </div>
     );
 };
+
 export default EditTransactionForm;

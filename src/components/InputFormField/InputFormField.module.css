@@ -18,9 +18,9 @@
 }
 
 @media only screen and (min-width: 768px) {
-.input {
-    width: 409px;
-}
+    .input {
+        width: 409px;
+    }
 }
 
 .inputIcon {
@@ -39,11 +39,12 @@
 }
 
 .error {
-    color: var(--yellow);
     position: absolute;
-    top: 3.5em;
+    top: 117%;
+    left: 20px;
+    font-weight: 400;
     font-size: 0.7em;
-    padding-left: 50px;
+    color: #f00000;
 }
 
 .progressBarComponent {
@@ -58,7 +59,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--white-60);;
+    color: var(--white-60);
     font-size: 18px;
     padding: 0;
 }

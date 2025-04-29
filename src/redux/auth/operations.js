@@ -6,7 +6,6 @@ export const registerThunk = createAsyncThunk('auth/sign-up', async (credentials
         const { data } = await userTransactionsApi.post('/api/auth/register', credentials);
 
         setToken(data.data.token);
-
         return data.data;
     } catch (error) {
         const message = error.message || 'Registration failed';
@@ -19,7 +18,6 @@ export const loginThunk = createAsyncThunk('auth/login', async (credentials, thu
         const { data } = await userTransactionsApi.post('/api/auth/login', credentials);
 
         setToken(data.data.token);
-
         return data.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -29,6 +27,7 @@ export const loginThunk = createAsyncThunk('auth/login', async (credentials, thu
 export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     try {
         await userTransactionsApi.post('/api/auth/logout');
+
         removeToken();
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
@@ -45,18 +44,7 @@ export const refreshThunk = createAsyncThunk('auth/current', async (_, thunkApi)
 
     try {
         const { data } = await userTransactionsApi.get('/api/users/current');
-
         return data.data;
-    } catch (error) {
-        return thunkApi.rejectWithValue(error.message);
-    }
-});
-
-export const getBalanceThunk = createAsyncThunk('getBalance', async (_, thunkApi) => {
-    try {
-        const { data } = await userTransactionsApi.get('/api/users/current');
-
-        return data.data.balance;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }

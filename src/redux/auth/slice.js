@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { registerThunk, loginThunk, logoutThunk, refreshThunk, getBalanceThunk } from './operations';
+import { registerThunk, loginThunk, logoutThunk, refreshThunk } from './operations';
+import { addTransactions, deleteTransactions, editTransactions } from '../transactions/operations';
 
 const initialState = {
     user: {
@@ -39,8 +40,14 @@ const slice = createSlice({
                 state.isRefreshing = false;
                 state.isAuthLoading = false;
             })
-            .addCase(getBalanceThunk.fulfilled, (state, { payload }) => {
-                state.user.balance = payload;
+            .addCase(addTransactions.fulfilled, (state, { payload }) => {
+                state.user.balance = payload.balanceAfter;
+            })
+            .addCase(editTransactions.fulfilled, (state, { payload }) => {
+                state.user.balance = payload.balanceAfter;
+            })
+            .addCase(deleteTransactions.fulfilled, (state, { payload }) => {
+                state.user.balance = payload.balanceAfter;
             })
             .addMatcher(isAnyOf(loginThunk.fulfilled, registerThunk.fulfilled), (state, { payload }) => {
                 state.user.name = payload.user.name;

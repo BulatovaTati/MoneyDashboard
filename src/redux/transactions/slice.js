@@ -29,7 +29,7 @@ const slice = createSlice({
             })
             .addCase(deleteTransactions.fulfilled, (state, { payload }) => {
                 state.transactions = state.transactions.filter(transaction => {
-                    return transaction._id !== payload;
+                    return transaction._id !== payload.id;
                 });
             })
             .addMatcher(isAnyOf(getTransactions.fulfilled, addTransactions.fulfilled, editTransactions.fulfilled, deleteTransactions.fulfilled), state => {

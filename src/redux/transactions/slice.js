@@ -25,7 +25,7 @@ const slice = createSlice({
                 state.transactions.push(payload);
             })
             .addCase(editTransactions.fulfilled, (state, { payload }) => {
-                state.transactions = state.transactions.map(item => (item._id === state.currentTransaction._id ? payload : item));
+                state.transactions = state.transactions.map(item => (item._id === payload._id ? payload : item));
             })
             .addCase(deleteTransactions.fulfilled, (state, { payload }) => {
                 state.transactions = state.transactions.filter(transaction => {

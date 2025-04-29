@@ -36,9 +36,6 @@ export const getExpenseSummaryByCategories = createAsyncThunk('transactions/summ
         const { data } = await userTransactionsApi.get(query);
         return data.data;
     } catch (error) {
-        if (error.response?.status === 404) {
-            return [];
-        }
         return thunkApi.rejectWithValue(error.message || 'Failed to fetch expense summary');
     }
 });
@@ -66,12 +63,6 @@ export const getIncomeAndExpenseSummaryByPeriod = createAsyncThunk('transactions
             expenseSummaryByPeriod,
         };
     } catch (error) {
-        if (error.response?.status === 404) {
-            return {
-                incomeSummaryByPeriod: 0,
-                expenseSummaryByPeriod: 0,
-            };
-        }
         return thunkApi.rejectWithValue(error.message || 'Failed to fetch summary by period');
     }
 });

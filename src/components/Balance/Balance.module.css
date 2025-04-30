@@ -13,12 +13,14 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     backdrop-filter: blur(50px);
 }
+
 .text {
     color: var(--white-40);
     font-size: 12px;
     line-height: 1.2;
     text-transform: uppercase;
 }
+
 .amount {
     color: var(--white);
     font-size: 30px;
@@ -34,6 +36,7 @@
         margin-bottom: 0;
     }
 }
+
 @media only screen and (min-width: 1280px) {
     .balanceWrapper {
         border-radius: 0;

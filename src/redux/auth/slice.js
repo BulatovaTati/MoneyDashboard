@@ -58,13 +58,13 @@ const slice = createSlice({
                 state.isAuthLoading = false;
                 state.isAuthError = null;
             })
-            .addMatcher(isAnyOf(loginThunk.pending, registerThunk.pending), state => {
+            .addMatcher(isAnyOf(loginThunk.pending, registerThunk.pending, logoutThunk.pending), state => {
                 state.isAuthLoading = true;
                 state.isAuthError = null;
             })
-            .addMatcher(isAnyOf(loginThunk.rejected, registerThunk.rejected), (state, { payload }) => {
+            .addMatcher(isAnyOf(loginThunk.rejected, registerThunk.rejected, logoutThunk.rejected), (state, { payload }) => {
                 state.isAuthLoading = false;
-                state.isAuthError = payload;
+                state.isAuthError = payload || null;
             });
     },
 });

@@ -40,6 +40,7 @@
     .header {
         padding: 12px 0;
     }
+
     .container {
         padding-top: 0;
     }
@@ -48,6 +49,7 @@
         height: 214px;
         border-radius: 0px 0px 8px 8px;
     }
+
     .graph {
         height: 96px;
     }
@@ -56,6 +58,7 @@
     .header {
         padding: 16px 0;
     }
+
     .wrapper {
         height: 395px;
     }
@@ -63,6 +66,7 @@
     .item {
         padding: 16px 25px;
     }
+
     .graph {
         height: 225px;
     }

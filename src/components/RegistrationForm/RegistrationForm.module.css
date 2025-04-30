@@ -60,6 +60,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 .logoBox {
     display: flex;
     flex-direction: column;
@@ -69,7 +70,6 @@
 }
 
 .logoTitle {
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 19px;
     color: var(--white);
@@ -78,6 +78,7 @@
 .form {
     position: relative;
 }
+
 .inpBox {
     display: flex;
     flex-direction: column;
@@ -105,13 +106,16 @@
         padding-top: 40px;
         padding-bottom: 40px;
     }
+
     .logoIcon {
         width: 36px;
         height: 36px;
     }
+
     .logoTitle {
         font-size: 26px;
     }
+
     .form {
         width: 409px;
     }

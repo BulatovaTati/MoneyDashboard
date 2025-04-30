@@ -165,6 +165,7 @@
     align-items: center;
     gap: 20px;
 }
+
 .saveButton,
 .cancelButton {
     width: 280px;

@@ -1,12 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { selectIsLogOutModalOpen } from '../../redux/modals/selectors.js';
 import { openLogOutModal } from '../../redux/modals/slice';
-import s from './Header.module.css';
+import { selectUser } from '../../redux/auth/selectors';
 import { Icons } from '../Icons/Icons';
 import Logo from '../Logo/Logo';
-import ModalLogOut from '../ModalLogOut/ModalLogOut';
-import { selectUser } from '../../redux/auth/selectors.js';
+import s from './Header.module.css';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -15,9 +13,7 @@ const Header = () => {
         dispatch(openLogOutModal());
     };
 
-    const user = useSelector(selectUser);
-
-    const userName = user?.email?.split('@')[0];
+    const { name } = useSelector(selectUser);
 
     return (
         <>
@@ -30,7 +26,7 @@ const Header = () => {
                         <nav className={s.nav}>
                             <ul>
                                 <li>
-                                    <p className={s.nameText}>{userName}</p>
+                                    <p className={s.nameText}>{name}</p>
                                 </li>
                                 <li className={s.separator}></li>
                                 <li>
@@ -46,7 +42,6 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            <ModalLogOut />
         </>
     );
 };

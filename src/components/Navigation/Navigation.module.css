@@ -35,12 +35,14 @@
         width: 24px;
         height: 24px;
     }
+
     .list {
         flex-direction: column;
         padding-top: 40px;
         padding-bottom: 28px;
         gap: 12px;
     }
+
     .item {
         display: flex;
         flex-direction: row;

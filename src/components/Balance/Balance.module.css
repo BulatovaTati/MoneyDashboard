@@ -26,7 +26,10 @@
     font-size: 30px;
     font-weight: 700;
     line-height: 1.2;
-    text-wrap: wrap;
+
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 @media only screen and (min-width: 768px) {

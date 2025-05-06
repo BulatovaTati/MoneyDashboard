@@ -26,7 +26,9 @@ const Header = () => {
                         <nav className={s.nav}>
                             <ul>
                                 <li>
-                                    <p className={s.nameText}>{name}</p>
+                                    <p className={s.nameText} title={name}>
+                                        {name}
+                                    </p>
                                 </li>
                                 <li className={s.separator}></li>
                                 <li>
